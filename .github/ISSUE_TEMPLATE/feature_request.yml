@@ -1,0 +1,40 @@
+name: Feature / task request
+description: Propose a new capability, pipeline change, or improvement
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What are you trying to do, and why is it hard or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would you like to see? Sketch the approach if you have one.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      description: Which part of the pipeline does this touch?
+      multiple: true
+      options:
+        - schema (LinkML)
+        - ingest (neuron-graph readers)
+        - match (WBBT matcher)
+        - build (LinkML data assembly)
+        - export (RDF / JSON emitters)
+        - CLI
+        - docs / tooling / CI
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
