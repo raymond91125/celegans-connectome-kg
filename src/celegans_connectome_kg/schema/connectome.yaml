@@ -1,0 +1,180 @@
+id: https://wormbase.org/resources/connectome/schema
+name: celegans-connectome
+title: C. elegans Connectome Knowledge Graph Schema
+description: >-
+  LinkML schema (single source of truth) for the C. elegans connectome knowledge graph.
+  Models cells (neurons/muscles grounded in WBBT anatomy), reified n-ary connections
+  (chemical synapse, gap junction, functional), the datasets that observe them, and a
+  first-class, additive provenance layer. RDF/OWL, JSON-Schema, and Python dataclasses are
+  generated from this file.
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cckg: https://wormbase.org/resources/connectome/
+  WBbt: http://purl.obolibrary.org/obo/WBbt_
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+default_prefix: cckg
+default_range: string
+
+imports:
+  - linkml:types
+
+# ---------------------------------------------------------------------------
+# Classes
+# ---------------------------------------------------------------------------
+classes:
+
+  Connectome:
+    description: >-
+      Top-level container holding all cells, connections, and datasets of one build.
+      Serves as the tree root for data files and validation.
+    tree_root: true
+    attributes:
+      cells:
+        range: Cell
+        multivalued: true
+        inlined_as_list: true
+      connections:
+        range: Connection
+        multivalued: true
+        inlined_as_list: true
+      datasets:
+        range: Dataset
+        multivalued: true
+        inlined_as_list: true
+
+  Cell:
+    description: >-
+      A C. elegans cell (neuron or muscle, or other non-neuronal cell carried by
+      neuron-graph), keyed by its neuron-graph name and grounded in a WBBT anatomy term.
+    slots:
+      - id
+      - name
+      - cell_type
+      - anatomy
+    slot_usage:
+      id:
+        description: The neuron-graph cell name, used as the stable key (e.g. "ADAL").
+
+  Connection:
+    description: >-
+      A reified, n-ary connection between two cells observed in one dataset. Reified
+      (not a plain triple) because it carries type, weight, dataset, and evidence.
+    slots:
+      - id
+      - pre
+      - post
+      - connection_type
+      - weight
+      - dataset
+      - evidence
+    slot_usage:
+      pre:
+        required: true
+      post:
+        required: true
+      connection_type:
+        required: true
+
+  Dataset:
+    description: A neuron-graph specimen/dataset that observes connections.
+    slots:
+      - id
+      - name
+      - description
+      - strain
+
+  Evidence:
+    description: >-
+      Provenance for a connection. Designed to be additive: v1 records an aggregated
+      weight observed in a dataset; later releases can add individual synaptic-contact
+      detail (section, volume, image) by adding optional slots, without schema churn.
+    slots:
+      - evidence_type
+      - dataset
+      - value
+      - source
+
+# ---------------------------------------------------------------------------
+# Slots
+# ---------------------------------------------------------------------------
+slots:
+  id:
+    identifier: true
+    description: Stable identifier for the record.
+  name:
+    description: Human-readable label.
+    slot_uri: dcterms:title
+  cell_type:
+    description: The broad kind of cell.
+    range: CellType
+  anatomy:
+    description: The WBBT anatomy term this cell is grounded in.
+    range: uriorcurie
+    examples:
+      - value: WBbt:0004013
+        description: ADAL neuron
+  pre:
+    description: The presynaptic / source cell.
+    range: Cell
+  post:
+    description: The postsynaptic / target cell.
+    range: Cell
+  connection_type:
+    description: The kind of connection.
+    range: ConnectionType
+  weight:
+    description: Aggregated connection weight as reported by the observing dataset.
+    range: float
+  dataset:
+    description: The dataset in which this was observed.
+    range: Dataset
+  evidence:
+    description: Provenance records supporting this connection (open-world, additive).
+    range: Evidence
+    multivalued: true
+    inlined_as_list: true
+  description:
+    description: Free-text description.
+    slot_uri: dcterms:description
+  strain:
+    description: The C. elegans strain/genotype of the specimen, if known.
+  evidence_type:
+    description: What kind of evidence this record represents.
+    range: EvidenceType
+  value:
+    description: The evidence payload as text (e.g. the aggregated weight value).
+  source:
+    description: Pointer to the source data (file, URL, or upstream identifier).
+    range: uriorcurie
+
+# ---------------------------------------------------------------------------
+# Enums
+# ---------------------------------------------------------------------------
+enums:
+  CellType:
+    permissible_values:
+      neuron:
+        description: A neuron.
+      muscle:
+        description: A muscle cell.
+      other:
+        description: Another non-neuronal cell carried by neuron-graph.
+
+  ConnectionType:
+    permissible_values:
+      chemical:
+        description: Chemical synapse (EM).
+      gap_junction:
+        description: Electrical / gap-junction connection (EM).
+      functional:
+        description: Functional connectivity (FunCoNN).
+
+  EvidenceType:
+    permissible_values:
+      aggregated_weight:
+        description: An aggregated connection weight observed in a dataset (v1).
+      synaptic_contact:
+        description: An individual synaptic contact (reserved for a later release).
