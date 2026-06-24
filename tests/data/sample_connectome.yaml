@@ -1,0 +1,45 @@
+# A tiny hand-made instance used to validate the LinkML schema in CI.
+# Cells use real WBBT terms; connections exercise all three connection types.
+cells:
+  - id: ADAL
+    name: ADAL
+    cell_type: neuron
+    anatomy: WBbt:0004013
+  - id: ADAR
+    name: ADAR
+    cell_type: neuron
+    anatomy: WBbt:0004011
+  - id: ADEL
+    name: ADEL
+    cell_type: neuron
+
+datasets:
+  - id: randi_funconn_wildty
+    name: Randi FunCoNN (wild-type)
+    description: Functional connectivity, wild-type specimen.
+    strain: N2
+
+connections:
+  - id: conn:0001
+    pre: ADAL
+    post: ADEL
+    connection_type: functional
+    weight: 22.0
+    dataset: randi_funconn_wildty
+    evidence:
+      - evidence_type: aggregated_weight
+        dataset: randi_funconn_wildty
+        value: "22"
+        source: cckg:data/neuron-graph/randi_funconn_wildty.tsv
+  - id: conn:0002
+    pre: ADAL
+    post: ADAR
+    connection_type: chemical
+    weight: 3.0
+    dataset: randi_funconn_wildty
+  - id: conn:0003
+    pre: ADAL
+    post: ADAR
+    connection_type: gap_junction
+    weight: 1.0
+    dataset: randi_funconn_wildty
