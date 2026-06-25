@@ -1,0 +1,9051 @@
+[
+  
+  {
+    "pre": "ADAL",
+    "post": "ADEL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "ADAL",
+    "post": "AS1",
+    "typ": 4,
+    "syn": [
+      -12
+    ]
+  },
+  {
+    "pre": "ADAL",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      48
+    ]
+  },
+  {
+    "pre": "ADAL",
+    "post": "SMBDR",
+    "typ": 4,
+    "syn": [
+      -10
+    ]
+  },
+  {
+    "pre": "ADAR",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "ADEL",
+    "post": "FLPL",
+    "typ": 4,
+    "syn": [
+      63
+    ]
+  },
+  {
+    "pre": "ADEL",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "ADER",
+    "post": "ADEL",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "ADER",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "AIYR",
+    "typ": 4,
+    "syn": [
+      -13
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "ASKL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      -11
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "BAGR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "RMDVL",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "ADFL",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      36
+    ]
+  },
+  {
+    "pre": "ADLL",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "ADLL",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      44
+    ]
+  },
+  {
+    "pre": "ADLL",
+    "post": "AVHL",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "ADLL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "ADLL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "ADLR",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "ADLR",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "ADLR",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      52
+    ]
+  },
+  {
+    "pre": "ADLR",
+    "post": "ASKL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "ADLR",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      -7
+    ]
+  },
+  {
+    "pre": "ADLR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "AFDL",
+    "post": "ADFR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AFDL",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AFDL",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AFDL",
+    "post": "RIR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "AFDL",
+    "post": "SMBVL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "AFDR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "AFDR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "AIBL",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "AIBL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      -11
+    ]
+  },
+  {
+    "pre": "AIBR",
+    "post": "DD1",
+    "typ": 4,
+    "syn": [
+      -22
+    ]
+  },
+  {
+    "pre": "AIML",
+    "post": "AIMR",
+    "typ": 4,
+    "syn": [
+      42
+    ]
+  },
+  {
+    "pre": "AIML",
+    "post": "BAGR",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "AIML",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      87
+    ]
+  },
+  {
+    "pre": "AIML",
+    "post": "VB2",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      70
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      66
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "AIMR",
+    "post": "SABVL",
+    "typ": 4,
+    "syn": [
+      39
+    ]
+  },
+  {
+    "pre": "AINL",
+    "post": "ADEL",
+    "typ": 4,
+    "syn": [
+      51
+    ]
+  },
+  {
+    "pre": "AINL",
+    "post": "AVHL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AINR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "AINR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "AINR",
+    "post": "SABD",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AIYL",
+    "post": "AIYR",
+    "typ": 4,
+    "syn": [
+      40
+    ]
+  },
+  {
+    "pre": "AIYL",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "AIYL",
+    "post": "SMBVL",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "AIYL",
+    "post": "URYDR",
+    "typ": 4,
+    "syn": [
+      -10
+    ]
+  },
+  {
+    "pre": "AIYR",
+    "post": "AWCL",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "AIYR",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      -12
+    ]
+  },
+  {
+    "pre": "AIYR",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      78
+    ]
+  },
+  {
+    "pre": "AIYR",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      -22
+    ]
+  },
+  {
+    "pre": "AIYR",
+    "post": "SMDDR",
+    "typ": 4,
+    "syn": [
+      62
+    ]
+  },
+  {
+    "pre": "AIZL",
+    "post": "AQR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AIZL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "AIZL",
+    "post": "SMBDR",
+    "typ": 4,
+    "syn": [
+      46
+    ]
+  },
+  {
+    "pre": "AIZL",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "AIZR",
+    "post": "AIZL",
+    "typ": 4,
+    "syn": [
+      44
+    ]
+  },
+  {
+    "pre": "AIZR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "AIZR",
+    "post": "RIGR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "AIZR",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "AIZR",
+    "post": "SMDVL",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "AQR",
+    "post": "ADEL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AQR",
+    "post": "FLPL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AQR",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AQR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AS1",
+    "post": "RIGR",
+    "typ": 4,
+    "syn": [
+      41
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      32
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AINR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "ASEL",
+    "post": "RMDVR",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      38
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "ASIL",
+    "typ": 4,
+    "syn": [
+      46
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "I6",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "ASER",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "ASGL",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      54
+    ]
+  },
+  {
+    "pre": "ASGL",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "ASGL",
+    "post": "ASIL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "ASGL",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "ASGL",
+    "post": "AVHL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "ASGL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "ASGR",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "ASGR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "ASGR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "ASGR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      32
+    ]
+  },
+  {
+    "pre": "ASGR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AFDL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AVAL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "AWCL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "I1L",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "IL2L",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "ASHL",
+    "post": "SMDVR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "ASHR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "ASHR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "ASHR",
+    "post": "AWCL",
+    "typ": 4,
+    "syn": [
+      30
+    ]
+  },
+  {
+    "pre": "ASHR",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "ASHR",
+    "post": "SMBDL",
+    "typ": 4,
+    "syn": [
+      64
+    ]
+  },
+  {
+    "pre": "ASHR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "ASIL",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "ASIL",
+    "post": "ASJL",
+    "typ": 4,
+    "syn": [
+      -9
+    ]
+  },
+  {
+    "pre": "ASIL",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "ASIL",
+    "post": "RIVL",
+    "typ": 4,
+    "syn": [
+      41
+    ]
+  },
+  {
+    "pre": "ASIR",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "ASIR",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "ASIR",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "ASIR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "ASIR",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "ASIR",
+    "post": "RIVL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "ASIR",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "ASJL",
+    "post": "AIMR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "ASJL",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "ASJL",
+    "post": "RICL",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "ASJL",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "ASJL",
+    "post": "SIAVL",
+    "typ": 4,
+    "syn": [
+      -17
+    ]
+  },
+  {
+    "pre": "ASJL",
+    "post": "VA1",
+    "typ": 4,
+    "syn": [
+      -11
+    ]
+  },
+  {
+    "pre": "ASJR",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "ASJR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "ASJR",
+    "post": "ASKL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "ASJR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "ASJR",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "RIBR",
+    "typ": 4,
+    "syn": [
+      -23
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      -12
+    ]
+  },
+  {
+    "pre": "ASKL",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "ASKR",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "ASKR",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      64
+    ]
+  },
+  {
+    "pre": "ASKR",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "ASKR",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      39
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "AIMR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "AUAL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "DB2",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      30
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "SMDDR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AUAR",
+    "post": "VB2",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      -14
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "IL1VR",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "RMDVL",
+    "typ": 4,
+    "syn": [
+      33
+    ]
+  },
+  {
+    "pre": "AVAL",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      45
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "CEPDR",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      39
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "RID",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "SAAVR",
+    "typ": 4,
+    "syn": [
+      -9
+    ]
+  },
+  {
+    "pre": "AVAR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "AVBL",
+    "post": "AFDL",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "AVBL",
+    "post": "RIBL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "AVBL",
+    "post": "RMEV",
+    "typ": 4,
+    "syn": [
+      -8
+    ]
+  },
+  {
+    "pre": "AVBR",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "AVBR",
+    "post": "AFDR",
+    "typ": 4,
+    "syn": [
+      -25
+    ]
+  },
+  {
+    "pre": "AVBR",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "AVBR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      -14
+    ]
+  },
+  {
+    "pre": "AVBR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      56
+    ]
+  },
+  {
+    "pre": "AVBR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      -7
+    ]
+  },
+  {
+    "pre": "AVBR",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "AINR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      45
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "AVDL",
+    "post": "RMFL",
+    "typ": 4,
+    "syn": [
+      -8
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "AINR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "AVDR",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AUAL",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      50
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AVAL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "RIVL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "RMDVL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "SABVL",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "SABVR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "AVEL",
+    "post": "URYDL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "RMDVL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "RMDVR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "SAAVR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "SIBVR",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "SMDVR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVER",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVFL",
+    "post": "AVFR",
+    "typ": 4,
+    "syn": [
+      44
+    ]
+  },
+  {
+    "pre": "AVFL",
+    "post": "AVKR",
+    "typ": 4,
+    "syn": [
+      -19
+    ]
+  },
+  {
+    "pre": "AVG",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "AVG",
+    "post": "DB1",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "AVG",
+    "post": "RIGR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "AVG",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      39
+    ]
+  },
+  {
+    "pre": "AVG",
+    "post": "VD1",
+    "typ": 4,
+    "syn": [
+      -10
+    ]
+  },
+  {
+    "pre": "AVHL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AVHL",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVHR",
+    "post": "AINR",
+    "typ": 4,
+    "syn": [
+      53
+    ]
+  },
+  {
+    "pre": "AVHR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      59
+    ]
+  },
+  {
+    "pre": "AVHR",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "AVHR",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AVHR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "AVHR",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      41
+    ]
+  },
+  {
+    "pre": "AVHR",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "AINL",
+    "typ": 4,
+    "syn": [
+      38
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "ASIL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "AVHL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "CEPDR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "AVJL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "ADFL",
+    "typ": 4,
+    "syn": [
+      -36
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AIBR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "AWCL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      39
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "RIVL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      46
+    ]
+  },
+  {
+    "pre": "AVJR",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "AVKL",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      -10
+    ]
+  },
+  {
+    "pre": "AVKL",
+    "post": "AVKR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "AVKL",
+    "post": "SAAVR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "AVKL",
+    "post": "URBL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AVKR",
+    "post": "AVKL",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "AVKR",
+    "post": "DB1",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AVKR",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "AVL",
+    "post": "RIR",
+    "typ": 4,
+    "syn": [
+      40
+    ]
+  },
+  {
+    "pre": "AVL",
+    "post": "URYVL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "AWAL",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "AWAL",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AWAL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AWAL",
+    "post": "M5",
+    "typ": 4,
+    "syn": [
+      -71
+    ]
+  },
+  {
+    "pre": "AWAL",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWAL",
+    "post": "SMBVR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "AFDR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "DD1",
+    "typ": 4,
+    "syn": [
+      -11
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      30
+    ]
+  },
+  {
+    "pre": "AWAR",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AIBR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "ASKL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AVHL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "AWBL",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "ADFL",
+    "typ": 4,
+    "syn": [
+      38
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "AVHR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "AWBR",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "AWCL",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "AWCL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "AWCL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AWCL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AWCL",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "AWCL",
+    "post": "SMDVL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      51
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "AVBR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "AVHL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "AWCR",
+    "post": "RIBR",
+    "typ": 4,
+    "syn": [
+      79
+    ]
+  },
+  {
+    "pre": "BAGL",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "BAGL",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "BAGR",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      -9
+    ]
+  },
+  {
+    "pre": "BAGR",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      51
+    ]
+  },
+  {
+    "pre": "BAGR",
+    "post": "URYDL",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "CEPDL",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "CEPDL",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      -17
+    ]
+  },
+  {
+    "pre": "CEPDL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "CEPDL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "CEPDL",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "CEPDL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      66
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "AFDR",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "SMBVR",
+    "typ": 4,
+    "syn": [
+      -15
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "SMDVR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "CEPDR",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "CEPVL",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "CEPVL",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "CEPVL",
+    "post": "RMDVL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "CEPVL",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "CEPVL",
+    "post": "RMEV",
+    "typ": 4,
+    "syn": [
+      32
+    ]
+  },
+  {
+    "pre": "CEPVL",
+    "post": "URYDL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "CEPVR",
+    "post": "CEPVL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "DB2",
+    "post": "AINL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "DB2",
+    "post": "AS1",
+    "typ": 4,
+    "syn": [
+      103
+    ]
+  },
+  {
+    "pre": "DB2",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "DB2",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "DB2",
+    "post": "SAADR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "DB2",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "DD1",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "FLPL",
+    "post": "ADEL",
+    "typ": 4,
+    "syn": [
+      47
+    ]
+  },
+  {
+    "pre": "FLPR",
+    "post": "DD1",
+    "typ": 4,
+    "syn": [
+      -37
+    ]
+  },
+  {
+    "pre": "FLPR",
+    "post": "I1R",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "FLPR",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "I1L",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      -12
+    ]
+  },
+  {
+    "pre": "I1L",
+    "post": "URYDL",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "I1R",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "I1R",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      -12
+    ]
+  },
+  {
+    "pre": "I2L",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      41
+    ]
+  },
+  {
+    "pre": "I2L",
+    "post": "MCR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "I2L",
+    "post": "NSML",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "I2L",
+    "post": "OLQVR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "IL1DR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "MCR",
+    "typ": 4,
+    "syn": [
+      48
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "NSML",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "NSMR",
+    "typ": 4,
+    "syn": [
+      40
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "I2R",
+    "post": "URYVR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "M2L",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      42
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "NSMR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "I3",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "I4",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "I4",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "I4",
+    "post": "I6",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "I4",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      70
+    ]
+  },
+  {
+    "pre": "I4",
+    "post": "MCL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "I4",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "I6",
+    "post": "I4",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "I6",
+    "post": "M5",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "I6",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "I6",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "ALA",
+    "typ": 4,
+    "syn": [
+      -11
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "IL1DR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "URYDR",
+    "typ": 4,
+    "syn": [
+      30
+    ]
+  },
+  {
+    "pre": "IL1DL",
+    "post": "VD1",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "ALA",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "IL1DR",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "IL1R",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "IL1R",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "IL1VR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "OLQVR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "SIAVL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "IL1VL",
+    "post": "URYVR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "IL1VR",
+    "post": "BAGR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "IL1VR",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "IL1VR",
+    "post": "IL1VL",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "IL1VR",
+    "post": "IL2VL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "IL2DL",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "IL2DL",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "IL2DL",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "IL2DL",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      -33
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      -10
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "IL2DL",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "IL2DR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "IL2L",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "IL2L",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      -13
+    ]
+  },
+  {
+    "pre": "IL2R",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      -42
+    ]
+  },
+  {
+    "pre": "IL2R",
+    "post": "AVAL",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "IL2R",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "IL2R",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      68
+    ]
+  },
+  {
+    "pre": "IL2R",
+    "post": "RIPR",
+    "typ": 4,
+    "syn": [
+      -41
+    ]
+  },
+  {
+    "pre": "IL2R",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      -16
+    ]
+  },
+  {
+    "pre": "IL2R",
+    "post": "URBR",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "IL2VL",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      -11
+    ]
+  },
+  {
+    "pre": "IL2VR",
+    "post": "AWCL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "IL2VR",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "AIBR",
+    "typ": 4,
+    "syn": [
+      -12
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "I1L",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "I4",
+    "typ": 4,
+    "syn": [
+      38
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "I6",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "M4",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "M1",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "M2L",
+    "post": "I4",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "M2L",
+    "post": "I6",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "M2L",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "M2L",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "M2L",
+    "post": "M5",
+    "typ": 4,
+    "syn": [
+      45
+    ]
+  },
+  {
+    "pre": "M2L",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "AVKL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "I1R",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "I4",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "IL1DR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "IL2DR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "IL2R",
+    "typ": 4,
+    "syn": [
+      51
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "M2L",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      44
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      30
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "MCL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "MCR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "NSML",
+    "typ": 4,
+    "syn": [
+      32
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "NSMR",
+    "typ": 4,
+    "syn": [
+      33
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "SABVR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "URBL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "URBR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "M3L",
+    "post": "URYVL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "AVG",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "I4",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "IL1VL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "IL2DR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "IL2R",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "M2L",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "MCL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "MCR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "NSML",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "OLQVR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "M3R",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "M5",
+    "post": "M2L",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "M5",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "MCL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "MCL",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "MCL",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "MCL",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "MCL",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "MCL",
+    "post": "NSML",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "MCL",
+    "post": "NSMR",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      38
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "M2R",
+    "typ": 4,
+    "syn": [
+      119
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "NSMR",
+    "typ": 4,
+    "syn": [
+      55
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "SABD",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "MCR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "I4",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "M1",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "NSML",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "RIPR",
+    "typ": 4,
+    "syn": [
+      -36
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "MI",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "NSML",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "NSML",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      89
+    ]
+  },
+  {
+    "pre": "NSML",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "NSML",
+    "post": "NSMR",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "NSMR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "NSMR",
+    "post": "MCL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "NSMR",
+    "post": "MCR",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "NSMR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "NSMR",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      -7
+    ]
+  },
+  {
+    "pre": "NSMR",
+    "post": "URBR",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "ASKL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "OLLL",
+    "post": "VD1",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "ASJR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "AWCL",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "I3",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "IL1DR",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "RIPR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "OLLR",
+    "post": "URADR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "OLQDL",
+    "post": "ADFL",
+    "typ": 4,
+    "syn": [
+      -21
+    ]
+  },
+  {
+    "pre": "OLQDR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "OLQDR",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "OLQDR",
+    "post": "RICL",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "OLQDR",
+    "post": "SIAVR",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "OLQVL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "OLQVL",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      33
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "BAGR",
+    "typ": 4,
+    "syn": [
+      63
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "CEPDR",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "CEPVL",
+    "typ": 4,
+    "syn": [
+      42
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      95
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "MCR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "RMDVR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "RMEV",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "OLQVR",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "AFDL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      65
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "ALA",
+    "typ": 4,
+    "syn": [
+      33
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      36
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "ASJR",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "RIVL",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      40
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "RMDVL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "SIBVR",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "SMDVL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "RIAL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "BAGR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "RIAR",
+    "post": "URYDR",
+    "typ": 4,
+    "syn": [
+      41
+    ]
+  },
+  {
+    "pre": "RIBL",
+    "post": "RICL",
+    "typ": 4,
+    "syn": [
+      61
+    ]
+  },
+  {
+    "pre": "RIBL",
+    "post": "SIBVL",
+    "typ": 4,
+    "syn": [
+      116
+    ]
+  },
+  {
+    "pre": "RIBR",
+    "post": "AINR",
+    "typ": 4,
+    "syn": [
+      95
+    ]
+  },
+  {
+    "pre": "RIBR",
+    "post": "AIYR",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "RIBR",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      74
+    ]
+  },
+  {
+    "pre": "RIBR",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "RIBR",
+    "post": "RIS",
+    "typ": 4,
+    "syn": [
+      40
+    ]
+  },
+  {
+    "pre": "RIBR",
+    "post": "SABVL",
+    "typ": 4,
+    "syn": [
+      63
+    ]
+  },
+  {
+    "pre": "RIBR",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "RICL",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RICL",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "RICL",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "RICR",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "RICR",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "RID",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "RID",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "RIFR",
+    "post": "AVFL",
+    "typ": 4,
+    "syn": [
+      59
+    ]
+  },
+  {
+    "pre": "RIFR",
+    "post": "RIGL",
+    "typ": 4,
+    "syn": [
+      76
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "AVFL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "AVG",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "RIGR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      -8
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "SABD",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "VA1",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "RIGL",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "RIGR",
+    "post": "AVG",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RIGR",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RIGR",
+    "post": "RIGL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RIGR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "RIGR",
+    "post": "RMFL",
+    "typ": 4,
+    "syn": [
+      -11
+    ]
+  },
+  {
+    "pre": "RIGR",
+    "post": "RMHL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RIGR",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RIH",
+    "post": "CEPDL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RIH",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "RIH",
+    "post": "SIAVR",
+    "typ": 4,
+    "syn": [
+      98
+    ]
+  },
+  {
+    "pre": "RIH",
+    "post": "SIBVR",
+    "typ": 4,
+    "syn": [
+      97
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "ASJR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "DB1",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "RICL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "RID",
+    "typ": 4,
+    "syn": [
+      -27
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "SMBVR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RIML",
+    "post": "VB2",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "AIMR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "ASJR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "RICR",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "RIPL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "RIVL",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "RIMR",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      -34
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      -81
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      -25
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "AUAL",
+    "typ": 4,
+    "syn": [
+      32
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      -15
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "RIPR",
+    "typ": 4,
+    "syn": [
+      -30
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "SAAVR",
+    "typ": 4,
+    "syn": [
+      -22
+    ]
+  },
+  {
+    "pre": "RIPL",
+    "post": "URYDR",
+    "typ": 4,
+    "syn": [
+      -19
+    ]
+  },
+  {
+    "pre": "RIR",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "RIR",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      -28
+    ]
+  },
+  {
+    "pre": "RIR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RIS",
+    "post": "ADAL",
+    "typ": 4,
+    "syn": [
+      87
+    ]
+  },
+  {
+    "pre": "RIS",
+    "post": "AVG",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "RIVL",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RIVL",
+    "post": "ASIL",
+    "typ": 4,
+    "syn": [
+      58
+    ]
+  },
+  {
+    "pre": "RIVL",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "ASIL",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "ASJL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "RIVL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "SAADR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RIVR",
+    "post": "SAAVR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "AIYR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "RMDDL",
+    "post": "SMDDR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AIMR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "AWCL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "RIH",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "SAADR",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "SIADL",
+    "typ": 4,
+    "syn": [
+      58
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "SMBDR",
+    "typ": 4,
+    "syn": [
+      30
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      36
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "SMDDR",
+    "typ": 4,
+    "syn": [
+      49
+    ]
+  },
+  {
+    "pre": "RMDDR",
+    "post": "URADR",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "RMDL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RMDL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "RMDL",
+    "post": "CEPDL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "RMDL",
+    "post": "CEPVL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RMDL",
+    "post": "RMEV",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RMDL",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RMDL",
+    "post": "URYDR",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "AIYL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "AVHL",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "RIH",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "RMDVR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "RMDR",
+    "post": "SMDDR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "AVAL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "IL1L",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "RMDVR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "SMDVL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RMDVL",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "ASGL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AVJR",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "I1R",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "I6",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RIAR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RIVR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RMDR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RMDVL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "SAADL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "SAAVR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "SMDVL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "SMDVR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMDVR",
+    "post": "VA1",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "RMEL",
+    "post": "ASEL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMEL",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "RMEL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "RMEL",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "RMEL",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RMEL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RMER",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMER",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "RMEV",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "RMFL",
+    "post": "CEPVR",
+    "typ": 4,
+    "syn": [
+      -14
+    ]
+  },
+  {
+    "pre": "RMFL",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "RMFL",
+    "post": "SAADR",
+    "typ": 4,
+    "syn": [
+      47
+    ]
+  },
+  {
+    "pre": "RMFR",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "RMFR",
+    "post": "RMED",
+    "typ": 4,
+    "syn": [
+      -17
+    ]
+  },
+  {
+    "pre": "RMFR",
+    "post": "RMFL",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "RMFR",
+    "post": "SMBDR",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "RMGL",
+    "post": "AIZL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "RMGL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "RMGL",
+    "post": "RMDDL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "AIBL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "IL1VL",
+    "typ": 4,
+    "syn": [
+      -7
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "OLQVR",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "SAADL",
+    "post": "SAADR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "SAADR",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      54
+    ]
+  },
+  {
+    "pre": "SAADR",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "SAADR",
+    "post": "AWAL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "SAADR",
+    "post": "AWAR",
+    "typ": 4,
+    "syn": [
+      36
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "ALA",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "SMBDL",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "SMDVL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "SAAVL",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      64
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      78
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "SMDVR",
+    "typ": 4,
+    "syn": [
+      69
+    ]
+  },
+  {
+    "pre": "SAAVR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "AIBR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "AVFR",
+    "typ": 4,
+    "syn": [
+      82
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "DB1",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "DB2",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "FLPR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "RIGR",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "VA1",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      31
+    ]
+  },
+  {
+    "pre": "SABD",
+    "post": "VB2",
+    "typ": 4,
+    "syn": [
+      29
+    ]
+  },
+  {
+    "pre": "SABVL",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "SABVL",
+    "post": "AIYL",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "SABVL",
+    "post": "RIMR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "SABVL",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "SABVL",
+    "post": "SABVR",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "SABVL",
+    "post": "SMBVL",
+    "typ": 4,
+    "syn": [
+      32
+    ]
+  },
+  {
+    "pre": "SABVR",
+    "post": "AIZL",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "SABVR",
+    "post": "AVG",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "SABVR",
+    "post": "SMBDL",
+    "typ": 4,
+    "syn": [
+      -42
+    ]
+  },
+  {
+    "pre": "SIBVR",
+    "post": "RIFL",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "SIBVR",
+    "post": "RIH",
+    "typ": 4,
+    "syn": [
+      86
+    ]
+  },
+  {
+    "pre": "SIBVR",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      40
+    ]
+  },
+  {
+    "pre": "SIBVR",
+    "post": "SIAVR",
+    "typ": 4,
+    "syn": [
+      90
+    ]
+  },
+  {
+    "pre": "SIBVR",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      47
+    ]
+  },
+  {
+    "pre": "SMBDL",
+    "post": "AVAR",
+    "typ": 4,
+    "syn": [
+      -13
+    ]
+  },
+  {
+    "pre": "SMBDL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      -16
+    ]
+  },
+  {
+    "pre": "SMBDL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "SMBDL",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "SMBVL",
+    "post": "SMBVR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "SMBVR",
+    "post": "AIYL",
+    "typ": 4,
+    "syn": [
+      57
+    ]
+  },
+  {
+    "pre": "SMBVR",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      39
+    ]
+  },
+  {
+    "pre": "SMBVR",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      -14
+    ]
+  },
+  {
+    "pre": "SMBVR",
+    "post": "RMEL",
+    "typ": 4,
+    "syn": [
+      36
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "ASER",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "ASHL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "AVG",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      -5
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "RIML",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "SAADR",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "SABVR",
+    "typ": 4,
+    "syn": [
+      25
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "SMBDL",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "SMDDR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "SMDDL",
+    "post": "VB2",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "AIML",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "AIMR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "AINL",
+    "typ": 4,
+    "syn": [
+      -17
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "AUAL",
+    "typ": 4,
+    "syn": [
+      30
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "AUAR",
+    "typ": 4,
+    "syn": [
+      63
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "DD1",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "RMDDR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "SABVL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "SMBDR",
+    "typ": 4,
+    "syn": [
+      32
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "SMBVL",
+    "typ": 4,
+    "syn": [
+      66
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "SMDDR",
+    "post": "URYDL",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "AIBR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "ASJR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "DB1",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "IL1R",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "SAAVL",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "SMDVR",
+    "typ": 4,
+    "syn": [
+      45
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      26
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      28
+    ]
+  },
+  {
+    "pre": "SMDVL",
+    "post": "VA1",
+    "typ": 4,
+    "syn": [
+      -3
+    ]
+  },
+  {
+    "pre": "SMDVR",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "SMDVR",
+    "post": "ASGR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "SMDVR",
+    "post": "ASKL",
+    "typ": 4,
+    "syn": [
+      61
+    ]
+  },
+  {
+    "pre": "SMDVR",
+    "post": "ASKR",
+    "typ": 4,
+    "syn": [
+      55
+    ]
+  },
+  {
+    "pre": "SMDVR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      -7
+    ]
+  },
+  {
+    "pre": "SMDVR",
+    "post": "CEPDR",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "SMDVR",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "URADL",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      39
+    ]
+  },
+  {
+    "pre": "URADL",
+    "post": "CEPDR",
+    "typ": 4,
+    "syn": [
+      89
+    ]
+  },
+  {
+    "pre": "URAVL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "URAVL",
+    "post": "AWCR",
+    "typ": 4,
+    "syn": [
+      -17
+    ]
+  },
+  {
+    "pre": "URAVL",
+    "post": "BAGL",
+    "typ": 4,
+    "syn": [
+      69
+    ]
+  },
+  {
+    "pre": "URAVL",
+    "post": "IL1VL",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "URAVL",
+    "post": "IL1VR",
+    "typ": 4,
+    "syn": [
+      37
+    ]
+  },
+  {
+    "pre": "URAVL",
+    "post": "OLQDL",
+    "typ": 4,
+    "syn": [
+      -6
+    ]
+  },
+  {
+    "pre": "URAVL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "URBL",
+    "post": "RMFR",
+    "typ": 4,
+    "syn": [
+      1
+    ]
+  },
+  {
+    "pre": "URBR",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "URBR",
+    "post": "ASIR",
+    "typ": 4,
+    "syn": [
+      2
+    ]
+  },
+  {
+    "pre": "URXL",
+    "post": "AVER",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "URXL",
+    "post": "CEPDL",
+    "typ": 4,
+    "syn": [
+      58
+    ]
+  },
+  {
+    "pre": "URXL",
+    "post": "CEPDR",
+    "typ": 4,
+    "syn": [
+      34
+    ]
+  },
+  {
+    "pre": "URXL",
+    "post": "IL1DR",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "URXL",
+    "post": "RMDL",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "URXL",
+    "post": "SAAVR",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "URXL",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      21
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "ADLL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "ALA",
+    "typ": 4,
+    "syn": [
+      35
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "ASKL",
+    "typ": 4,
+    "syn": [
+      7
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "AWBR",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "CEPDL",
+    "typ": 4,
+    "syn": [
+      46
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "URADR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "URXR",
+    "post": "URXL",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      74
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "AVJL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "AWBL",
+    "typ": 4,
+    "syn": [
+      43
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "CEPDL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "IL1DL",
+    "typ": 4,
+    "syn": [
+      17
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "MI",
+    "typ": 4,
+    "syn": [
+      82
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      14
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "OLQDR",
+    "typ": 4,
+    "syn": [
+      36
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "URADL",
+    "typ": 4,
+    "syn": [
+      164
+    ]
+  },
+  {
+    "pre": "URYDL",
+    "post": "URADR",
+    "typ": 4,
+    "syn": [
+      220
+    ]
+  },
+  {
+    "pre": "URYDR",
+    "post": "DB1",
+    "typ": 4,
+    "syn": [
+      -36
+    ]
+  },
+  {
+    "pre": "URYVL",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      16
+    ]
+  },
+  {
+    "pre": "URYVL",
+    "post": "OLQVL",
+    "typ": 4,
+    "syn": [
+      9
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "ASHR",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "ASJL",
+    "typ": 4,
+    "syn": [
+      -13
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "AVDR",
+    "typ": 4,
+    "syn": [
+      -4
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      -2
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "I1R",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "I2L",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "I2R",
+    "typ": 4,
+    "syn": [
+      18
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "M3L",
+    "typ": 4,
+    "syn": [
+      19
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "M3R",
+    "typ": 4,
+    "syn": [
+      23
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "NSMR",
+    "typ": 4,
+    "syn": [
+      46
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "OLLL",
+    "typ": 4,
+    "syn": [
+      6
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "OLLR",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  },
+  {
+    "pre": "URYVR",
+    "post": "URYVL",
+    "typ": 4,
+    "syn": [
+      12
+    ]
+  },
+  {
+    "pre": "VA1",
+    "post": "AVG",
+    "typ": 4,
+    "syn": [
+      27
+    ]
+  },
+  {
+    "pre": "VA1",
+    "post": "AVKR",
+    "typ": 4,
+    "syn": [
+      -21
+    ]
+  },
+  {
+    "pre": "VA1",
+    "post": "DD1",
+    "typ": 4,
+    "syn": [
+      20
+    ]
+  },
+  {
+    "pre": "VA1",
+    "post": "RIGR",
+    "typ": 4,
+    "syn": [
+      51
+    ]
+  },
+  {
+    "pre": "VA1",
+    "post": "SABD",
+    "typ": 4,
+    "syn": [
+      24
+    ]
+  },
+  {
+    "pre": "VB1",
+    "post": "ADLR",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "VB1",
+    "post": "AVDL",
+    "typ": 4,
+    "syn": [
+      8
+    ]
+  },
+  {
+    "pre": "VB1",
+    "post": "AVFL",
+    "typ": 4,
+    "syn": [
+      22
+    ]
+  },
+  {
+    "pre": "VB1",
+    "post": "RMER",
+    "typ": 4,
+    "syn": [
+      5
+    ]
+  },
+  {
+    "pre": "VB1",
+    "post": "SABD",
+    "typ": 4,
+    "syn": [
+      11
+    ]
+  },
+  {
+    "pre": "VB1",
+    "post": "VB2",
+    "typ": 4,
+    "syn": [
+      10
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "AIYL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "AVEL",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "RMDVR",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "RMFL",
+    "typ": 4,
+    "syn": [
+      13
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "SMDDL",
+    "typ": 4,
+    "syn": [
+      3
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "URXR",
+    "typ": 4,
+    "syn": [
+      -1
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "VA1",
+    "typ": 4,
+    "syn": [
+      4
+    ]
+  },
+  {
+    "pre": "VB2",
+    "post": "VB1",
+    "typ": 4,
+    "syn": [
+      15
+    ]
+  }
+]
