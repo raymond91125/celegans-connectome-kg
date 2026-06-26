@@ -38,15 +38,17 @@ def test_build_stats(built: tuple[object, object]) -> None:
     _, stats = built
     assert stats.cells == 447
     assert stats.datasets == 15
-    assert stats.connections == 25036
+    # 25036 source records aggregate to 25026 connections: 10 duplicate (dataset,pre,post,
+    # type) listings in white_1986_jse are summed (mirrors neuron-graph populate).
+    assert stats.connections == 25026
     assert stats.cells_with_anatomy == 333  # equals the matched count from Phase 2
     assert stats.connections_by_type == {
-        "chemical": 16955,
+        "chemical": 16945,
         "gap_junction": 5467,
         "functional": 2614,
     }
-    # Class-level / fragment endpoints present in connections but not in neurons.json.
-    assert stats.unknown_connection_cells == 27
+    # Distinct class-level / fragment endpoint names absent from neurons.json.
+    assert stats.unknown_connection_cells == 14
 
 
 def test_cells_have_curie_ids_and_typed(built: tuple[object, object]) -> None:

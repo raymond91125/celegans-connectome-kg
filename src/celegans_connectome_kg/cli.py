@@ -156,12 +156,28 @@ def build(data_dir: Path, wbbt: Path, out_dir: Path) -> None:
 )
 def export(in_path: Path, out_dir: Path) -> None:
     """Serialize RDF/OWL and the neuron-graph JSON projection. [Phase 3]"""
+    import json
+
+    from celegans_connectome_kg.export.neuron_graph_json import (
+        cells_projection,
+        connections_projection,
+    )
     from celegans_connectome_kg.export.rdf import load_json, write_turtle
 
     connectome = load_json(in_path)
+
     ttl_path = out_dir / "connectome.ttl"
     write_turtle(connectome, ttl_path)
     click.echo(f"wrote: {ttl_path}")
+
+    ng_dir = out_dir / "neuron-graph"
+    ng_dir.mkdir(parents=True, exist_ok=True)
+    cells = cells_projection(connectome)
+    connections = connections_projection(connectome)
+    (ng_dir / "cells.json").write_text(json.dumps(cells, indent=2))
+    (ng_dir / "connections.json").write_text(json.dumps(connections, indent=2))
+    click.echo(f"wrote: {ng_dir}/cells.json ({len(cells)} cells)")
+    click.echo(f"wrote: {ng_dir}/connections.json ({len(connections)} connections)")
 
 
 if __name__ == "__main__":
