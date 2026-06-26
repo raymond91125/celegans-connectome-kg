@@ -1,0 +1,12 @@
+# Cells with no WBBT anatomy grounding (the curation tail — mostly muscles).
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+
+SELECT ?name ?cell_type
+WHERE {
+  ?cell a cckg:Cell ;
+        cckg:cell_type ?cell_type .
+  OPTIONAL { ?cell cckg:anatomy ?anatomy }
+  FILTER (!BOUND(?anatomy))
+  ?cell <http://purl.org/dc/terms/title> ?name .
+}
+ORDER BY ?name

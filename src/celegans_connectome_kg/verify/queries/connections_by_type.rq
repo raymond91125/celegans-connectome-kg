@@ -1,0 +1,10 @@
+# Count reified connections grouped by connection type.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+
+SELECT ?connection_type (COUNT(?conn) AS ?count)
+WHERE {
+  ?conn a cckg:Connection ;
+        cckg:connection_type ?connection_type .
+}
+GROUP BY ?connection_type
+ORDER BY DESC(?count)

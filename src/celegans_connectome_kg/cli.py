@@ -180,5 +180,59 @@ def export(in_path: Path, out_dir: Path) -> None:
     click.echo(f"wrote: {ng_dir}/connections.json ({len(connections)} connections)")
 
 
+@main.command()
+@click.option(
+    "--ttl",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=DEFAULT_OUTPUT_DIR / "connectome.ttl",
+    show_default=True,
+    help="RDF/Turtle produced by `cckg export`.",
+)
+@click.option(
+    "--json",
+    "json_path",
+    type=click.Path(dir_okay=False, path_type=Path),
+    default=DEFAULT_OUTPUT_DIR / "connectome.json",
+    show_default=True,
+    help="Build JSON to cross-check counts against (optional).",
+)
+def verify(ttl: Path, json_path: Path) -> None:
+    """Load the RDF into Oxigraph; check counts and run sample SPARQL. [Phase 4]"""
+    from celegans_connectome_kg.verify.sparql import (
+        count_summary,
+        load_turtle,
+        rows,
+        sample_queries,
+    )
+
+    store = load_turtle(ttl)
+    counts = count_summary(store)
+    click.echo(f"loaded {len(store)} triples from {ttl}")
+    for key, value in counts.items():
+        click.echo(f"  {key:20} {value}")
+
+    if json_path.exists():
+        from celegans_connectome_kg.export.rdf import load_json
+
+        connectome = load_json(json_path)
+        expected = {
+            "cells": len(connectome.cells),
+            "datasets": len(connectome.datasets),
+            "connections": len(connectome.connections),
+        }
+        ok = all(counts[k] == v for k, v in expected.items())
+        click.echo(f"count cross-check vs {json_path.name}: {'PASS' if ok else 'FAIL'}")
+        if not ok:
+            for k, v in expected.items():
+                if counts[k] != v:
+                    raise click.ClickException(f"{k}: RDF {counts[k]} != JSON {v}")
+
+    click.echo("sample queries:")
+    for name, query in sample_queries().items():
+        result = rows(store, query)
+        preview = result[0] if result else {}
+        click.echo(f"  {name:28} {len(result)} rows; first: {preview}")
+
+
 if __name__ == "__main__":
     main()

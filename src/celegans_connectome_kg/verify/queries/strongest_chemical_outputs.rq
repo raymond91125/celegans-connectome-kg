@@ -1,0 +1,17 @@
+# Strongest chemical synaptic outputs of AVAL, summed across datasets.
+# Demonstrates traversing reified connections and aggregating their weights.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?post_name (SUM(?weight) AS ?total_weight)
+WHERE {
+  ?conn a cckg:Connection ;
+        cckg:pre <https://wormbase.org/resources/connectome/cell/AVAL> ;
+        cckg:connection_type "chemical" ;
+        cckg:post ?post ;
+        cckg:weight ?weight .
+  ?post dcterms:title ?post_name .
+}
+GROUP BY ?post_name
+ORDER BY DESC(?total_weight)
+LIMIT 10
