@@ -85,6 +85,12 @@ def assemble(data_dir: Path, wbbt_path: Path) -> tuple[object, BuildStats]:
             name=c.name,
             cell_type=classify_cell_type(c.nemanode_type),
             anatomy=anatomy_by_name.get(c.name),
+            cell_class=c.cell_class,
+            neurotransmitter=c.neurotransmitter,
+            nemanode_type=c.nemanode_type,
+            embryonic=c.embryonic,
+            in_head=c.in_head,
+            in_tail=c.in_tail,
         )
         for c in sorted(data.cells, key=lambda c: c.name)
     ]
@@ -94,41 +100,43 @@ def assemble(data_dir: Path, wbbt_path: Path) -> tuple[object, BuildStats]:
         for d in sorted(data.datasets, key=lambda d: d.id)
     ]
 
+    # Aggregate by (dataset, pre, post, type), summing weight — mirrors neuron-graph's
+    # populate-connections (`synapseCount += ...`), which collapses duplicate listings of the
+    # same edge in one dataset into a single connection. One connection per key results.
+    summed_weight: dict[ConnectionRecord, float] = {}
+    by_key: dict[tuple[str, str, str, str], ConnectionRecord] = {}
+    for conn in data.connections:
+        key = (conn.dataset_id, conn.pre, conn.post, conn.connection_type)
+        if key not in by_key:
+            by_key[key] = conn
+            summed_weight[conn] = 0.0
+        summed_weight[by_key[key]] += conn.weight
+
     connections = []
-    seen_ids: set[str] = set()
-    unknown_cells = 0
     for conn in sorted(
-        data.connections, key=lambda c: (c.dataset_id, c.pre, c.post, c.connection_type)
+        by_key.values(), key=lambda c: (c.dataset_id, c.pre, c.post, c.connection_type)
     ):
-        conn_id = _connection_id(conn)
-        if conn_id in seen_ids:
-            # Same (dataset, pre, post, type) twice — should not happen; disambiguate.
-            suffix = 1
-            while f"{conn_id}#{suffix}" in seen_ids:
-                suffix += 1
-            conn_id = f"{conn_id}#{suffix}"
-        seen_ids.add(conn_id)
-        if conn.pre not in cell_records:
-            unknown_cells += 1
-        if conn.post not in cell_records:
-            unknown_cells += 1
+        weight = summed_weight[conn]
         connections.append(
             dm.Connection(
-                id=conn_id,
+                id=_connection_id(conn),
                 pre=_cell_id(conn.pre),
                 post=_cell_id(conn.post),
                 connection_type=conn.connection_type,
-                weight=conn.weight,
+                weight=weight,
                 dataset=_dataset_id(conn.dataset_id),
                 evidence=[
                     dm.Evidence(
                         evidence_type="aggregated_weight",
                         dataset=_dataset_id(conn.dataset_id),
-                        value=str(conn.weight),
+                        value=str(weight),
                     )
                 ],
             )
         )
+
+    referenced = {c.pre for c in by_key.values()} | {c.post for c in by_key.values()}
+    unknown_cells = sorted(name for name in referenced if name not in cell_records)
 
     connectome = dm.Connectome(cells=cells, datasets=datasets, connections=connections)
     stats = BuildStats(
@@ -137,6 +145,6 @@ def assemble(data_dir: Path, wbbt_path: Path) -> tuple[object, BuildStats]:
         connections=len(connections),
         cells_with_anatomy=sum(1 for c in cells if c.anatomy),
         connections_by_type=dict(Counter(str(c.connection_type) for c in connections)),
-        unknown_connection_cells=unknown_cells,
+        unknown_connection_cells=len(unknown_cells),
     )
     return connectome, stats

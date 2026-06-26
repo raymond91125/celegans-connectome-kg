@@ -49,11 +49,18 @@ classes:
     description: >-
       A C. elegans cell (neuron or muscle, or other non-neuronal cell carried by
       neuron-graph), keyed by its neuron-graph name and grounded in a WBBT anatomy term.
+      Carries the neuron-graph-native attributes so the viz JSON projection is lossless.
     slots:
       - id
       - name
       - cell_type
       - anatomy
+      - cell_class
+      - neurotransmitter
+      - nemanode_type
+      - embryonic
+      - in_head
+      - in_tail
     slot_usage:
       id:
         description: The neuron-graph cell name, used as the stable key (e.g. "ADAL").
@@ -116,6 +123,23 @@ slots:
     examples:
       - value: WBbt:0004013
         description: ADAL neuron
+  cell_class:
+    description: The neuron-graph cell class (e.g. "ADA" for ADAL/ADAR).
+  neurotransmitter:
+    description: neuron-graph neurotransmitter code (e.g. "l", "a", "g", "n").
+  nemanode_type:
+    description: >-
+      Raw NemaNode cell-type code (e.g. "i", "s", "sm", "b"). Retained verbatim for the
+      lossless viz projection; the curated CellType is in `cell_type`.
+  embryonic:
+    description: Whether the cell is born embryonically.
+    range: boolean
+  in_head:
+    description: Whether the cell is in the head.
+    range: boolean
+  in_tail:
+    description: Whether the cell is in the tail.
+    range: boolean
   pre:
     description: The presynaptic / source cell.
     range: Cell
