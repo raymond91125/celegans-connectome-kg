@@ -14,7 +14,8 @@ See [`docs/PLANNING.md`](docs/PLANNING.md) for the full design and roadmap.
 
 ## Status
 
-Phase 0 — scaffold. The pipeline is not yet implemented.
+All roadmap phases implemented (ingest → match → build → export → verify). Anatomy curation
+of the work-list tail (114 cells) is ongoing.
 
 ## Layout
 
@@ -25,6 +26,7 @@ src/celegans_connectome_kg/
   match/    anatomy name->WBbt matcher + report      [Phase 2]
   build/    LinkML data assembly                      [Phase 3]
   export/   RDF + neuron-graph JSON emitters          [Phase 3]
+  verify/   Oxigraph load + sample SPARQL             [Phase 4]
 data/
   neuron-graph/   pinned source snapshot (see MANIFEST)
   wbbt/           pinned WBBT release (see MANIFEST)
@@ -35,8 +37,21 @@ outputs/          generated artifacts (gitignored)
 
 ```bash
 uv sync --extra dev      # create .venv and install
-uv run cckg --help       # pipeline CLI (stub in Phase 0)
+uv run cckg --help       # pipeline CLI
 ```
+
+## Pipeline
+
+```bash
+uv run cckg ingest       # read pinned neuron-graph files -> normalized records
+uv run cckg match        # resolve cell names to WBbt; write match report + work-list
+uv run cckg build        # assemble the LinkML graph -> outputs/connectome.json
+uv run cckg export       # serialize RDF/OWL + neuron-graph JSON projection
+uv run cckg verify       # load the RDF into Oxigraph; check counts; run sample SPARQL
+```
+
+Each stage is independently runnable and re-runnable against updated inputs. Sample SPARQL
+queries live in `src/celegans_connectome_kg/verify/queries/`.
 
 ## Inputs
 

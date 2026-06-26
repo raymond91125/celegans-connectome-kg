@@ -115,20 +115,25 @@ celegans-connectome-kg/
 
 ## Phased roadmap
 
-- **Phase 0 — scaffold:** repo structure, pyproject, LinkML installed, pin inputs.
-- **Phase 1 — schema:** author the LinkML schema (Cell, Connection, Dataset, Evidence);
+- **Phase 0 — scaffold:** ✅ repo structure, pyproject, LinkML installed, pin inputs.
+- **Phase 1 — schema:** ✅ author the LinkML schema (Cell, Connection, Dataset, Evidence);
   generate RDF/JSON-Schema/dataclasses; validate with a tiny hand-made sample.
-- **Phase 2 — ingest + match:** read neuron-graph files; build the WBBT label/synonym
+- **Phase 2 — ingest + match:** ✅ read neuron-graph files; build the WBBT label/synonym
   index; produce the match report and work-list.
-- **Phase 3 — build + export:** assemble full LinkML data; emit RDF + neuron-graph JSON;
+- **Phase 3 — build + export:** ✅ assemble full LinkML data; emit RDF + neuron-graph JSON;
   round-trip-check the JSON against neuron-graph's expected shape.
-- **Phase 4 — load + verify:** load RDF into a triplestore; write sample SPARQL queries;
-  sanity-check counts vs. source.
+- **Phase 4 — load + verify:** ✅ load RDF into a triplestore (Oxigraph); write sample SPARQL
+  queries; sanity-check counts vs. source.
 
 ## Open questions / to confirm later
 
 - Exact WBBT release/version to pin.
-- Which synonym types count as a confident match (exact only, vs. related/broad).
-- Triplestore choice for Phase 4 (e.g., Oxigraph/Fuseki) — deferred.
-- GitHub project creation (org, visibility) — pending user go-ahead.
+- Which synonym types count as a confident match (exact only, vs. related/broad). **Resolved:**
+  only `label` + `hasExactSynonym` are confident; `related`/`broad`/`narrow` → ambiguous.
+- ~~Triplestore choice for Phase 4~~ **Resolved: Oxigraph** (embedded, pip-installable, lets
+  CI run real SPARQL).
+- ~~GitHub project creation~~ **Resolved:** public repo under `raymond91125`.
+- Curating the 114-cell work-list (8 ambiguous + 106 unmatched, mostly muscles) to anatomy
+  terms; deciding whether to mint stub cells for the 14 class-level/fragment connection
+  endpoints.
 ```

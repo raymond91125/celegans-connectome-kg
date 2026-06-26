@@ -11,6 +11,7 @@ dependencies = [
     "linkml-runtime>=1.8",
     "rdflib>=7.0",
     "click>=8.1",
+    "pyoxigraph>=0.5.9",
 ]
 
 [project.optional-dependencies]
