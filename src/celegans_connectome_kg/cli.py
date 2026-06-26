@@ -9,6 +9,8 @@ from pathlib import Path
 import click
 
 DEFAULT_NEURON_GRAPH_DIR = Path("data/neuron-graph")
+DEFAULT_WBBT_JSON = Path("data/wbbt/wbbt.json")
+DEFAULT_OUTPUT_DIR = Path("outputs")
 
 
 @click.group()
@@ -41,9 +43,56 @@ def ingest(data_dir: Path) -> None:
 
 
 @main.command()
-def match() -> None:
+@click.option(
+    "--data-dir",
+    type=click.Path(exists=True, file_okay=False, path_type=Path),
+    default=DEFAULT_NEURON_GRAPH_DIR,
+    show_default=True,
+    help="Pinned neuron-graph snapshot directory.",
+)
+@click.option(
+    "--wbbt",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=DEFAULT_WBBT_JSON,
+    show_default=True,
+    help="Pinned WBBT OBO-graph JSON.",
+)
+@click.option(
+    "--out-dir",
+    type=click.Path(file_okay=False, path_type=Path),
+    default=DEFAULT_OUTPUT_DIR,
+    show_default=True,
+    help="Where to write the match report and work-list.",
+)
+def match(data_dir: Path, wbbt: Path, out_dir: Path) -> None:
     """Resolve cell names to WBbt anatomy URIs; emit the match report. [Phase 2]"""
-    raise click.ClickException("not yet implemented (Phase 2)")
+    from celegans_connectome_kg.ingest.neuron_graph import read_cells
+    from celegans_connectome_kg.match.matcher import (
+        match_cells,
+        summarize,
+        write_report_csv,
+        write_worklist_csv,
+    )
+    from celegans_connectome_kg.match.wbbt import WBBTIndex
+
+    index = WBBTIndex.from_obograph(wbbt)
+    cells = read_cells(data_dir / "neurons.json")
+    matches = match_cells(cells, index)
+    counts = summarize(matches)
+
+    report_path = out_dir / "match_report.csv"
+    worklist_path = out_dir / "match_worklist.csv"
+    write_report_csv(matches, report_path)
+    write_worklist_csv(matches, cells, worklist_path)
+
+    click.echo(f"WBBT terms indexed: {len(index.terms)}")
+    click.echo(f"cells:     {len(cells)}")
+    for status in ("matched", "ambiguous", "unmatched"):
+        click.echo(f"  {status:10} {counts.get(status, 0)}")
+    click.echo(f"report:   {report_path}")
+    click.echo(
+        f"worklist: {worklist_path} ({counts.get('ambiguous', 0) + counts.get('unmatched', 0)} rows)"
+    )
 
 
 @main.command()
