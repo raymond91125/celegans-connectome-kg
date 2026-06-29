@@ -21,5 +21,7 @@ artifact.
 - **M1 / M4 / M5** — pharyngeal **neurons** (`WBbt:0004488 / 0004467 / 0004465`), correcting
   the lexical false-match to the pm1/pm4/pm5 **muscle** terms (synonyms "m1"/"m4"/"m5").
 - **pm2D / pm3D / pm5D** — the dorsal pharyngeal-muscle pair terms (`pm?DL-pm?DR`).
+- Cell-vs-tissue: `hyp` grounds to `WBbt:0007846` **hypodermal cell** (not the `hypodermis`
+  tissue term `WBbt:0005733`).
 - Lower-confidence rows are flagged in the `confidence` column: `LegacyBodyWallMuscles`
-  (legacy aggregate → generic body wall muscle cell), `excgl`, `hyp`.
+  (legacy aggregate → generic body wall muscle cell) and `excgl`.
