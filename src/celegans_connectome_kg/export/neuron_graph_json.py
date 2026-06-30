@@ -65,6 +65,10 @@ def class_anatomy_map(
     The neuron-graph cell-info panel links to WormBase by cell *class*. Resolution order:
     manual class curation, then a unique strong (label/exact) WBBT match on the class name,
     then — for a single-cell class — that cell's own anatomy from the KG.
+
+    Keys are upper-cased to match neuron-graph's ``DataService.cellClass()`` (which returns
+    upper-case class names, e.g. ``VAN``, and folds body-wall muscles into the
+    ``BODYWALLMUSCLES`` supergroup in the legacy ``complete`` dataset).
     """
     class_curation = class_curation or {}
     members: dict[str, list[str]] = defaultdict(list)
@@ -79,13 +83,16 @@ def class_anatomy_map(
     out: dict[str, str] = {}
     for cls, mem in members.items():
         if cls in class_curation:
-            out[cls] = class_curation[cls]
-            continue
-        strong = {h.curie for h in index.lookup(cls) if h.kind in STRONG_KINDS}
-        if len(strong) == 1:
-            out[cls] = next(iter(strong))
-        elif len(mem) == 1 and mem[0] in cell_anatomy:
-            out[cls] = cell_anatomy[mem[0]]
+            wbbt = class_curation[cls]
+        else:
+            strong = {h.curie for h in index.lookup(cls) if h.kind in STRONG_KINDS}
+            if len(strong) == 1:
+                wbbt = next(iter(strong))
+            elif len(mem) == 1 and mem[0] in cell_anatomy:
+                wbbt = cell_anatomy[mem[0]]
+            else:
+                continue
+        out[cls.upper()] = wbbt
     return dict(sorted(out.items()))
 
 

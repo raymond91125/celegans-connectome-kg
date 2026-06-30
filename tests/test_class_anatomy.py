@@ -27,11 +27,12 @@ def test_class_anatomy_map_covers_every_class() -> None:
     index = WBBTIndex.from_obograph(WBBT_JSON)
     terms = class_anatomy_map(connectome, index, load_class_curation(CLASS_CURATION))
 
-    # every neuron-graph cell class is mapped
-    classes = {c.cell_class for c in connectome.cells if c.cell_class}
+    # every neuron-graph cell class is mapped (keys are upper-cased to match cellClass())
+    classes = {c.cell_class.upper() for c in connectome.cells if c.cell_class}
     assert classes <= set(terms)
     assert len(terms) == 147
     assert all(v.startswith("WBbt:") for v in terms.values())
+    assert all(k == k.upper() for k in terms)
 
 
 def test_class_map_resolution_sources() -> None:
