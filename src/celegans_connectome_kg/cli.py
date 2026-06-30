@@ -206,8 +206,8 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
     import json
 
     from celegans_connectome_kg.export.neuron_graph_json import (
+        anatomy_terms_map,
         cells_projection,
-        class_anatomy_map,
         connections_projection,
     )
     from celegans_connectome_kg.export.rdf import load_json, write_turtle
@@ -230,9 +230,9 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
     click.echo(f"wrote: {ng_dir}/connections.json ({len(connections)} connections)")
 
     curated = load_class_curation(class_curation) if class_curation.exists() else None
-    terms = class_anatomy_map(connectome, WBBTIndex.from_obograph(wbbt), curated)
+    terms = anatomy_terms_map(connectome, WBBTIndex.from_obograph(wbbt), curated)
     (ng_dir / "anatomy_terms.json").write_text(json.dumps(terms, indent=1))
-    click.echo(f"wrote: {ng_dir}/anatomy_terms.json ({len(terms)} class→WBbt)")
+    click.echo(f"wrote: {ng_dir}/anatomy_terms.json ({len(terms)} name→WBbt)")
 
 
 @main.command()

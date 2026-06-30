@@ -55,32 +55,38 @@ def cells_projection(connectome: object) -> list[dict]:
     return out
 
 
-def class_anatomy_map(
+def anatomy_terms_map(
     connectome: object,
     index: WBBTIndex,
     class_curation: dict[str, str] | None = None,
 ) -> dict[str, str]:
-    """Build a cell-class → WBbt map for the viz cell-info link.
+    """Build a node-name → WBbt map for the viz cell-info WormBase link.
 
-    The neuron-graph cell-info panel links to WormBase by cell *class*. Resolution order:
-    manual class curation, then a unique strong (label/exact) WBBT match on the class name,
-    then — for a single-cell class — that cell's own anatomy from the KG.
+    The cell-info panel links by whatever ``DataService.cellClass()`` returns for the clicked
+    node — a cell *class* (e.g. ``AVA``) when grouped, or the cell/endpoint *name* (e.g.
+    ``pm2D``) when shown individually or when the node isn't a neuron-graph cell. So the map
+    must cover both: every cell name (incl. minted endpoint stubs, all grounded in the KG)
+    and every class.
 
-    Keys are upper-cased to match neuron-graph's ``DataService.cellClass()`` (which returns
-    upper-case class names, e.g. ``VAN``, and folds body-wall muscles into the
-    ``BODYWALLMUSCLES`` supergroup in the legacy ``complete`` dataset).
+    Class resolution: manual class curation → unique strong (label/exact) WBBT class-name
+    match → single-cell-class reuse of that cell's anatomy. Keys are upper-cased; the viz
+    looks up case-insensitively. Entities with no WBbt term are omitted (the viz then renders
+    no link rather than a broken one).
     """
     class_curation = class_curation or {}
     members: dict[str, list[str]] = defaultdict(list)
     cell_anatomy: dict[str, str] = {}
     for cell in connectome.cells:
-        cls = cell.cell_class
-        if cls:
-            members[cls].append(cell.name)
+        if cell.cell_class:
+            members[cell.cell_class].append(cell.name)
         if cell.anatomy:
             cell_anatomy[cell.name] = str(cell.anatomy)
 
     out: dict[str, str] = {}
+    # Individual cell / endpoint-stub names (handles individual display + non-neuron nodes).
+    for name, wbbt in cell_anatomy.items():
+        out[name.upper()] = wbbt
+    # Cell classes (the default grouped view).
     for cls, mem in members.items():
         if cls in class_curation:
             wbbt = class_curation[cls]
