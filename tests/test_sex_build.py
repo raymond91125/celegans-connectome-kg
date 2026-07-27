@@ -47,6 +47,7 @@ def built():
         atlas_only_cells_path=ATLAS_ONLY,
         innexin_expr_path=REPO / "data" / "bhattacharya-2019-innexin" / "innexin_expression.csv",
         innexin_gene_map_path=REPO / "data" / "bhattacharya-2019-innexin" / "innexin_genes.csv",
+        neuropeptide_dir=REPO / "data" / "ripoll-2023-neuropeptide",
     )
     return connectome, stats
 
@@ -74,8 +75,41 @@ def test_kg_added_datasets_excluded_from_herm_projection(built) -> None:
     connectome, _ = built
     datasets = {d for c in connections_projection(connectome) for d in c["synapses"]}
     assert datasets  # projection is non-empty
-    assert not any(d.startswith(("cook_", "bhatla_", "yim_")) for d in datasets)
+    assert not any(d.startswith(("cook_", "bhatla_", "yim_", "ripoll_")) for d in datasets)
     assert all(d.startswith(("white_1986_", "witvliet_2020_", "randi_funconn_")) for d in datasets)
+
+
+def test_neuropeptide_connectome(built) -> None:
+    """Ripoll-Sanchez 2023 predicted neuropeptidergic connectome: three range-model datasets with a
+    new connection type; directed, weighted by NPP-GPCR pathway count; over existing cells."""
+    connectome, _ = built
+    strip = lambda s: str(s).split("/")[-1]  # noqa: E731
+    np = [c for c in connectome.connections if str(c.connection_type) == "neuropeptidergic"]
+    from collections import Counter
+
+    by_ds = Counter(strip(c.dataset) for c in np)
+    assert by_ds == {
+        "ripoll_2023_neuropeptide_sr": 31417,
+        "ripoll_2023_neuropeptide_mr": 40425,
+        "ripoll_2023_neuropeptide_lr": 53558,
+    }
+    assert 1 <= min(c.weight for c in np) and max(c.weight for c in np) == 20
+    # datasets tagged hermaphrodite / adult; zero-padded matrix names normalized (DA01 -> DA1)
+    ds = {strip(d.id): d for d in connectome.datasets}
+    for did in by_ds:
+        assert str(ds[did].sex) == "hermaphrodite" and str(ds[did].life_stage) == "adult"
+    cells = {strip(c.pre) for c in np} | {strip(c.post) for c in np}
+    assert "DA1" in cells and {"DA01", "VD09", "VC06"}.isdisjoint(cells)  # padded names normalized
+
+
+def test_neuropeptide_excluded_from_viz_kg_connections(built) -> None:
+    """The predicted neuropeptide network is KG/SPARQL-only: it must not enter the bundled viz
+    connectivity map (kg_connections), which is for observed wired/functional edges."""
+    from celegans_connectome_kg.export.neuron_graph_json import kg_connections_map
+
+    connectome, _ = built
+    m = kg_connections_map(connectome)
+    assert not any(d.startswith("ripoll_") for d in m["datasets"])
 
 
 def test_dauer_dataset(built) -> None:

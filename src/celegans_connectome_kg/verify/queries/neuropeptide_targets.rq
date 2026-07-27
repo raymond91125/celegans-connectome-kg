@@ -1,0 +1,18 @@
+# Predicted neuropeptide (extrasynaptic) targets of a neuron, in the short-range model.
+# The neuropeptidergic connectome (Ripoll-Sanchez et al. 2023) is a PREDICTED signaling network
+# (NPP source -> GPCR target), distinct from the observed EM synapses; weight = # NPP-GPCR pathways.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?target (?w AS ?pathways)
+WHERE {
+  ?c a cckg:Connection ;
+     cckg:pre ?src ; cckg:post ?tgt ;
+     cckg:connection_type "neuropeptidergic" ;
+     cckg:weight ?w ;
+     cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_neuropeptide_sr> .
+  ?src dcterms:title "AVAL" .
+  ?tgt dcterms:title ?target .
+}
+ORDER BY DESC(?w) ?target
+LIMIT 15

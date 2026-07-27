@@ -324,6 +324,11 @@ enums:
         description: Electrical / gap-junction connection (EM).
       functional:
         description: Functional connectivity (FunCoNN).
+      neuropeptidergic:
+        description: >-
+          Predicted extrasynaptic neuropeptide signaling connection (a neuropeptide-precursor
+          source acting on a receptor-expressing target), from the Ripoll-Sanchez et al. 2023
+          neuropeptidergic connectome. Not an observed synapse.
 
   EvidenceType:
     permissible_values:

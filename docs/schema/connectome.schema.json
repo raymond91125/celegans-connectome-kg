@@ -161,7 +161,8 @@
             "enum": [
                 "chemical",
                 "gap_junction",
-                "functional"
+                "functional",
+                "neuropeptidergic"
             ],
             "title": "ConnectionType",
             "type": "string"

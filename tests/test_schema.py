@@ -29,9 +29,9 @@ def test_schema_compiles_with_core_classes(view: SchemaView) -> None:
     assert {"Connectome", "Cell", "Connection", "Dataset", "Evidence"} <= classes
 
 
-def test_connection_type_enum_covers_all_three(view: SchemaView) -> None:
+def test_connection_type_enum(view: SchemaView) -> None:
     values = set(view.get_enum("ConnectionType").permissible_values)
-    assert values == {"chemical", "gap_junction", "functional"}
+    assert values == {"chemical", "gap_junction", "functional", "neuropeptidergic"}
 
 
 def test_connectome_is_tree_root(view: SchemaView) -> None:
