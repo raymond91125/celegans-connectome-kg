@@ -290,7 +290,11 @@ def kg_connections_map(connectome: object) -> dict:
     the KG (equal weights), so each unordered pair is counted once, then attributed to both
     endpoints' classes.
     """
-    datasets = sorted({_strip(str(c.dataset), DATASET_PREFIX) for c in connectome.connections})
+    # The viz connectivity panel shows observed wired / functional connections only. The predicted
+    # neuropeptidergic (extrasynaptic) network is KG/SPARQL-only — excluded here to keep the panel
+    # to observed edges and avoid bloating the bundled client map with its ~125k edges.
+    conns = [c for c in connectome.connections if str(c.connection_type) != "neuropeptidergic"]
+    datasets = sorted({_strip(str(c.dataset), DATASET_PREFIX) for c in conns})
     code = {d: str(i) for i, d in enumerate(datasets)}
     cls = {c.name: (c.cell_class or c.name) for c in connectome.cells}
 
@@ -304,7 +308,7 @@ def kg_connections_map(connectome: object) -> dict:
     # reverse orientation, keyed at cell level so distinct member pairs still aggregate by class.
     gap_seen: set[tuple[str, str, str]] = set()
 
-    for c in connectome.connections:
+    for c in conns:
         ctype = str(c.connection_type)
         dset = code[_strip(str(c.dataset), DATASET_PREFIX)]
         pre_cls, post_cls = klass(c.pre), klass(c.post)

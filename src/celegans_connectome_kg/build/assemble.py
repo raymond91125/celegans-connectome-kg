@@ -28,6 +28,7 @@ from celegans_connectome_kg.ingest.neuron_graph import (
     ConnectionRecord,
     load_neuron_graph,
 )
+from celegans_connectome_kg.ingest.neuropeptide import read_neuropeptide_network
 from celegans_connectome_kg.ingest.yim_2024_dauer import read_dauer
 from celegans_connectome_kg.match.curation import (
     load_atlas_only_cells,
@@ -45,7 +46,7 @@ DATASET_PREFIX = "cckg:dataset/"
 CONN_PREFIX = "cckg:conn/"
 
 #: neuron-graph connection typ name → typ code, for stable connection ids.
-_TYPE_CODE = {"chemical": "0", "gap_junction": "2", "functional": "4"}
+_TYPE_CODE = {"chemical": "0", "gap_junction": "2", "functional": "4", "neuropeptidergic": "5"}
 
 #: Redundant neuron-graph datasets dropped at build. `randi_funconn_wildcp` is byte-identical to
 #: `randi_funconn_wildty` — the same Randi wild-type functional recording that neuron-graph loads
@@ -180,6 +181,14 @@ def _aggregate(records: list[ConnectionRecord], alias: dict[str, str]):
 
 #: Dataset id for the Cook 2020 SI6 gene-expression compilation.
 _GENE_EXPRESSION_DATASET = "cook_2020_pharynx_expression"
+
+#: Ripoll-Sanchez 2023 neuropeptidergic connectome: three range models, each its own dataset.
+#: (filename, dataset id, range label) — descriptions built in the assemble step.
+_NEUROPEPTIDE_MODELS = [
+    ("short_range_network.csv", "ripoll_2023_neuropeptide_sr", "short-range"),
+    ("mid_range_network.csv", "ripoll_2023_neuropeptide_mr", "mid-range"),
+    ("long_range_network.csv", "ripoll_2023_neuropeptide_lr", "long-range"),
+]
 
 #: Bhattacharya 2019 innexin expression is split into a non-dauer and a dauer dataset so the
 #: reported dauer plasticity is explicit ("both" -> both datasets; "only" -> one).
@@ -321,6 +330,7 @@ def assemble(
     atlas_only_cells_path: Path | None = None,
     innexin_expr_path: Path | None = None,
     innexin_gene_map_path: Path | None = None,
+    neuropeptide_dir: Path | None = None,
 ) -> tuple[object, BuildStats]:
     """Assemble a Connectome data-model object plus build stats.
 
@@ -364,6 +374,22 @@ def assemble(
     cook_bundles = [b for b in (cook, cook_2020) if b]
     bhatla = read_bhatla_i2(bhatla_i2_path) if bhatla_i2_path else None
     dauer = read_dauer(dauer_path) if dauer_path else None
+    neuropeptide_nets = []
+    if neuropeptide_dir:
+        for fname, did, label in _NEUROPEPTIDE_MODELS:
+            neuropeptide_nets.append(
+                read_neuropeptide_network(
+                    Path(neuropeptide_dir) / fname,
+                    did,
+                    f"Ripoll-Sanchez et al. 2023 neuropeptide connectome ({label})",
+                    (
+                        "Predicted extrasynaptic neuropeptide signaling network "
+                        f"({label} diffusion model) from Ripoll-Sanchez et al. 2023 (Neuron "
+                        "111:3570). Directed; weight = number of NPP-GPCR pathways. CeNGEN "
+                        "threshold-4 expression + EC50 <= 500 nM. Predicted, not observed synapses."
+                    ),
+                )
+            )
     cook_alias = load_cook_aliases(cook_aliases_path) if cook_aliases_path else {}
     cook_anatomy = load_curation(cook_anatomy_path) if cook_anatomy_path else {}
     dataset_life_stage = load_dataset_life_stage(life_stage_path) if life_stage_path else {}
@@ -373,6 +399,8 @@ def assemble(
         dataset_sex[bhatla.dataset_id] = bhatla.sex
     if dauer:
         dataset_sex[dauer.dataset_id] = dauer.sex
+    for net in neuropeptide_nets:
+        dataset_sex[net.dataset_id] = net.sex
     for bundle in cook_bundles:
         for d in bundle.datasets:
             dataset_sex[d.id] = d.sex
@@ -452,6 +480,8 @@ def assemble(
         dataset_defs.append((bhatla.dataset_id, bhatla.dataset_name, bhatla.dataset_description))
     if dauer:
         dataset_defs.append((dauer.dataset_id, dauer.dataset_name, dauer.dataset_description))
+    for net in neuropeptide_nets:
+        dataset_defs.append((net.dataset_id, net.dataset_name, net.dataset_description))
     datasets = [
         dm.Dataset(
             id=_dataset_id(did),
@@ -473,6 +503,9 @@ def assemble(
             summed[key] = summed.get(key, 0.0) + w
     if dauer:
         for key, w in _aggregate(dauer.connections, {}).items():
+            summed[key] = summed.get(key, 0.0) + w
+    for net in neuropeptide_nets:
+        for key, w in _aggregate(net.connections, {}).items():
             summed[key] = summed.get(key, 0.0) + w
 
     connections = []

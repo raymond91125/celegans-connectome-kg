@@ -282,6 +282,11 @@ cckg:NeurotransmitterAssignment a owl:Class ;
     rdfs:subClassOf cckg:ConnectionType ;
     skos:definition "Electrical / gap-junction connection (EM)." .
 
+<https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> a owl:Class ;
+    rdfs:label "neuropeptidergic" ;
+    rdfs:subClassOf cckg:ConnectionType ;
+    skos:definition "Predicted extrasynaptic neuropeptide signaling connection (a neuropeptide-precursor source acting on a receptor-expressing target), from the Ripoll-Sanchez et al. 2023 neuropeptidergic connectome. Not an observed synapse." .
+
 <https://wormbase.org/resources/connectome/EvidenceType#aggregated_weight> a owl:Class ;
     rdfs:label "aggregated_weight" ;
     rdfs:subClassOf cckg:EvidenceType ;
@@ -624,14 +629,6 @@ cckg:CellType a owl:Class ;
         <https://wormbase.org/resources/connectome/CellType#neuron>,
         <https://wormbase.org/resources/connectome/CellType#other> .
 
-cckg:ConnectionType a owl:Class ;
-    rdfs:label "ConnectionType" ;
-    owl:unionOf ( <https://wormbase.org/resources/connectome/ConnectionType#chemical> <https://wormbase.org/resources/connectome/ConnectionType#gap_junction> <https://wormbase.org/resources/connectome/ConnectionType#functional> ) ;
-    skos:inScheme cckg:schema ;
-    linkml:permissible_values <https://wormbase.org/resources/connectome/ConnectionType#chemical>,
-        <https://wormbase.org/resources/connectome/ConnectionType#functional>,
-        <https://wormbase.org/resources/connectome/ConnectionType#gap_junction> .
-
 cckg:Dataset a owl:Class ;
     rdfs:label "Dataset" ;
     rdfs:subClassOf [ a owl:Restriction ;
@@ -698,6 +695,15 @@ cckg:ExpressionConfidence a owl:Class ;
     skos:inScheme cckg:schema ;
     linkml:permissible_values <https://wormbase.org/resources/connectome/ExpressionConfidence#putative>,
         <https://wormbase.org/resources/connectome/ExpressionConfidence#reported> .
+
+cckg:ConnectionType a owl:Class ;
+    rdfs:label "ConnectionType" ;
+    owl:unionOf ( <https://wormbase.org/resources/connectome/ConnectionType#chemical> <https://wormbase.org/resources/connectome/ConnectionType#gap_junction> <https://wormbase.org/resources/connectome/ConnectionType#functional> <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> ) ;
+    skos:inScheme cckg:schema ;
+    linkml:permissible_values <https://wormbase.org/resources/connectome/ConnectionType#chemical>,
+        <https://wormbase.org/resources/connectome/ConnectionType#functional>,
+        <https://wormbase.org/resources/connectome/ConnectionType#gap_junction>,
+        <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> .
 
 cckg:GeneCategory a owl:Class ;
     rdfs:label "GeneCategory" ;
