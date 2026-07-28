@@ -288,6 +288,9 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         dauer_connections_projection,
         dauer_dataset,
         male_cells_projection,
+        neuropeptide_cells_projection,
+        neuropeptide_connections_projection,
+        neuropeptide_datasets,
         pharynx_cells_projection,
         pharynx_connections_projection,
         pharynx_database_cells,
@@ -395,6 +398,20 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         (ng_dauer / "datasets.json").write_text(json.dumps([dauer_dataset()], indent=2))
         click.echo(
             f"wrote: {ng_dauer}/ (dauer: {len(dauer_cells)} cells, {len(dauer_conns)} connections)"
+        )
+
+    # Neuropeptide viz projection: the Ripoll-Sánchez 2023 predicted neuropeptidergic network,
+    # surfaced as an opt-in "np" edge datatype on the whole-animal "complete" database.
+    np_cells = neuropeptide_cells_projection(connectome)
+    np_conns = neuropeptide_connections_projection(connectome)
+    if np_conns:
+        ng_np = out_dir / "neuron-graph-neuropeptide"
+        ng_np.mkdir(parents=True, exist_ok=True)
+        (ng_np / "cells.json").write_text(json.dumps(np_cells, indent=2))
+        (ng_np / "connections.json").write_text(json.dumps(np_conns, indent=2))
+        (ng_np / "datasets.json").write_text(json.dumps(neuropeptide_datasets(), indent=2))
+        click.echo(
+            f"wrote: {ng_np}/ (neuropeptide: {len(np_cells)} cells, {len(np_conns)} connections)"
         )
 
 
