@@ -261,11 +261,12 @@ def wormatlas_links_map(
 
 
 #: KG connection type → (out-relation, in-relation) codes for the class-level cell-info map.
-#: Chemical & functional are directional; gap junctions are symmetric (single "e").
+#: Chemical, functional & neuropeptidergic are directional; gap junctions are symmetric ("e").
 _KG_REL = {
     "chemical": ("o", "i"),
     "functional": ("fo", "fi"),
     "gap_junction": ("e", "e"),
+    "neuropeptidergic": ("npo", "npi"),
 }
 
 
@@ -289,16 +290,17 @@ def kg_connections_map(connectome: object) -> dict:
         {"datasets": [dataset_id, ...],      # list index i ↔ code str(i)
          "conn": {class: {rel: {partner_class: {dataset_code: weight}}}}}
 
-    ``rel`` is ``o``/``i`` (chemical out/in), ``e`` (gap junction, symmetric), or ``fo``/``fi``
-    (functional out/in). Cells with no KG ``cell_class`` key by their own name (matching the male
-    projection's individual display). Gap junctions are stored redundantly in both orientations in
-    the KG (equal weights), so each unordered pair is counted once, then attributed to both
-    endpoints' classes.
+    ``rel`` is ``o``/``i`` (chemical out/in), ``e`` (gap junction, symmetric), ``fo``/``fi``
+    (functional out/in), or ``npo``/``npi`` (predicted neuropeptide out/in). Cells with no KG
+    ``cell_class`` key by their own name (matching the male projection's individual display). Gap
+    junctions are stored redundantly in both orientations in the KG (equal weights), so each
+    unordered pair is counted once, then attributed to both endpoints' classes.
+
+    The predicted neuropeptidergic network is included so the cell-info panel is complete ("all
+    partners across every dataset"); it aggregates to class level here, so the bundled map stays
+    far smaller than the ~125k raw edges.
     """
-    # The viz connectivity panel shows observed wired / functional connections only. The predicted
-    # neuropeptidergic (extrasynaptic) network is KG/SPARQL-only — excluded here to keep the panel
-    # to observed edges and avoid bloating the bundled client map with its ~125k edges.
-    conns = [c for c in connectome.connections if str(c.connection_type) != "neuropeptidergic"]
+    conns = connectome.connections
     datasets = sorted({_strip(str(c.dataset), DATASET_PREFIX) for c in conns})
     code = {d: str(i) for i, d in enumerate(datasets)}
     cls = {c.name: (c.cell_class or c.name) for c in connectome.cells}
@@ -618,8 +620,14 @@ def dauer_dataset(dataset_id: str = "yim_2024_dauer") -> dict:
 # as separate selectable datasets; short-range is the primary one.
 #
 # The viz `datasets.id` column is varchar(20); the KG dataset ids (``ripoll_2023_neuropeptide_sr``,
-# 27 chars) are too long, so each projects under a short viz id (``ripoll_2023_np_sr``). Entries are
-# (KG dataset id, viz dataset id, viz name, one-line description), short-range first.
+# 27 chars) are too long, so each projects under a short viz id (``ripoll_2023_np_sr``).
+#
+# The viz dataset picker lays bookmarks out on a shared time axis by ``visual_time``; the three
+# predicted networks are all adult, so they would collide on one tick (and with white_1986_whole
+# at 50) if given the same time. They are instead spread across 51/53/55 — distinct integer ticks
+# (visual_time is SMALLINT) just past the observed adult datasets (randi 48, white 50) — so each is
+# individually selectable. The circe-vis side renders them as a distinct amber circle marker.
+# Entries: (KG dataset id, viz dataset id, viz name, one-line description, visual_time).
 _NEUROPEPTIDE_DATASETS = [
     (
         "ripoll_2023_neuropeptide_sr",
@@ -627,6 +635,7 @@ _NEUROPEPTIDE_DATASETS = [
         "Ripoll-Sánchez 2023 (NP short-range, predicted)",
         "Predicted short-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
         "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
+        51,
     ),
     (
         "ripoll_2023_neuropeptide_mr",
@@ -634,6 +643,7 @@ _NEUROPEPTIDE_DATASETS = [
         "Ripoll-Sánchez 2023 (NP mid-range, predicted)",
         "Predicted mid-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
         "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
+        53,
     ),
     (
         "ripoll_2023_neuropeptide_lr",
@@ -641,15 +651,12 @@ _NEUROPEPTIDE_DATASETS = [
         "Ripoll-Sánchez 2023 (NP long-range, predicted)",
         "Predicted long-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
         "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
+        55,
     ),
 ]
 
-#: Neuropeptide datasets sit in the L4/adult region of the whole-animal timeline (the network is
-#: modelled on the adult hermaphrodite); "complete" makes them selectable in the whole-animal view.
-_NEUROPEPTIDE_VISUAL_TIME = 50
-
 #: KG dataset id → short viz dataset id (the projected synapses map + dataset entries use the viz id).
-_NEUROPEPTIDE_VIZ_ID = {kg_id: viz_id for kg_id, viz_id, _name, _desc in _NEUROPEPTIDE_DATASETS}
+_NEUROPEPTIDE_VIZ_ID = {kg_id: viz_id for kg_id, viz_id, *_rest in _NEUROPEPTIDE_DATASETS}
 
 
 def _neuropeptide_dataset_ids() -> list[str]:
@@ -725,10 +732,10 @@ def neuropeptide_datasets() -> list[dict]:
             "id": viz_id,
             "name": name,
             "type": "complete",
-            "time": _NEUROPEPTIDE_VISUAL_TIME,
-            "visualTime": _NEUROPEPTIDE_VISUAL_TIME,
+            "time": visual_time,
+            "visualTime": visual_time,
             "description": description,
             "datatypes": "np",
         }
-        for _kg_id, viz_id, name, description in _NEUROPEPTIDE_DATASETS
+        for _kg_id, viz_id, name, description, visual_time in _NEUROPEPTIDE_DATASETS
     ]

@@ -102,14 +102,16 @@ def test_neuropeptide_connectome(built) -> None:
     assert "DA1" in cells and {"DA01", "VD09", "VC06"}.isdisjoint(cells)  # padded names normalized
 
 
-def test_neuropeptide_excluded_from_viz_kg_connections(built) -> None:
-    """The predicted neuropeptide network is KG/SPARQL-only: it must not enter the bundled viz
-    connectivity map (kg_connections), which is for observed wired/functional edges."""
+def test_neuropeptide_in_viz_kg_connections(built) -> None:
+    """The cell-info KG connectivity map is comprehensive ("all partners across every dataset"),
+    so the predicted neuropeptide network is included, under directional npo/npi relations."""
     from celegans_connectome_kg.export.neuron_graph_json import kg_connections_map
 
     connectome, _ = built
     m = kg_connections_map(connectome)
-    assert not any(d.startswith("ripoll_") for d in m["datasets"])
+    assert any(d.startswith("ripoll_") for d in m["datasets"])
+    # At least one class carries a predicted-neuropeptide out or in relation.
+    assert any("npo" in rels or "npi" in rels for rels in m["conn"].values())
 
 
 def test_dauer_dataset(built) -> None:
