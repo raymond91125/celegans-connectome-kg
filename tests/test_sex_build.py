@@ -429,3 +429,42 @@ def test_dauer_viz_projection(built) -> None:
     # folded into the "head" life-stage series, positioned in the L3 region; chemical only
     assert ds["type"] == "head" and ds["datatypes"] == "cs"
     assert 25 <= ds["visualTime"] <= 34
+
+
+def test_neuropeptide_viz_projection(built) -> None:
+    from celegans_connectome_kg.export.neuron_graph_json import (
+        neuropeptide_cells_projection,
+        neuropeptide_connections_projection,
+        neuropeptide_datasets,
+    )
+
+    connectome, _ = built
+
+    # Three range-model datasets, each a short (<=20-char) "np" datatype on the "complete" database.
+    datasets = neuropeptide_datasets()
+    ids = [d["id"] for d in datasets]
+    assert ids == ["ripoll_2023_np_sr", "ripoll_2023_np_mr", "ripoll_2023_np_lr"]
+    assert all(len(d["id"]) <= 20 for d in datasets)  # datasets.id is varchar(20)
+    assert all(len(d["name"]) <= 50 for d in datasets)  # datasets.name is varchar(50)
+    assert all(d["type"] == "complete" and d["datatypes"] == "np" for d in datasets)
+    assert all("predicted" in d["description"].lower() for d in datasets)
+
+    # All 302 hermaphrodite neurons of the network are projected as cells.
+    cells = neuropeptide_cells_projection(connectome)
+    assert len(cells) == 302
+
+    # Directed neuropeptidergic edges, keyed by the short viz dataset ids; union across ranges.
+    conns = neuropeptide_connections_projection(connectome)
+    assert len(conns) == 53558  # long-range is the superset (union of all edges)
+    assert all(c["type"] == "neuropeptidergic" for c in conns)
+    assert all(c["annotations"] == [] for c in conns)
+    per_dataset = {i: 0 for i in ids}
+    for c in conns:
+        for dset in c["synapses"]:
+            assert dset in per_dataset  # only short viz ids leak into the projection
+            per_dataset[dset] += 1
+    assert per_dataset == {
+        "ripoll_2023_np_sr": 31417,
+        "ripoll_2023_np_mr": 40425,
+        "ripoll_2023_np_lr": 53558,
+    }

@@ -27,7 +27,12 @@ from celegans_connectome_kg.match.wbbt import STRONG_KINDS, WBBTIndex
 _PHARYNGEAL_CELL = "WBbt:0005460"
 
 #: our CellType-enum connection label → neuron-graph API `type` string.
-_API_TYPE = {"chemical": "chemical", "gap_junction": "electrical", "functional": "functional"}
+_API_TYPE = {
+    "chemical": "chemical",
+    "gap_junction": "electrical",
+    "functional": "functional",
+    "neuropeptidergic": "neuropeptidergic",
+}
 
 
 def _strip(curie: str, prefix: str) -> str:
@@ -601,3 +606,129 @@ def dauer_dataset(dataset_id: str = "yim_2024_dauer") -> dict:
         "description": "Dauer nerve-ring connectome, Yim et al. 2024 (Nat Commun 15:1546).",
         "datatypes": "cs",
     }
+
+
+# --- Neuropeptide projection: the Ripoll-Sánchez 2023 predicted neuropeptidergic network ---------
+#
+# The extrasynaptic neuropeptide connectome is a *predicted* signalling network (CeNGEN
+# single-cell expression of NPP ligands + GPCR receptors, filtered by EC50 ≤ 500 nM), not observed
+# synapses. It is surfaced in the viz as a distinct "np" edge datatype layered on the whole-animal
+# hermaphrodite ("complete") database, deliberately kept off by default (see default-datasets.js)
+# so its density never overwhelms the observed wiring. Three diffusion range models are projected
+# as separate selectable datasets; short-range is the primary one.
+#
+# The viz `datasets.id` column is varchar(20); the KG dataset ids (``ripoll_2023_neuropeptide_sr``,
+# 27 chars) are too long, so each projects under a short viz id (``ripoll_2023_np_sr``). Entries are
+# (KG dataset id, viz dataset id, viz name, one-line description), short-range first.
+_NEUROPEPTIDE_DATASETS = [
+    (
+        "ripoll_2023_neuropeptide_sr",
+        "ripoll_2023_np_sr",
+        "Ripoll-Sánchez 2023 (NP short-range, predicted)",
+        "Predicted short-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
+        "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
+    ),
+    (
+        "ripoll_2023_neuropeptide_mr",
+        "ripoll_2023_np_mr",
+        "Ripoll-Sánchez 2023 (NP mid-range, predicted)",
+        "Predicted mid-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
+        "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
+    ),
+    (
+        "ripoll_2023_neuropeptide_lr",
+        "ripoll_2023_np_lr",
+        "Ripoll-Sánchez 2023 (NP long-range, predicted)",
+        "Predicted long-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
+        "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
+    ),
+]
+
+#: Neuropeptide datasets sit in the L4/adult region of the whole-animal timeline (the network is
+#: modelled on the adult hermaphrodite); "complete" makes them selectable in the whole-animal view.
+_NEUROPEPTIDE_VISUAL_TIME = 50
+
+#: KG dataset id → short viz dataset id (the projected synapses map + dataset entries use the viz id).
+_NEUROPEPTIDE_VIZ_ID = {kg_id: viz_id for kg_id, viz_id, _name, _desc in _NEUROPEPTIDE_DATASETS}
+
+
+def _neuropeptide_dataset_ids() -> list[str]:
+    return [d[0] for d in _NEUROPEPTIDE_DATASETS]
+
+
+def neuropeptide_cells_projection(connectome: object) -> list[dict]:
+    """Project the neurons of the neuropeptide network(s) into the /api/cells shape.
+
+    The cell set is every endpoint of a ``ripoll_2023_neuropeptide_*`` connection (all standard
+    hermaphrodite neurons); shares :func:`_viz_type` and class defaulting with the male projection.
+    """
+    ids = set(_neuropeptide_dataset_ids())
+    endpoints: set[str] = set()
+    for conn in connectome.connections:
+        if _strip(str(conn.dataset), DATASET_PREFIX) not in ids:
+            continue
+        endpoints.add(_strip(conn.pre, CELL_PREFIX))
+        endpoints.add(_strip(conn.post, CELL_PREFIX))
+    return [
+        {
+            "name": c.name,
+            "class": c.cell_class or c.name,
+            "type": _viz_type(c),
+            "neurotransmitter": c.neurotransmitter or "u",
+            "embryonic": bool(c.embryonic),
+            "inhead": bool(c.in_head),
+            "intail": bool(c.in_tail),
+        }
+        for c in connectome.cells
+        if c.name in endpoints
+    ]
+
+
+def neuropeptide_connections_projection(connectome: object) -> list[dict]:
+    """Project the neuropeptide network(s) into the /api/connections shape.
+
+    Neuropeptidergic edges are directed and predicted (no gap-junction merge, no per-synapse ids).
+    Grouped by (pre, post) with a per-dataset weight map, keeping each range model's weight under
+    its own dataset id so the viz can show/select them independently.
+    """
+    ids = set(_neuropeptide_dataset_ids())
+    grouped: dict[tuple[str, str], dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    for conn in connectome.connections:
+        if str(conn.connection_type) != "neuropeptidergic":
+            continue
+        dataset = _strip(str(conn.dataset), DATASET_PREFIX)
+        if dataset not in ids:
+            continue
+        pre = _strip(conn.pre, CELL_PREFIX)
+        post = _strip(conn.post, CELL_PREFIX)
+        grouped[(pre, post)][_NEUROPEPTIDE_VIZ_ID[dataset]] += int(conn.weight)
+    return [
+        {
+            "pre": pre,
+            "post": post,
+            "type": "neuropeptidergic",
+            "annotations": [],
+            "synapses": dict(synapses),
+        }
+        for (pre, post), synapses in grouped.items()
+    ]
+
+
+def neuropeptide_datasets() -> list[dict]:
+    """The neuron-graph dataset entries for the neuropeptide range models (an "np" datatype).
+
+    Loaded into the whole-animal "complete" database but left out of the default selection, so the
+    predicted network is opt-in and never crowds the observed connectome.
+    """
+    return [
+        {
+            "id": viz_id,
+            "name": name,
+            "type": "complete",
+            "time": _NEUROPEPTIDE_VISUAL_TIME,
+            "visualTime": _NEUROPEPTIDE_VISUAL_TIME,
+            "description": description,
+            "datatypes": "np",
+        }
+        for _kg_id, viz_id, name, description in _NEUROPEPTIDE_DATASETS
+    ]
