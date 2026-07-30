@@ -622,38 +622,41 @@ def dauer_dataset(dataset_id: str = "yim_2024_dauer") -> dict:
 # The viz `datasets.id` column is varchar(20); the KG dataset ids (``ripoll_2023_neuropeptide_sr``,
 # 27 chars) are too long, so each projects under a short viz id (``ripoll_2023_np_sr``).
 #
-# The viz dataset picker lays bookmarks out on a shared time axis by ``visual_time``; the three
-# predicted networks are all adult, so they would collide on one tick (and with white_1986_whole
-# at 50) if given the same time. They are instead spread across 51/53/55 — distinct integer ticks
-# (visual_time is SMALLINT) just past the observed adult datasets (randi 48, white 50) — so each is
-# individually selectable. The circe-vis side renders them as a distinct amber circle marker.
-# Entries: (KG dataset id, viz dataset id, viz name, one-line description, visual_time).
+# Each range model is projected as its OWN viz database (collection np_sr/np_mr/np_lr), rather
+# than three datasets crammed onto the "complete" timeline where their bookmarks and tooltips
+# overlapped and were hard to read/select. Each database then holds a single dataset (one clean
+# tick at the adult end), selected via the database dropdown — consistent with the male/pharynx/
+# dauer databases. The circe-vis side renders the single tick as a distinct amber circle marker.
+# Entries: (KG dataset id, viz dataset id, viz collection, viz name, one-line description).
 _NEUROPEPTIDE_DATASETS = [
     (
         "ripoll_2023_neuropeptide_sr",
         "ripoll_2023_np_sr",
+        "np_sr",
         "Ripoll-Sánchez 2023 (NP short-range, predicted)",
         "Predicted short-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
         "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
-        51,
     ),
     (
         "ripoll_2023_neuropeptide_mr",
         "ripoll_2023_np_mr",
+        "np_mr",
         "Ripoll-Sánchez 2023 (NP mid-range, predicted)",
         "Predicted mid-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
         "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
-        53,
     ),
     (
         "ripoll_2023_neuropeptide_lr",
         "ripoll_2023_np_lr",
+        "np_lr",
         "Ripoll-Sánchez 2023 (NP long-range, predicted)",
         "Predicted long-range neuropeptidergic connectome, Ripoll-Sánchez et al. 2023 "
         "(Neuron 111:3570-3589). Extrasynaptic — not observed synapses.",
-        55,
     ),
 ]
+
+#: All three predicted networks are modelled on the adult hermaphrodite → one adult tick each.
+_NEUROPEPTIDE_VISUAL_TIME = 50
 
 #: KG dataset id → short viz dataset id (the projected synapses map + dataset entries use the viz id).
 _NEUROPEPTIDE_VIZ_ID = {kg_id: viz_id for kg_id, viz_id, *_rest in _NEUROPEPTIDE_DATASETS}
@@ -721,21 +724,43 @@ def neuropeptide_connections_projection(connectome: object) -> list[dict]:
     ]
 
 
-def neuropeptide_datasets() -> list[dict]:
-    """The neuron-graph dataset entries for the neuropeptide range models (an "np" datatype).
+def neuropeptide_database_cells(connectome: object) -> list[str]:
+    """Upper-cased node set (cell names + classes) of the predicted neuropeptide network.
 
-    Loaded into the whole-animal "complete" database but left out of the default selection, so the
-    predicted network is opt-in and never crowds the observed connectome.
+    Populates ``validNodes`` for each neuropeptide viz database (np_sr/np_mr/np_lr — all share the
+    same 302 neurons), the analogue of :func:`pharynx_database_cells` for those databases. Upper-
+    cased to match the viz's case-insensitive node lookup.
+    """
+    class_of = {c.name: c.cell_class for c in connectome.cells}
+    ids = set(_neuropeptide_dataset_ids())
+    names: set[str] = set()
+    for conn in connectome.connections:
+        if _strip(str(conn.dataset), DATASET_PREFIX) not in ids:
+            continue
+        for end in (_strip(conn.pre, CELL_PREFIX), _strip(conn.post, CELL_PREFIX)):
+            names.add(end.upper())
+            cls = class_of.get(end)
+            if cls:
+                names.add(cls.upper())
+    return sorted(names)
+
+
+def neuropeptide_datasets() -> list[dict]:
+    """The neuron-graph dataset entries for the neuropeptide range models.
+
+    Each range model is its own viz database (collection np_sr/np_mr/np_lr) holding a single
+    dataset, so it is selected via the database dropdown rather than crammed onto the "complete"
+    timeline. Opt-in (not a default database) so the predicted network never crowds the observed one.
     """
     return [
         {
             "id": viz_id,
             "name": name,
-            "type": "complete",
-            "time": visual_time,
-            "visualTime": visual_time,
+            "type": collection,
+            "time": _NEUROPEPTIDE_VISUAL_TIME,
+            "visualTime": _NEUROPEPTIDE_VISUAL_TIME,
             "description": description,
             "datatypes": "np",
         }
-        for _kg_id, viz_id, name, description, visual_time in _NEUROPEPTIDE_DATASETS
+        for _kg_id, viz_id, collection, name, description in _NEUROPEPTIDE_DATASETS
     ]

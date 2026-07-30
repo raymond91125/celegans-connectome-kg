@@ -437,23 +437,31 @@ def test_neuropeptide_viz_projection(built) -> None:
     from celegans_connectome_kg.export.neuron_graph_json import (
         neuropeptide_cells_projection,
         neuropeptide_connections_projection,
+        neuropeptide_database_cells,
         neuropeptide_datasets,
     )
 
     connectome, _ = built
 
-    # Three range-model datasets, each a short (<=20-char) "np" datatype on the "complete" database.
+    # Each range model is its own viz database (collection np_sr/np_mr/np_lr), one "np" dataset each.
     datasets = neuropeptide_datasets()
     ids = [d["id"] for d in datasets]
     assert ids == ["ripoll_2023_np_sr", "ripoll_2023_np_mr", "ripoll_2023_np_lr"]
     assert all(len(d["id"]) <= 20 for d in datasets)  # datasets.id is varchar(20)
     assert all(len(d["name"]) <= 50 for d in datasets)  # datasets.name is varchar(50)
-    assert all(d["type"] == "complete" and d["datatypes"] == "np" for d in datasets)
+    assert [d["type"] for d in datasets] == ["np_sr", "np_mr", "np_lr"]  # own collections
+    assert all(len(d["type"]) <= 20 for d in datasets)  # datasets.collection is varchar(20)
+    assert all(d["datatypes"] == "np" for d in datasets)
     assert all("predicted" in d["description"].lower() for d in datasets)
 
     # All 302 hermaphrodite neurons of the network are projected as cells.
     cells = neuropeptide_cells_projection(connectome)
     assert len(cells) == 302
+
+    # The database node set (upper-cased names + classes) covers those neurons.
+    db_nodes = neuropeptide_database_cells(connectome)
+    assert db_nodes == sorted(db_nodes) and len(db_nodes) == len(set(db_nodes))
+    assert "AVAL" in db_nodes and "AVA" in db_nodes  # a cell and its class
 
     # Directed neuropeptidergic edges, keyed by the short viz dataset ids; union across ranges.
     conns = neuropeptide_connections_projection(connectome)
