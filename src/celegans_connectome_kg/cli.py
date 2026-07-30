@@ -290,6 +290,7 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         male_cells_projection,
         neuropeptide_cells_projection,
         neuropeptide_connections_projection,
+        neuropeptide_database_cells,
         neuropeptide_datasets,
         pharynx_cells_projection,
         pharynx_connections_projection,
@@ -343,6 +344,10 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
     pharynx_db = pharynx_database_cells(connectome)
     (ng_dir / "pharynx_cells.json").write_text(json.dumps(pharynx_db, indent=1))
     click.echo(f"wrote: {ng_dir}/pharynx_cells.json ({len(pharynx_db)} pharynx-database nodes)")
+
+    np_db = neuropeptide_database_cells(connectome)
+    (ng_dir / "np_cells.json").write_text(json.dumps(np_db, indent=1))
+    click.echo(f"wrote: {ng_dir}/np_cells.json ({len(np_db)} neuropeptide-database nodes)")
 
     # Full class-level connectivity for the cell-info "Connections (knowledge graph)" panel —
     # every KG dataset, unfiltered by the viz's per-type weight threshold. Compact (no indent).
