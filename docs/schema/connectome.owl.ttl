@@ -14,6 +14,9 @@ cckg:Connectome a owl:Class ;
             owl:onProperty cckg:connections ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty cckg:neuropeptide_receptor_pairs ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty cckg:genes ],
         [ a owl:Restriction ;
             owl:allValuesFrom cckg:Connection ;
@@ -33,6 +36,9 @@ cckg:Connectome a owl:Class ;
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty cckg:cells ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cckg:NeuropeptideReceptorPair ;
+            owl:onProperty cckg:neuropeptide_receptor_pairs ],
         [ a owl:Restriction ;
             owl:allValuesFrom cckg:NeurotransmitterAssignment ;
             owl:onProperty cckg:neurotransmitter_assignments ],
@@ -182,6 +188,65 @@ cckg:GeneExpression a owl:Class ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:id ] ;
     skos:definition "A reified assertion that a cell expresses a gene, compiled in one dataset. Reified (not a plain triple) because it carries the source dataset, evidence, an optional transcript-isoform qualifier (when the source resolves expression to an isoform), and a confidence mark." ;
+    skos:inScheme cckg:schema .
+
+cckg:NeuropeptideReceptorPair a owl:Class ;
+    rdfs:label "NeuropeptideReceptorPair" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:npp_family ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:gpcr_class ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:npp_family ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:gpcr_class ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:npp_family ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:gpcr_class ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:ec50_nm ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:ligand ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:ligand ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:ec50_nm ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty cckg:ec50_nm ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:gpcr ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:ligand ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:gpcr ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:gpcr ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:id ] ;
+    skos:definition "A biochemically deorphanized neuropeptide(NPP)-ligand → GPCR-receptor pair (Beets et al. 2023, filtered to EC50 <= 500 nM), one of the 92 pairs underlying the Ripoll-Sanchez et al. 2023 predicted neuropeptidergic connectome: a ``neuropeptidergic`` Connection source->target exists because the source expresses one or more of these ligands and the target expresses the cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried as gene symbols (lowercase, e.g. ``nlp-40`` / ``aex-2``); WBGene resolution / linkage to the ``Gene`` class is deferred (the source repository's gene-id map is unavailable)." ;
     skos:inScheme cckg:schema .
 
 cckg:NeurotransmitterAssignment a owl:Class ;
@@ -397,6 +462,10 @@ cckg:genes a owl:ObjectProperty ;
     rdfs:label "genes" ;
     skos:inScheme cckg:schema .
 
+cckg:neuropeptide_receptor_pairs a owl:ObjectProperty ;
+    rdfs:label "neuropeptide_receptor_pairs" ;
+    skos:inScheme cckg:schema .
+
 cckg:neurotransmitter_assignments a owl:ObjectProperty ;
     rdfs:label "neurotransmitter_assignments" ;
     skos:inScheme cckg:schema .
@@ -518,6 +587,12 @@ cckg:connection_type a owl:ObjectProperty ;
     skos:definition "The kind of connection." ;
     skos:inScheme cckg:schema .
 
+cckg:ec50_nm a owl:DatatypeProperty ;
+    rdfs:label "ec50_nm" ;
+    rdfs:range xsd:float ;
+    skos:definition "Half-maximal effective concentration (EC50) of the NPP-GPCR interaction, in nM." ;
+    skos:inScheme cckg:schema .
+
 cckg:embryonic a owl:DatatypeProperty ;
     rdfs:label "embryonic" ;
     rdfs:range xsd:boolean ;
@@ -534,6 +609,16 @@ cckg:gene a owl:ObjectProperty ;
     rdfs:label "gene" ;
     rdfs:range cckg:Gene ;
     skos:definition "The expressed gene." ;
+    skos:inScheme cckg:schema .
+
+cckg:gpcr a owl:DatatypeProperty ;
+    rdfs:label "gpcr" ;
+    skos:definition "The GPCR receptor gene symbol (lowercase, e.g. \"aex-2\")." ;
+    skos:inScheme cckg:schema .
+
+cckg:gpcr_class a owl:DatatypeProperty ;
+    rdfs:label "gpcr_class" ;
+    skos:definition "The GPCR class of the receptor (e.g. \"A (rhodopsin like)\")." ;
     skos:inScheme cckg:schema .
 
 cckg:in_head a owl:DatatypeProperty ;
@@ -559,9 +644,19 @@ cckg:life_stage a owl:ObjectProperty ;
     skos:definition "The developmental stage of the specimen(s) the dataset observed. Dauer is the stress-induced alternative third larval stage (a hermaphrodite), distinct from the continuous L1->L2->L3->L4->adult progression." ;
     skos:inScheme cckg:schema .
 
+cckg:ligand a owl:DatatypeProperty ;
+    rdfs:label "ligand" ;
+    skos:definition "The neuropeptide-encoding (NPP) ligand gene symbol (lowercase, e.g. \"nlp-40\")." ;
+    skos:inScheme cckg:schema .
+
 cckg:nemanode_type a owl:DatatypeProperty ;
     rdfs:label "nemanode_type" ;
     skos:definition "Raw NemaNode cell-type code (e.g. \"i\", \"s\", \"sm\", \"b\"). Retained verbatim for the lossless viz projection; the curated CellType is in `cell_type`." ;
+    skos:inScheme cckg:schema .
+
+cckg:npp_family a owl:DatatypeProperty ;
+    rdfs:label "npp_family" ;
+    skos:definition "The neuropeptide family of the ligand (e.g. \"NLP\", \"FLP\", \"INS\")." ;
     skos:inScheme cckg:schema .
 
 cckg:post a owl:ObjectProperty ;

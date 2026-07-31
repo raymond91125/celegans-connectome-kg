@@ -67,3 +67,43 @@ def read_neuropeptide_network(
     return NeuropeptideNetwork(
         conns, dataset_id, dataset_name, dataset_description, "hermaphrodite"
     )
+
+
+@dataclass(frozen=True)
+class NeuropeptidePair:
+    """One deorphanized NPP-ligand -> GPCR-receptor pair (mechanistic layer)."""
+
+    index: int
+    ligand: str
+    gpcr: str
+    ec50_nm: float | None
+    npp_family: str
+    gpcr_class: str
+
+
+def read_neuropeptide_pairs(csv_path: Path) -> list[NeuropeptidePair]:
+    """Read the 92 validated NPP-GPCR pairs (mechanistic/npp_gpcr_pairs.csv)."""
+    out: list[NeuropeptidePair] = []
+    with open(csv_path, newline="") as f:
+        for r in csv.DictReader(f):
+            ec50 = r["ec50_nm"].strip()
+            out.append(
+                NeuropeptidePair(
+                    index=int(r["pair_index"]),
+                    ligand=r["ligand"].strip(),
+                    gpcr=r["gpcr"].strip(),
+                    ec50_nm=float(ec50) if ec50 else None,
+                    npp_family=r["npp_family"].strip(),
+                    gpcr_class=r["gpcr_class"].strip(),
+                )
+            )
+    return out
+
+
+def read_edge_pairs(csv_path: Path) -> dict[tuple[str, str], list[int]]:
+    """Read edge_pairs.csv into {(source, target): [pair_index, ...]} (names already CIRCE-normed)."""
+    out: dict[tuple[str, str], list[int]] = {}
+    with open(csv_path, newline="") as f:
+        for r in csv.DictReader(f):
+            out.setdefault((r["source"], r["target"]), []).append(int(r["pair_index"]))
+    return out

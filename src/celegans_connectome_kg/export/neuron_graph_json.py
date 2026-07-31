@@ -745,6 +745,60 @@ def neuropeptide_database_cells(connectome: object) -> list[str]:
     return sorted(names)
 
 
+def neuropeptide_pairs_map(connectome: object, edge_pairs_path: object) -> dict:
+    """Class-level NPP-GPCR pair attribution for the viz cell-info neuropeptide sections.
+
+    Answers "which peptide->receptor pairs mediate this predicted edge". The 92 pairs come from the
+    KG (``connectome.neuropeptide_receptor_pairs``); the per-edge attribution is read from the
+    vendored ``mechanistic/edge_pairs.csv`` (kept out of RDF — 145k rows). Cell-level edges are
+    aggregated to the class level the cell-info panel resolves nodes to, taking the union of pair
+    indices across member-cell edges.
+
+    Shape (compact, lazy-loaded by the client):
+
+        {"pairs": [[ligand, gpcr, ec50_nm, gpcr_class], ...],   # list index i <-> pair
+         "conn":  {source_class: {target_class: [pair_i, ...]}}}
+
+    Class keys are upper-cased (case-insensitive viz lookup); a cell with no KG ``cell_class`` keys
+    by its own upper-cased name. ``pair_i`` is the 0-based index into ``pairs``.
+    """
+    import csv
+
+    pairs = sorted(
+        getattr(connectome, "neuropeptide_receptor_pairs", None) or [],
+        key=lambda p: int(str(p.id).rsplit("/", 1)[-1]),
+    )
+    # 1-based pair_index (from edge_pairs.csv) -> 0-based position in the emitted list.
+    index_of = {int(str(p.id).rsplit("/", 1)[-1]): i for i, p in enumerate(pairs)}
+    pairs_out = [
+        [
+            p.ligand,
+            p.gpcr,
+            (float(p.ec50_nm) if p.ec50_nm is not None else None),
+            str(p.gpcr_class or ""),
+        ]
+        for p in pairs
+    ]
+
+    cls = {c.name: (c.cell_class or c.name) for c in connectome.cells}
+
+    def klass(name: str) -> str:
+        return cls.get(name, name).upper()
+
+    conn: dict[str, dict[str, set]] = defaultdict(lambda: defaultdict(set))
+    with open(edge_pairs_path, newline="") as f:
+        for r in csv.DictReader(f):
+            i = index_of.get(int(r["pair_index"]))
+            if i is None:
+                continue
+            conn[klass(r["source"])][klass(r["target"])].add(i)
+
+    out = {
+        s: {t: sorted(idxs) for t, idxs in sorted(tgts.items())} for s, tgts in sorted(conn.items())
+    }
+    return {"pairs": pairs_out, "conn": out}
+
+
 def neuropeptide_datasets() -> list[dict]:
     """The neuron-graph dataset entries for the neuropeptide range models.
 

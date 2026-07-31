@@ -57,6 +57,10 @@ classes:
         range: NeurotransmitterAssignment
         multivalued: true
         inlined_as_list: true
+      neuropeptide_receptor_pairs:
+        range: NeuropeptideReceptorPair
+        multivalued: true
+        inlined_as_list: true
 
   Cell:
     description: >-
@@ -182,6 +186,28 @@ classes:
       neurotransmitter:
         required: true
 
+  NeuropeptideReceptorPair:
+    description: >-
+      A biochemically deorphanized neuropeptide(NPP)-ligand → GPCR-receptor pair (Beets et al.
+      2023, filtered to EC50 <= 500 nM), one of the 92 pairs underlying the Ripoll-Sanchez et al.
+      2023 predicted neuropeptidergic connectome: a ``neuropeptidergic`` Connection source->target
+      exists because the source expresses one or more of these ligands and the target expresses the
+      cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried as
+      gene symbols (lowercase, e.g. ``nlp-40`` / ``aex-2``); WBGene resolution / linkage to the
+      ``Gene`` class is deferred (the source repository's gene-id map is unavailable).
+    slots:
+      - id
+      - ligand
+      - gpcr
+      - ec50_nm
+      - npp_family
+      - gpcr_class
+    slot_usage:
+      ligand:
+        required: true
+      gpcr:
+        required: true
+
 # ---------------------------------------------------------------------------
 # Slots
 # ---------------------------------------------------------------------------
@@ -302,6 +328,17 @@ slots:
   confidence:
     description: The source's expression mark for this assertion.
     range: ExpressionConfidence
+  ligand:
+    description: The neuropeptide-encoding (NPP) ligand gene symbol (lowercase, e.g. "nlp-40").
+  gpcr:
+    description: The GPCR receptor gene symbol (lowercase, e.g. "aex-2").
+  ec50_nm:
+    description: Half-maximal effective concentration (EC50) of the NPP-GPCR interaction, in nM.
+    range: float
+  npp_family:
+    description: The neuropeptide family of the ligand (e.g. "NLP", "FLP", "INS").
+  gpcr_class:
+    description: The GPCR class of the receptor (e.g. "A (rhodopsin like)").
 
 # ---------------------------------------------------------------------------
 # Enums
