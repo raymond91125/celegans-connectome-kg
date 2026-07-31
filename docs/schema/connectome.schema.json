@@ -216,6 +216,15 @@
                         "null"
                     ]
                 },
+                "neuropeptide_receptor_pairs": {
+                    "items": {
+                        "$ref": "#/$defs/NeuropeptideReceptorPair"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "neurotransmitter_assignments": {
                     "items": {
                         "$ref": "#/$defs/NeurotransmitterAssignment"
@@ -436,6 +445,52 @@
             "title": "LifeStage",
             "type": "string"
         },
+        "NeuropeptideReceptorPair": {
+            "additionalProperties": false,
+            "description": "A biochemically deorphanized neuropeptide(NPP)-ligand \u2192 GPCR-receptor pair (Beets et al. 2023, filtered to EC50 <= 500 nM), one of the 92 pairs underlying the Ripoll-Sanchez et al. 2023 predicted neuropeptidergic connectome: a ``neuropeptidergic`` Connection source->target exists because the source expresses one or more of these ligands and the target expresses the cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried as gene symbols (lowercase, e.g. ``nlp-40`` / ``aex-2``); WBGene resolution / linkage to the ``Gene`` class is deferred (the source repository's gene-id map is unavailable).",
+            "properties": {
+                "ec50_nm": {
+                    "description": "Half-maximal effective concentration (EC50) of the NPP-GPCR interaction, in nM.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "gpcr": {
+                    "description": "The GPCR receptor gene symbol (lowercase, e.g. \"aex-2\").",
+                    "type": "string"
+                },
+                "gpcr_class": {
+                    "description": "The GPCR class of the receptor (e.g. \"A (rhodopsin like)\").",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Stable identifier for the record.",
+                    "type": "string"
+                },
+                "ligand": {
+                    "description": "The neuropeptide-encoding (NPP) ligand gene symbol (lowercase, e.g. \"nlp-40\").",
+                    "type": "string"
+                },
+                "npp_family": {
+                    "description": "The neuropeptide family of the ligand (e.g. \"NLP\", \"FLP\", \"INS\").",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "ligand",
+                "gpcr"
+            ],
+            "title": "NeuropeptideReceptorPair",
+            "type": "object"
+        },
         "NeurotransmitterAssignment": {
             "additionalProperties": false,
             "description": "A reified, sex-qualified assertion that a cell uses a neurotransmitter, from the Wang et al. 2024 atlas (eLife 95402). Reified because C. elegans neurotransmitter identity is sexually dimorphic: a male-specific neuron has its own call, and a sex-shared neuron can use different transmitters in the male vs the hermaphrodite. The neurotransmitter code follows the same scheme as ``Cell.neurotransmitter`` (a=ACh, l=Glu, g=GABA, d=dopamine, s=serotonin, u=unknown; letters combine for co-transmission). An assignment is recorded where the call is male-specific or differs between the sexes; the unqualified ``Cell.neurotransmitter`` remains the hermaphrodite / neuron-graph call.",
@@ -539,6 +594,15 @@
         "genes": {
             "items": {
                 "$ref": "#/$defs/Gene"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "neuropeptide_receptor_pairs": {
+            "items": {
+                "$ref": "#/$defs/NeuropeptideReceptorPair"
             },
             "type": [
                 "array",

@@ -48,6 +48,11 @@ def built():
         innexin_expr_path=REPO / "data" / "bhattacharya-2019-innexin" / "innexin_expression.csv",
         innexin_gene_map_path=REPO / "data" / "bhattacharya-2019-innexin" / "innexin_genes.csv",
         neuropeptide_dir=REPO / "data" / "ripoll-2023-neuropeptide",
+        neuropeptide_pairs_path=REPO
+        / "data"
+        / "ripoll-2023-neuropeptide"
+        / "mechanistic"
+        / "npp_gpcr_pairs.csv",
     )
     return connectome, stats
 
@@ -478,3 +483,52 @@ def test_neuropeptide_viz_projection(built) -> None:
         "ripoll_2023_np_mr": 40425,
         "ripoll_2023_np_lr": 53558,
     }
+
+
+def test_neuropeptide_receptor_pairs_ingested(built) -> None:
+    """The 92 deorphanized NPP-GPCR pairs are ingested as KG entities, with EC50 + GPCR class."""
+    connectome, _ = built
+    pairs = connectome.neuropeptide_receptor_pairs
+    assert len(pairs) == 92
+    assert all(p.ligand and p.gpcr for p in pairs)
+    assert all(p.ec50_nm is not None for p in pairs)  # all 92 matched an EC50 in Table S5
+    # The first pair (canonical order) is nlp-40 -> aex-2.
+    first = min(pairs, key=lambda p: int(str(p.id).rsplit("/", 1)[-1]))
+    assert (first.ligand, first.gpcr) == ("nlp-40", "aex-2")
+
+
+def test_neuropeptide_pairs_map_cell_level_matches_weight(built) -> None:
+    """Per-edge pair attribution reproduces the published edge weights exactly (validation), and
+    the class-level viz map surfaces the mediating pairs by gene symbol."""
+    from celegans_connectome_kg.export.neuron_graph_json import neuropeptide_pairs_map
+
+    connectome, _ = built
+    edge_pairs = REPO / "data" / "ripoll-2023-neuropeptide" / "mechanistic" / "edge_pairs.csv"
+
+    # Cell-level check: for every edge, #mediating pairs == long-range weight (0 mismatches).
+    import csv
+    from collections import defaultdict
+
+    per_edge = defaultdict(int)
+    with open(edge_pairs, newline="") as f:
+        for r in csv.DictReader(f):
+            per_edge[(r["source"], r["target"])] += 1
+    assert sum(per_edge.values()) == 145834
+
+    lr = {}
+    for c in connectome.connections:
+        if str(c.connection_type) != "neuropeptidergic":
+            continue
+        if str(c.dataset).rsplit("/", 1)[-1] != "ripoll_2023_neuropeptide_lr":
+            continue
+        pre = str(c.pre).rsplit("/", 1)[-1]
+        post = str(c.post).rsplit("/", 1)[-1]
+        lr[(pre, post)] = int(c.weight)
+    assert per_edge == lr  # exact decomposition of the published long-range weights
+
+    # Class-level viz map: 92 pairs, and AVA->ADA is mediated by flp-18 -> npr-4.
+    m = neuropeptide_pairs_map(connectome, edge_pairs)
+    assert len(m["pairs"]) == 92
+    ava_ada = m["conn"]["AVA"]["ADA"]
+    sym = {(m["pairs"][i][0], m["pairs"][i][1]) for i in ava_ada}
+    assert ("flp-18", "npr-4") in sym

@@ -62,6 +62,10 @@ def test_sex_enum_and_slots(view: SchemaView) -> None:
     na_slots = view.class_slots("NeurotransmitterAssignment")
     assert {"cell", "sex", "neurotransmitter"} <= set(na_slots)
     assert view.get_class("NeurotransmitterAssignment").slot_usage["sex"].required is True
+    # Deorphanized NPP-GPCR pairs (Ripoll-Sanchez 2023 mechanistic layer)
+    nrp_slots = view.class_slots("NeuropeptideReceptorPair")
+    assert {"ligand", "gpcr", "ec50_nm", "gpcr_class"} <= set(nrp_slots)
+    assert view.get_slot("ec50_nm").range == "float"
 
 
 def test_sample_instance_validates() -> None:

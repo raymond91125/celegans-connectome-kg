@@ -331,6 +331,7 @@ def assemble(
     innexin_expr_path: Path | None = None,
     innexin_gene_map_path: Path | None = None,
     neuropeptide_dir: Path | None = None,
+    neuropeptide_pairs_path: Path | None = None,
 ) -> tuple[object, BuildStats]:
     """Assemble a Connectome data-model object plus build stats.
 
@@ -615,6 +616,25 @@ def assemble(
                 )
             )
 
+    # --- Neuropeptide NPP-GPCR pairs (optional): the 92 deorphanized pairs (mechanistic layer) ---
+    # The pairs underlying the Ripoll-Sanchez neuropeptidergic edges. Per-edge attribution
+    # (which pairs mediate each edge) is materialized to the viz projection, not RDF (145k rows).
+    neuropeptide_receptor_pairs = []
+    if neuropeptide_pairs_path:
+        from celegans_connectome_kg.ingest.neuropeptide import read_neuropeptide_pairs
+
+        for p in read_neuropeptide_pairs(neuropeptide_pairs_path):
+            neuropeptide_receptor_pairs.append(
+                dm.NeuropeptideReceptorPair(
+                    id=f"cckg:nppair/{p.index}",
+                    ligand=p.ligand,
+                    gpcr=p.gpcr,
+                    ec50_nm=p.ec50_nm,
+                    npp_family=p.npp_family or None,
+                    gpcr_class=p.gpcr_class or None,
+                )
+            )
+
     connectome = dm.Connectome(
         cells=cells,
         datasets=datasets,
@@ -622,6 +642,7 @@ def assemble(
         genes=genes,
         gene_expressions=gene_expressions,
         neurotransmitter_assignments=neurotransmitter_assignments,
+        neuropeptide_receptor_pairs=neuropeptide_receptor_pairs,
     )
     stats = BuildStats(
         cells=len(cells),

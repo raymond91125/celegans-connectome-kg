@@ -29,6 +29,7 @@ DEFAULT_ATLAS_ONLY_CELLS = Path("data/curation/atlas_only_cells.csv")
 DEFAULT_INNEXIN_EXPR = Path("data/bhattacharya-2019-innexin/innexin_expression.csv")
 DEFAULT_INNEXIN_GENES = Path("data/bhattacharya-2019-innexin/innexin_genes.csv")
 DEFAULT_NEUROPEPTIDE_DIR = Path("data/ripoll-2023-neuropeptide")
+DEFAULT_NEUROPEPTIDE_PAIRS = Path("data/ripoll-2023-neuropeptide/mechanistic/npp_gpcr_pairs.csv")
 DEFAULT_GENE_EXPR_XLSX = Path("data/cook-2020-pharynx/SI6_gene_expression.xlsx")
 DEFAULT_GENE_MAP = Path("data/cook-2020-pharynx/si6_genes.csv")
 DEFAULT_COOK_WORMATLAS = Path("data/curation/cook_wormatlas_class.csv")
@@ -216,6 +217,9 @@ def build(
         innexin_expr_path=DEFAULT_INNEXIN_EXPR if DEFAULT_INNEXIN_EXPR.exists() else None,
         innexin_gene_map_path=DEFAULT_INNEXIN_GENES if DEFAULT_INNEXIN_GENES.exists() else None,
         neuropeptide_dir=DEFAULT_NEUROPEPTIDE_DIR if DEFAULT_NEUROPEPTIDE_DIR.exists() else None,
+        neuropeptide_pairs_path=(
+            DEFAULT_NEUROPEPTIDE_PAIRS if DEFAULT_NEUROPEPTIDE_PAIRS.exists() else None
+        ),
         gene_expr_xlsx_path=(
             DEFAULT_GENE_EXPR_XLSX
             if (DEFAULT_GENE_EXPR_XLSX.exists() and DEFAULT_GENE_MAP.exists())
@@ -292,6 +296,7 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         neuropeptide_connections_projection,
         neuropeptide_database_cells,
         neuropeptide_datasets,
+        neuropeptide_pairs_map,
         pharynx_cells_projection,
         pharynx_connections_projection,
         pharynx_database_cells,
@@ -348,6 +353,16 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
     np_db = neuropeptide_database_cells(connectome)
     (ng_dir / "np_cells.json").write_text(json.dumps(np_db, indent=1))
     click.echo(f"wrote: {ng_dir}/np_cells.json ({len(np_db)} neuropeptide-database nodes)")
+
+    # NPP-GPCR pair attribution for the cell-info neuropeptide sections (which pairs mediate an edge).
+    np_edge_pairs = DEFAULT_NEUROPEPTIDE_DIR / "mechanistic" / "edge_pairs.csv"
+    if getattr(connectome, "neuropeptide_receptor_pairs", None) and np_edge_pairs.exists():
+        np_pairs = neuropeptide_pairs_map(connectome, np_edge_pairs)
+        (ng_dir / "np_pairs.json").write_text(json.dumps(np_pairs))
+        click.echo(
+            f"wrote: {ng_dir}/np_pairs.json ({len(np_pairs['pairs'])} pairs,"
+            f" {sum(len(t) for t in np_pairs['conn'].values())} class edges)"
+        )
 
     # Full class-level connectivity for the cell-info "Connections (knowledge graph)" panel —
     # every KG dataset, unfiltered by the viz's per-type weight threshold. Compact (no indent).
