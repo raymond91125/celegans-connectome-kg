@@ -63,6 +63,8 @@ def built():
         / "ripoll-2023-neuropeptide"
         / "mechanistic"
         / "np_gene_expression.csv",
+        monoamine_network_path=REPO / "data" / "ripoll-2023-monoamine" / "monoamine_network.csv",
+        monoamine_pairs_path=REPO / "data" / "ripoll-2023-monoamine" / "monoamine_pairs.csv",
     )
     return connectome, stats
 
@@ -494,6 +496,56 @@ def test_neuropeptide_viz_projection(built) -> None:
         "ripoll_2023_np_mr": 40425,
         "ripoll_2023_np_lr": 53558,
     }
+
+
+def test_monoamine_connectome(built) -> None:
+    """Ripoll-Sanchez 2023 predicted monoamine (aminergic) connectome: a single hermaphrodite/adult
+    dataset with a new monoaminergic connection type; directed, weight = monoamine-receptor pathway
+    count; 19 canonical aminergic source neurons."""
+    connectome, _ = built
+    strip = lambda s: str(s).split("/")[-1]  # noqa: E731
+    ma = [c for c in connectome.connections if str(c.connection_type) == "monoaminergic"]
+    assert len(ma) == 2881
+    assert {int(c.weight) for c in ma} == {1, 2, 3}
+    assert all(strip(c.dataset) == "ripoll_2023_monoamine" for c in ma)
+    ds = {strip(d.id): d for d in connectome.datasets}["ripoll_2023_monoamine"]
+    assert str(ds.sex) == "hermaphrodite"
+    # the 19 sources are the canonical aminergic neurons (dopamine/serotonin/tyramine/octopamine)
+    sources = {strip(c.pre) for c in ma}
+    assert len(sources) == 19
+    assert {"ADEL", "NSML", "RIML", "RICL", "CEPDL", "PDEL"} <= sources
+
+
+def test_monoamine_receptor_pairs_ingested(built) -> None:
+    """The 14 monoamine-receptor pairs are ingested (Bentley et al. 2016), 4 monoamines."""
+    connectome, _ = built
+    pairs = connectome.monoamine_receptor_pairs
+    assert len(pairs) == 14
+    assert {p.monoamine for p in pairs} == {"Ser", "DA", "Oct", "Tyr"}
+    assert all(p.receptor for p in pairs)
+    # serotonin has receptors ser-1/4/5/7
+    ser = {p.receptor for p in pairs if p.monoamine == "Ser"}
+    assert ser == {"ser-1", "ser-4", "ser-5", "ser-7"}
+
+
+def test_monoamine_viz_projection(built) -> None:
+    from celegans_connectome_kg.export.neuron_graph_json import (
+        monoamine_connections_projection,
+        monoamine_database_cells,
+        monoamine_datasets,
+    )
+
+    connectome, _ = built
+    conns = monoamine_connections_projection(connectome)
+    assert len(conns) == 2881
+    assert all(c["type"] == "monoaminergic" for c in conns)
+    assert all("ripoll_2023_ma" in c["synapses"] for c in conns)  # short viz id (varchar(20))
+    ds = monoamine_datasets()
+    assert len(ds) == 1
+    assert ds[0]["type"] == "monoamine" and ds[0]["datatypes"] == "ma"
+    assert len(ds[0]["id"]) <= 20 and len(ds[0]["name"]) <= 50
+    db = monoamine_database_cells(connectome)
+    assert "AVAL" in db or "ADEL" in db
 
 
 def test_neuropeptide_receptor_pairs_ingested(built) -> None:

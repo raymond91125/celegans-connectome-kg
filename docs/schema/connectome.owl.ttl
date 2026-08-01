@@ -14,6 +14,9 @@ cckg:Connectome a owl:Class ;
             owl:onProperty cckg:connections ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty cckg:monoamine_receptor_pairs ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty cckg:neuropeptide_receptor_pairs ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -39,6 +42,9 @@ cckg:Connectome a owl:Class ;
         [ a owl:Restriction ;
             owl:allValuesFrom cckg:NeuropeptideReceptorPair ;
             owl:onProperty cckg:neuropeptide_receptor_pairs ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cckg:MonoamineReceptorPair ;
+            owl:onProperty cckg:monoamine_receptor_pairs ],
         [ a owl:Restriction ;
             owl:allValuesFrom cckg:NeurotransmitterAssignment ;
             owl:onProperty cckg:neurotransmitter_assignments ],
@@ -188,6 +194,47 @@ cckg:GeneExpression a owl:Class ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:id ] ;
     skos:definition "A reified assertion that a cell expresses a gene, compiled in one dataset. Reified (not a plain triple) because it carries the source dataset, evidence, an optional transcript-isoform qualifier (when the source resolves expression to an isoform), and a confidence mark." ;
+    skos:inScheme cckg:schema .
+
+cckg:MonoamineReceptorPair a owl:Class ;
+    rdfs:label "MonoamineReceptorPair" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:monoamine_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:monoamine_name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:monoamine ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:receptor ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:monoamine_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:monoamine ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:receptor ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:monoamine ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:receptor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:id ] ;
+    skos:definition "A monoamine → GPCR-receptor pair (from Bentley et al. 2016), one of the 14 pairs underlying the predicted monoaminergic connectome: a ``monoaminergic`` Connection source->target exists because the source produces the monoamine and the target expresses the cognate receptor, and the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``) and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol." ;
     skos:inScheme cckg:schema .
 
 cckg:NeuropeptideReceptorPair a owl:Class ;
@@ -365,6 +412,11 @@ cckg:NeurotransmitterAssignment a owl:Class ;
     rdfs:subClassOf cckg:ConnectionType ;
     skos:definition "Electrical / gap-junction connection (EM)." .
 
+<https://wormbase.org/resources/connectome/ConnectionType#monoaminergic> a owl:Class ;
+    rdfs:label "monoaminergic" ;
+    rdfs:subClassOf cckg:ConnectionType ;
+    skos:definition "Predicted extrasynaptic monoamine signaling connection (a monoamine-producing source acting on a receptor-expressing target), the aminergic companion to the neuropeptidergic network (Ripoll-Sanchez et al. 2023, receptor pairs from Bentley et al. 2016). Not an observed synapse." .
+
 <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> a owl:Class ;
     rdfs:label "neuropeptidergic" ;
     rdfs:subClassOf cckg:ConnectionType ;
@@ -483,6 +535,10 @@ cckg:gene_expressions a owl:ObjectProperty ;
 
 cckg:genes a owl:ObjectProperty ;
     rdfs:label "genes" ;
+    skos:inScheme cckg:schema .
+
+cckg:monoamine_receptor_pairs a owl:ObjectProperty ;
+    rdfs:label "monoamine_receptor_pairs" ;
     skos:inScheme cckg:schema .
 
 cckg:neuropeptide_receptor_pairs a owl:ObjectProperty ;
@@ -643,6 +699,16 @@ cckg:ligand_gene a owl:ObjectProperty ;
     skos:definition "The ligand resolved to its WBGene-keyed Gene (the stable expression join key)." ;
     skos:inScheme cckg:schema .
 
+cckg:monoamine a owl:DatatypeProperty ;
+    rdfs:label "monoamine" ;
+    skos:definition "The monoamine ligand abbreviation (\"Ser\", \"DA\", \"Oct\", \"Tyr\")." ;
+    skos:inScheme cckg:schema .
+
+cckg:monoamine_name a owl:DatatypeProperty ;
+    rdfs:label "monoamine_name" ;
+    skos:definition "The full monoamine name (serotonin / dopamine / octopamine / tyramine)." ;
+    skos:inScheme cckg:schema .
+
 cckg:nemanode_type a owl:DatatypeProperty ;
     rdfs:label "nemanode_type" ;
     skos:definition "Raw NemaNode cell-type code (e.g. \"i\", \"s\", \"sm\", \"b\"). Retained verbatim for the lossless viz projection; the curated CellType is in `cell_type`." ;
@@ -663,6 +729,11 @@ cckg:pre a owl:ObjectProperty ;
     rdfs:label "pre" ;
     rdfs:range cckg:Cell ;
     skos:definition "The presynaptic / source cell." ;
+    skos:inScheme cckg:schema .
+
+cckg:receptor a owl:DatatypeProperty ;
+    rdfs:label "receptor" ;
+    skos:definition "The monoamine GPCR receptor gene symbol (lowercase, e.g. \"ser-1\", \"dop-2\")." ;
     skos:inScheme cckg:schema .
 
 cckg:strain a owl:DatatypeProperty ;
@@ -785,15 +856,6 @@ cckg:ExpressionConfidence a owl:Class ;
     linkml:permissible_values <https://wormbase.org/resources/connectome/ExpressionConfidence#putative>,
         <https://wormbase.org/resources/connectome/ExpressionConfidence#reported> .
 
-cckg:ConnectionType a owl:Class ;
-    rdfs:label "ConnectionType" ;
-    owl:unionOf ( <https://wormbase.org/resources/connectome/ConnectionType#chemical> <https://wormbase.org/resources/connectome/ConnectionType#gap_junction> <https://wormbase.org/resources/connectome/ConnectionType#functional> <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> ) ;
-    skos:inScheme cckg:schema ;
-    linkml:permissible_values <https://wormbase.org/resources/connectome/ConnectionType#chemical>,
-        <https://wormbase.org/resources/connectome/ConnectionType#functional>,
-        <https://wormbase.org/resources/connectome/ConnectionType#gap_junction>,
-        <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> .
-
 cckg:cell a owl:ObjectProperty ;
     rdfs:label "cell" ;
     rdfs:range cckg:Cell ;
@@ -832,6 +894,16 @@ cckg:source a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:definition "Pointer to the source data (file, URL, or upstream identifier)." ;
     skos:inScheme cckg:schema .
+
+cckg:ConnectionType a owl:Class ;
+    rdfs:label "ConnectionType" ;
+    owl:unionOf ( <https://wormbase.org/resources/connectome/ConnectionType#chemical> <https://wormbase.org/resources/connectome/ConnectionType#gap_junction> <https://wormbase.org/resources/connectome/ConnectionType#functional> <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> <https://wormbase.org/resources/connectome/ConnectionType#monoaminergic> ) ;
+    skos:inScheme cckg:schema ;
+    linkml:permissible_values <https://wormbase.org/resources/connectome/ConnectionType#chemical>,
+        <https://wormbase.org/resources/connectome/ConnectionType#functional>,
+        <https://wormbase.org/resources/connectome/ConnectionType#gap_junction>,
+        <https://wormbase.org/resources/connectome/ConnectionType#monoaminergic>,
+        <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> .
 
 cckg:Gene a owl:Class ;
     rdfs:label "Gene" ;

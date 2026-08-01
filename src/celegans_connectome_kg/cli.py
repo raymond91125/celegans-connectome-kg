@@ -32,6 +32,8 @@ DEFAULT_NEUROPEPTIDE_DIR = Path("data/ripoll-2023-neuropeptide")
 DEFAULT_NEUROPEPTIDE_PAIRS = Path("data/ripoll-2023-neuropeptide/mechanistic/npp_gpcr_pairs.csv")
 DEFAULT_NEUROPEPTIDE_GENES = Path("data/ripoll-2023-neuropeptide/mechanistic/np_genes.csv")
 DEFAULT_NEUROPEPTIDE_EXPR = Path("data/ripoll-2023-neuropeptide/mechanistic/np_gene_expression.csv")
+DEFAULT_MONOAMINE_NETWORK = Path("data/ripoll-2023-monoamine/monoamine_network.csv")
+DEFAULT_MONOAMINE_PAIRS = Path("data/ripoll-2023-monoamine/monoamine_pairs.csv")
 DEFAULT_GENE_EXPR_XLSX = Path("data/cook-2020-pharynx/SI6_gene_expression.xlsx")
 DEFAULT_GENE_MAP = Path("data/cook-2020-pharynx/si6_genes.csv")
 DEFAULT_COOK_WORMATLAS = Path("data/curation/cook_wormatlas_class.csv")
@@ -228,6 +230,12 @@ def build(
         neuropeptide_expression_path=(
             DEFAULT_NEUROPEPTIDE_EXPR if DEFAULT_NEUROPEPTIDE_EXPR.exists() else None
         ),
+        monoamine_network_path=(
+            DEFAULT_MONOAMINE_NETWORK if DEFAULT_MONOAMINE_NETWORK.exists() else None
+        ),
+        monoamine_pairs_path=(
+            DEFAULT_MONOAMINE_PAIRS if DEFAULT_MONOAMINE_PAIRS.exists() else None
+        ),
         gene_expr_xlsx_path=(
             DEFAULT_GENE_EXPR_XLSX
             if (DEFAULT_GENE_EXPR_XLSX.exists() and DEFAULT_GENE_MAP.exists())
@@ -300,6 +308,10 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         dauer_connections_projection,
         dauer_dataset,
         male_cells_projection,
+        monoamine_cells_projection,
+        monoamine_connections_projection,
+        monoamine_database_cells,
+        monoamine_datasets,
         neuropeptide_cells_projection,
         neuropeptide_connections_projection,
         neuropeptide_database_cells,
@@ -441,6 +453,22 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         click.echo(
             f"wrote: {ng_np}/ (neuropeptide: {len(np_cells)} cells, {len(np_conns)} connections)"
         )
+
+    # Monoamine viz projection: the Ripoll-Sánchez 2023 predicted aminergic network ("ma" datatype).
+    ma_cells = monoamine_cells_projection(connectome)
+    ma_conns = monoamine_connections_projection(connectome)
+    if ma_conns:
+        ng_ma = out_dir / "neuron-graph-monoamine"
+        ng_ma.mkdir(parents=True, exist_ok=True)
+        (ng_ma / "cells.json").write_text(json.dumps(ma_cells, indent=2))
+        (ng_ma / "connections.json").write_text(json.dumps(ma_conns, indent=2))
+        (ng_ma / "datasets.json").write_text(json.dumps(monoamine_datasets(), indent=2))
+        click.echo(
+            f"wrote: {ng_ma}/ (monoamine: {len(ma_cells)} cells, {len(ma_conns)} connections)"
+        )
+        ma_db = monoamine_database_cells(connectome)
+        (ng_dir / "monoamine_cells.json").write_text(json.dumps(ma_db, indent=1))
+        click.echo(f"wrote: {ng_dir}/monoamine_cells.json ({len(ma_db)} monoamine-database nodes)")
 
 
 @main.command()
