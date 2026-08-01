@@ -53,6 +53,16 @@ def built():
         / "ripoll-2023-neuropeptide"
         / "mechanistic"
         / "npp_gpcr_pairs.csv",
+        neuropeptide_genes_path=REPO
+        / "data"
+        / "ripoll-2023-neuropeptide"
+        / "mechanistic"
+        / "np_genes.csv",
+        neuropeptide_expression_path=REPO
+        / "data"
+        / "ripoll-2023-neuropeptide"
+        / "mechanistic"
+        / "np_gene_expression.csv",
     )
     return connectome, stats
 
@@ -297,6 +307,7 @@ def test_gene_expression_ingest(built) -> None:
         "ionotropic_receptor",
         "innexin",
         "neuropeptide",
+        "neuropeptide_receptor",
     }
     # Cook 2020 SI6 contribution is unchanged (309 records) by the added innexin datasets
     cook = [
@@ -495,6 +506,62 @@ def test_neuropeptide_receptor_pairs_ingested(built) -> None:
     # The first pair (canonical order) is nlp-40 -> aex-2.
     first = min(pairs, key=lambda p: int(str(p.id).rsplit("/", 1)[-1]))
     assert (first.ligand, first.gpcr) == ("nlp-40", "aex-2")
+
+
+def test_neuropeptide_expression_ingested(built) -> None:
+    """Per-neuron NPP/GPCR expression is ingested as GeneExpression under its own dataset, with the
+    genes categorized and the 12 genes shared with existing datasets not duplicated."""
+    connectome, _ = built
+    strip = lambda s: str(s).split("/")[-1]  # noqa: E731
+
+    np_expr = [
+        e for e in connectome.gene_expressions if strip(e.dataset) == "ripoll_2023_expression"
+    ]
+    assert len(np_expr) == 3514
+    assert all(str(e.confidence) == "reported" for e in np_expr)
+
+    # 49 NPP + 51 GPCR genes, categorized; genes keyed by WBGene (shared, not duplicated).
+    npp = [g for g in connectome.genes if str(g.category) == "neuropeptide"]
+    npr = [g for g in connectome.genes if str(g.category) == "neuropeptide_receptor"]
+    assert len(npr) == 51 and len(npp) >= 49
+    assert len({g.id for g in connectome.genes}) == len(connectome.genes)  # no dup gene ids
+
+    # The expression dataset is a hermaphrodite / adult CeNGEN source.
+    ds = {strip(d.id): d for d in connectome.datasets}["ripoll_2023_expression"]
+    assert str(ds.sex) == "hermaphrodite" and str(ds.life_stage) == "adult"
+
+
+def test_neuropeptide_network_derivable_from_expression(built) -> None:
+    """The KG can DERIVE the neuropeptide network from first principles: joining per-neuron
+    expression with the NPP-GPCR pairs (source expresses ligand, target expresses cognate GPCR)
+    reproduces the published long-range connectome exactly."""
+    from collections import defaultdict
+
+    connectome, _ = built
+    strip = lambda s: str(s).split("/")[-1]  # noqa: E731
+
+    # expression keyed by WBGene (the stable join key — some ligand/gpcr symbols are synonyms of a
+    # different canonical gene symbol, e.g. nlp-54 == trh-1, so a symbol join would be wrong).
+    expr = defaultdict(set)
+    for e in connectome.gene_expressions:
+        if strip(e.dataset) == "ripoll_2023_expression":
+            expr[e.gene].add(strip(e.cell))
+
+    # derive edges by joining pairs to expression through the pairs' WBGene gene links
+    derived = defaultdict(int)
+    for p in connectome.neuropeptide_receptor_pairs:
+        for s in expr.get(p.ligand_gene, ()):
+            for t in expr.get(p.gpcr_gene, ()):
+                derived[(s, t)] += 1
+
+    # published long-range network from the KG connections
+    published = {}
+    for c in connectome.connections:
+        if strip(c.dataset) == "ripoll_2023_neuropeptide_lr":
+            published[(strip(c.pre), strip(c.post))] = int(c.weight)
+
+    assert dict(derived) == published  # exact first-principles reconstruction, 53,558 edges
+    assert len(published) == 53558
 
 
 def test_neuropeptide_pairs_map_cell_level_matches_weight(built) -> None:

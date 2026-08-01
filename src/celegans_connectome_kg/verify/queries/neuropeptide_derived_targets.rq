@@ -1,0 +1,28 @@
+# Derive a neuron's predicted neuropeptide targets FROM FIRST PRINCIPLES — from the ingested
+# per-neuron expression + the deorphanized NPP-GPCR pairs, rather than reading the precomputed
+# network. For each validated pair, the source (AVAL) must express the ligand gene and the target
+# the cognate GPCR gene. The count of distinct pairs per target is that edge's weight in the
+# neuropeptidergic connectome, so this reconstructs AVAL's row of the network.
+#
+# Join expression by the pair's WBGene gene links (ligand_gene / gpcr_gene), NOT by symbol: some
+# source symbols are WormBase synonyms of a different canonical gene (e.g. nlp-54 = trh-1). Restrict
+# to the Ripoll-Sanchez CeNGEN expression dataset so the counts match the published network.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?target (COUNT(DISTINCT ?pair) AS ?pathways)
+       (GROUP_CONCAT(DISTINCT CONCAT(?lig, "->", ?rec); separator=", ") AS ?mediating_pairs)
+WHERE {
+  ?src dcterms:title "AVAL" .
+  ?pair a cckg:NeuropeptideReceptorPair ;
+        cckg:ligand ?lig ; cckg:gpcr ?rec ;
+        cckg:ligand_gene ?lg ; cckg:gpcr_gene ?gg .
+  ?es a cckg:GeneExpression ; cckg:cell ?src ; cckg:gene ?lg ;
+      cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_expression> .
+  ?et a cckg:GeneExpression ; cckg:cell ?tgt ; cckg:gene ?gg ;
+      cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_expression> .
+  ?tgt dcterms:title ?target .
+}
+GROUP BY ?target
+ORDER BY DESC(?pathways) ?target
+LIMIT 15

@@ -194,6 +194,7 @@ _NEUROPEPTIDE_MODELS = [
 #: reported dauer plasticity is explicit ("both" -> both datasets; "only" -> one).
 _INNEXIN_ND_DATASET = "bhattacharya_2019_innexin"
 _INNEXIN_DA_DATASET = "bhattacharya_2019_innexin_dauer"
+_NP_EXPRESSION_DATASET = "ripoll_2023_expression"
 
 #: Bhattacharya class labels that don't map to a single CIRCE cell_class (IL1/IL2/RMD subclasses).
 _INNEXIN_SPECIAL = {
@@ -268,6 +269,42 @@ def _build_innexin_expression(dm, data, cells):
     return genes, exprs, sorted(unmapped)
 
 
+def _build_np_expression(dm, genes_map, records, cells):
+    """Genes + per-neuron GeneExpression for the Ripoll-Sanchez NPP/GPCR expression (CeNGEN thr-4).
+
+    ``genes_map`` is {symbol: NeuropeptideGene}; ``records`` is a list of (cell, gene_symbol).
+    Returns (genes, expressions, unmapped_cells). Genes are keyed by WBGene so the 12 that already
+    exist in the graph (Cook/innexin) are shared, not duplicated — the caller dedupes by id.
+    """
+    genes = [
+        dm.Gene(
+            id=g.wbgene,
+            symbol=g.symbol,
+            category=g.category,
+            systematic_name=g.systematic_name or None,
+        )
+        for g in sorted(genes_map.values(), key=lambda g: g.symbol)
+    ]
+    names = {c.name for c in cells}
+    exprs, unmapped = [], set()
+    for cell, symbol in records:
+        if cell not in names:
+            unmapped.add(cell)
+            continue
+        g = genes_map[symbol]
+        wbid = g.wbgene.split(":")[-1]
+        exprs.append(
+            dm.GeneExpression(
+                id=f"cckg:expr/{_NP_EXPRESSION_DATASET}.{cell}.{wbid}",
+                cell=_cell_id(cell),
+                gene=g.wbgene,
+                dataset=_dataset_id(_NP_EXPRESSION_DATASET),
+                confidence="reported",
+            )
+        )
+    return genes, exprs, sorted(unmapped)
+
+
 def _si6_class(label: str, valid_classes: set[str]) -> str | None:
     """Map an SI6 class label ("I1L/R", "M3L/R", "MCL", "I3") to a CIRCE cell_class."""
     for cand in (label, label.replace("L/R", ""), label[:-1] if label[-1:] in "LR" else label):
@@ -332,6 +369,8 @@ def assemble(
     innexin_gene_map_path: Path | None = None,
     neuropeptide_dir: Path | None = None,
     neuropeptide_pairs_path: Path | None = None,
+    neuropeptide_genes_path: Path | None = None,
+    neuropeptide_expression_path: Path | None = None,
 ) -> tuple[object, BuildStats]:
     """Assemble a Connectome data-model object plus build stats.
 
@@ -619,21 +658,61 @@ def assemble(
     # --- Neuropeptide NPP-GPCR pairs (optional): the 92 deorphanized pairs (mechanistic layer) ---
     # The pairs underlying the Ripoll-Sanchez neuropeptidergic edges. Per-edge attribution
     # (which pairs mediate each edge) is materialized to the viz projection, not RDF (145k rows).
+    # The gene map (symbol -> WBGene) links pairs to Gene entities and keys the expression below.
+    np_genes_map = {}
+    if neuropeptide_genes_path:
+        from celegans_connectome_kg.ingest.neuropeptide import read_neuropeptide_genes
+
+        np_genes_map = read_neuropeptide_genes(neuropeptide_genes_path)
+
     neuropeptide_receptor_pairs = []
     if neuropeptide_pairs_path:
         from celegans_connectome_kg.ingest.neuropeptide import read_neuropeptide_pairs
 
         for p in read_neuropeptide_pairs(neuropeptide_pairs_path):
+            lg = np_genes_map.get(p.ligand)
+            gg = np_genes_map.get(p.gpcr)
             neuropeptide_receptor_pairs.append(
                 dm.NeuropeptideReceptorPair(
                     id=f"cckg:nppair/{p.index}",
                     ligand=p.ligand,
                     gpcr=p.gpcr,
+                    ligand_gene=lg.wbgene if lg else None,
+                    gpcr_gene=gg.wbgene if gg else None,
                     ec50_nm=p.ec50_nm,
                     npp_family=p.npp_family or None,
                     gpcr_class=p.gpcr_class or None,
                 )
             )
+
+    # --- Per-neuron NPP/GPCR expression (optional): Ripoll-Sanchez CeNGEN threshold-4 substrate ---
+    # With the pairs above, this lets the KG *derive* the neuropeptide network (source expresses a
+    # ligand, target its cognate GPCR). Genes keyed by WBGene so the ones already in the graph
+    # (Cook/innexin) are shared, not duplicated.
+    if np_genes_map and neuropeptide_expression_path:
+        from celegans_connectome_kg.ingest.neuropeptide import read_neuropeptide_expression
+
+        records = read_neuropeptide_expression(neuropeptide_expression_path)
+        datasets.append(
+            dm.Dataset(
+                id=_dataset_id(_NP_EXPRESSION_DATASET),
+                name="Ripoll-Sanchez et al. 2023 NPP/GPCR expression (CeNGEN threshold 4)",
+                description=(
+                    "Per-neuron expression of the neuropeptide (NPP) and GPCR-receptor genes of the "
+                    "predicted neuropeptidergic connectome, CeNGEN single-cell RNA-seq at threshold "
+                    "4 (Ripoll-Sanchez et al. 2023, Neuron 111:3570-3589). With the NPP-GPCR pairs, "
+                    "derives the network: source expresses a ligand, target its cognate GPCR."
+                ),
+                sex=_HERMAPHRODITE,
+                life_stage="adult",
+            )
+        )
+        np_genes, np_exprs, np_unmapped = _build_np_expression(dm, np_genes_map, records, cells)
+        if np_unmapped:
+            raise ValueError(f"neuropeptide-expression cells not in the connectome: {np_unmapped}")
+        seen_gene_ids = {g.id for g in genes}
+        genes += [g for g in np_genes if g.id not in seen_gene_ids]  # share the 12 existing genes
+        gene_expressions += np_exprs
 
     connectome = dm.Connectome(
         cells=cells,

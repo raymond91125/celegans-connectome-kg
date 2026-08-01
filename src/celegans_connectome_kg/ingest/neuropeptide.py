@@ -107,3 +107,33 @@ def read_edge_pairs(csv_path: Path) -> dict[tuple[str, str], list[int]]:
         for r in csv.DictReader(f):
             out.setdefault((r["source"], r["target"]), []).append(int(r["pair_index"]))
     return out
+
+
+@dataclass(frozen=True)
+class NeuropeptideGene:
+    """An NPP or GPCR gene of the network, resolved to WormBase."""
+
+    symbol: str
+    wbgene: str
+    systematic_name: str
+    category: str
+
+
+def read_neuropeptide_genes(csv_path: Path) -> dict[str, NeuropeptideGene]:
+    """Read np_genes.csv into {symbol: NeuropeptideGene} (WBGene as a WB:… curie)."""
+    out: dict[str, NeuropeptideGene] = {}
+    with open(csv_path, newline="") as f:
+        for r in csv.DictReader(f):
+            out[r["symbol"].strip()] = NeuropeptideGene(
+                symbol=r["symbol"].strip(),
+                wbgene=r["wbgene"].strip(),
+                systematic_name=r["systematic_name"].strip(),
+                category=r["category"].strip(),
+            )
+    return out
+
+
+def read_neuropeptide_expression(csv_path: Path) -> list[tuple[str, str]]:
+    """Read np_gene_expression.csv into a list of (cell, gene_symbol) records."""
+    with open(csv_path, newline="") as f:
+        return [(r["cell"].strip(), r["gene_symbol"].strip()) for r in csv.DictReader(f)]

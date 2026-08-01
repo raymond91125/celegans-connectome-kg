@@ -212,6 +212,15 @@ cckg:NeuropeptideReceptorPair a owl:Class ;
             owl:onProperty cckg:gpcr_class ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty cckg:ligand_gene ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cckg:Gene ;
+            owl:onProperty cckg:ligand_gene ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:ligand_gene ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty cckg:ec50_nm ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
@@ -222,6 +231,9 @@ cckg:NeuropeptideReceptorPair a owl:Class ;
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty cckg:ec50_nm ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:gpcr_gene ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:float ;
             owl:onProperty cckg:ec50_nm ],
@@ -235,6 +247,12 @@ cckg:NeuropeptideReceptorPair a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty cckg:gpcr ],
         [ a owl:Restriction ;
+            owl:allValuesFrom cckg:Gene ;
+            owl:onProperty cckg:gpcr_gene ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:gpcr_gene ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:gpcr ],
         [ a owl:Restriction ;
@@ -246,7 +264,7 @@ cckg:NeuropeptideReceptorPair a owl:Class ;
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:id ] ;
-    skos:definition "A biochemically deorphanized neuropeptide(NPP)-ligand → GPCR-receptor pair (Beets et al. 2023, filtered to EC50 <= 500 nM), one of the 92 pairs underlying the Ripoll-Sanchez et al. 2023 predicted neuropeptidergic connectome: a ``neuropeptidergic`` Connection source->target exists because the source expresses one or more of these ligands and the target expresses the cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried as gene symbols (lowercase, e.g. ``nlp-40`` / ``aex-2``); WBGene resolution / linkage to the ``Gene`` class is deferred (the source repository's gene-id map is unavailable)." ;
+    skos:definition "A biochemically deorphanized neuropeptide(NPP)-ligand → GPCR-receptor pair (Beets et al. 2023, filtered to EC50 <= 500 nM), one of the 92 pairs underlying the Ripoll-Sanchez et al. 2023 predicted neuropeptidergic connectome: a ``neuropeptidergic`` Connection source->target exists because the source expresses one or more of these ligands and the target expresses the cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried both as their source (Ripoll) gene symbols (``ligand`` / ``gpcr``, lowercase, e.g. ``nlp-40`` / ``aex-2``) and, when the expression layer is built, as WBGene-resolved links to the ``Gene`` class (``ligand_gene`` / ``gpcr_gene``). The gene links are the stable join key — some source symbols are WormBase synonyms of a different canonical symbol (e.g. ``nlp-54`` = ``trh-1``), so joining expression by symbol is unsafe; join by ``ligand_gene`` / ``gpcr_gene`` instead." ;
     skos:inScheme cckg:schema .
 
 cckg:NeurotransmitterAssignment a owl:Class ;
@@ -390,7 +408,12 @@ cckg:NeurotransmitterAssignment a owl:Class ;
 <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide> a owl:Class ;
     rdfs:label "neuropeptide" ;
     rdfs:subClassOf cckg:GeneCategory ;
-    skos:definition "Neuropeptide-encoding gene." .
+    skos:definition "Neuropeptide-encoding (NPP) gene." .
+
+<https://wormbase.org/resources/connectome/GeneCategory#neuropeptide_receptor> a owl:Class ;
+    rdfs:label "neuropeptide_receptor" ;
+    rdfs:subClassOf cckg:GeneCategory ;
+    skos:definition "Neuropeptide GPCR receptor gene (the metabotropic receptor for a neuropeptide ligand; the receptor side of an NPP-GPCR pair)." .
 
 <https://wormbase.org/resources/connectome/LifeStage#L1> a owl:Class ;
     rdfs:label "L1" ;
@@ -517,47 +540,6 @@ cckg:Evidence a owl:Class ;
     skos:definition "Provenance for a connection. Designed to be additive: v1 records an aggregated weight observed in a dataset; later releases can add individual synaptic-contact detail (section, volume, image) by adding optional slots, without schema churn." ;
     skos:inScheme cckg:schema .
 
-cckg:Gene a owl:Class ;
-    rdfs:label "Gene" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty cckg:systematic_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty cckg:category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty cckg:systematic_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:systematic_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cckg:GeneCategory ;
-            owl:onProperty cckg:category ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty cckg:symbol ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty cckg:symbol ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:symbol ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty cckg:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty cckg:id ] ;
-    skos:definition "A C. elegans gene, keyed by its persistent WormBase gene id (WB:WBGene…) as resolved via the Alliance of Genome Resources. Carries the gene symbol, WormBase systematic name, and a functional category. Genes are shared across gene-expression datasets." ;
-    skos:inScheme cckg:schema .
-
 cckg:anatomy a owl:DatatypeProperty ;
     rdfs:label "anatomy" ;
     rdfs:range xsd:anyURI ;
@@ -621,6 +603,12 @@ cckg:gpcr_class a owl:DatatypeProperty ;
     skos:definition "The GPCR class of the receptor (e.g. \"A (rhodopsin like)\")." ;
     skos:inScheme cckg:schema .
 
+cckg:gpcr_gene a owl:ObjectProperty ;
+    rdfs:label "gpcr_gene" ;
+    rdfs:range cckg:Gene ;
+    skos:definition "The GPCR resolved to its WBGene-keyed Gene (the stable expression join key)." ;
+    skos:inScheme cckg:schema .
+
 cckg:in_head a owl:DatatypeProperty ;
     rdfs:label "in_head" ;
     rdfs:range xsd:boolean ;
@@ -647,6 +635,12 @@ cckg:life_stage a owl:ObjectProperty ;
 cckg:ligand a owl:DatatypeProperty ;
     rdfs:label "ligand" ;
     skos:definition "The neuropeptide-encoding (NPP) ligand gene symbol (lowercase, e.g. \"nlp-40\")." ;
+    skos:inScheme cckg:schema .
+
+cckg:ligand_gene a owl:ObjectProperty ;
+    rdfs:label "ligand_gene" ;
+    rdfs:range cckg:Gene ;
+    skos:definition "The ligand resolved to its WBGene-keyed Gene (the stable expression join key)." ;
     skos:inScheme cckg:schema .
 
 cckg:nemanode_type a owl:DatatypeProperty ;
@@ -800,16 +794,6 @@ cckg:ConnectionType a owl:Class ;
         <https://wormbase.org/resources/connectome/ConnectionType#gap_junction>,
         <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> .
 
-cckg:GeneCategory a owl:Class ;
-    rdfs:label "GeneCategory" ;
-    owl:unionOf ( <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#innexin> <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide> ) ;
-    skos:definition "Functional category a gene is grouped under in an expression dataset." ;
-    skos:inScheme cckg:schema ;
-    linkml:permissible_values <https://wormbase.org/resources/connectome/GeneCategory#innexin>,
-        <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor>,
-        <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor>,
-        <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide> .
-
 cckg:cell a owl:ObjectProperty ;
     rdfs:label "cell" ;
     rdfs:range cckg:Cell ;
@@ -848,6 +832,58 @@ cckg:source a owl:DatatypeProperty ;
     rdfs:range xsd:anyURI ;
     skos:definition "Pointer to the source data (file, URL, or upstream identifier)." ;
     skos:inScheme cckg:schema .
+
+cckg:Gene a owl:Class ;
+    rdfs:label "Gene" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:systematic_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:category ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:systematic_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:systematic_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:category ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cckg:GeneCategory ;
+            owl:onProperty cckg:category ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:symbol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:id ] ;
+    skos:definition "A C. elegans gene, keyed by its persistent WormBase gene id (WB:WBGene…) as resolved via the Alliance of Genome Resources. Carries the gene symbol, WormBase systematic name, and a functional category. Genes are shared across gene-expression datasets." ;
+    skos:inScheme cckg:schema .
+
+cckg:GeneCategory a owl:Class ;
+    rdfs:label "GeneCategory" ;
+    owl:unionOf ( <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#innexin> <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide> <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide_receptor> ) ;
+    skos:definition "Functional category a gene is grouped under in an expression dataset." ;
+    skos:inScheme cckg:schema ;
+    linkml:permissible_values <https://wormbase.org/resources/connectome/GeneCategory#innexin>,
+        <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor>,
+        <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor>,
+        <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide>,
+        <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide_receptor> .
 
 cckg:Sex a owl:Class ;
     rdfs:label "Sex" ;

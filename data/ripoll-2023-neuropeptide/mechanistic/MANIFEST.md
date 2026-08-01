@@ -38,10 +38,36 @@ So `edge_pairs.csv` is a faithful decomposition, not an estimate. (Cross-check: 
 `source,target` in `edge_pairs.csv` and the row count per edge equals that edge's `weight` in
 `../long_range_network.csv`.)
 
+### `np_genes.csv` — the 100 NPP + GPCR genes, resolved to WormBase
+Columns: `symbol`, `wbgene` (WB:WBGene… curie), `systematic_name`, `category`
+(`neuropeptide` for the 49 ligands, `neuropeptide_receptor` for the 51 GPCRs), `wbgene_source`.
+WBGene resolution provenance (`wbgene_source`): 12 genes already in CIRCE (Cook 2020 / innexin
+maps, reused for gene sharing); 84 by **expression-pattern alignment** — the gene's recovered
+expression uniquely matches one WBGene row of the CeNGEN threshold-4 matrix
+(`Scripts & data/30072020_CENGEN_threshold4_..._allneurons.csv`); this method was validated as
+exact on all 12 pre-existing genes. The remaining 4 (`nlp-2`, `nlp-23` — collide on a sparse
+2-neuron pattern; `dmsr-5`, `npr-34` — the two genes whose scRNA-seq the 2024 network corrected,
+so they no longer match the older matrix) were resolved authoritatively via the Alliance / NCBI
+gene APIs.
+
+### `np_gene_expression.csv` — per-neuron NPP / GPCR expression
+Columns: `cell`, `gene_symbol`. 3,514 (cell, gene) records over 302 neurons. **Recovered from the
+92 individual per-pair matrices**: each matrix is the outer product (ligand expression) ×
+(GPCR expression) binarized, so a matrix's row-support is exactly the neurons expressing its
+ligand and its column-support the neurons expressing its GPCR. This recovers the *corrected*
+expression the 2024 network was built on (so `dmsr-5`/`npr-34` are current), and every gene's
+expression is identical across all pairs it appears in (verified).
+
+## Validation
+Beyond the per-edge check above, the expression + pairs together **derive** the network from first
+principles — an edge source→target exists (weight = pair count) iff the source expresses a
+ligand and the target its cognate GPCR for a validated pair. Joining `np_gene_expression.csv`
+with `npp_gpcr_pairs.csv` this way reproduces the published long-range network **exactly**: 53,558
+edges, identical to `edge_pairs.csv` — 0 differences. So the ingested expression is faithful and
+the KG can regenerate the network without the pre-computed edge list.
+
 ## Notes / not included
-- Genes are carried as **symbols** (e.g. `nlp-40`, `aex-2`), not WormBase ids: the repo's
-  gene-id ↔ symbol map is absent, so WBGene resolution (and modelling the ligand/GPCR as `Gene`
-  entities) is deferred.
-- Per-neuron NPP / GPCR **expression** (the CeNGEN substrate that, with the pairs, *derives* the
-  network) is not ingested here — the edge decomposition above already gives the per-edge pairs
-  directly. Expression ingest (enabling first-principles SPARQL derivation) is a later pass.
+- **Sensitivity variants** (other CeNGEN thresholds / EC50 cutoffs) are not ingested — only the
+  reference threshold-4 / 500 nM expression and pairs.
+- The expression covers the **NPP/GPCR genes of the 92 pairs**, the substrate that derives the
+  network; the fuller CeNGEN matrix (NPR/MR/LGC genes without a ≤500 nM pair) is not ingested.

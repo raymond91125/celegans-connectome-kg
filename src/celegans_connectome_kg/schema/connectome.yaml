@@ -192,13 +192,18 @@ classes:
       2023, filtered to EC50 <= 500 nM), one of the 92 pairs underlying the Ripoll-Sanchez et al.
       2023 predicted neuropeptidergic connectome: a ``neuropeptidergic`` Connection source->target
       exists because the source expresses one or more of these ligands and the target expresses the
-      cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried as
-      gene symbols (lowercase, e.g. ``nlp-40`` / ``aex-2``); WBGene resolution / linkage to the
-      ``Gene`` class is deferred (the source repository's gene-id map is unavailable).
+      cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried both
+      as their source (Ripoll) gene symbols (``ligand`` / ``gpcr``, lowercase, e.g. ``nlp-40`` /
+      ``aex-2``) and, when the expression layer is built, as WBGene-resolved links to the ``Gene``
+      class (``ligand_gene`` / ``gpcr_gene``). The gene links are the stable join key — some source
+      symbols are WormBase synonyms of a different canonical symbol (e.g. ``nlp-54`` = ``trh-1``),
+      so joining expression by symbol is unsafe; join by ``ligand_gene`` / ``gpcr_gene`` instead.
     slots:
       - id
       - ligand
       - gpcr
+      - ligand_gene
+      - gpcr_gene
       - ec50_nm
       - npp_family
       - gpcr_class
@@ -332,6 +337,12 @@ slots:
     description: The neuropeptide-encoding (NPP) ligand gene symbol (lowercase, e.g. "nlp-40").
   gpcr:
     description: The GPCR receptor gene symbol (lowercase, e.g. "aex-2").
+  ligand_gene:
+    description: The ligand resolved to its WBGene-keyed Gene (the stable expression join key).
+    range: Gene
+  gpcr_gene:
+    description: The GPCR resolved to its WBGene-keyed Gene (the stable expression join key).
+    range: Gene
   ec50_nm:
     description: Half-maximal effective concentration (EC50) of the NPP-GPCR interaction, in nM.
     range: float
@@ -412,7 +423,11 @@ enums:
       innexin:
         description: Innexin / gap-junction channel gene.
       neuropeptide:
-        description: Neuropeptide-encoding gene.
+        description: Neuropeptide-encoding (NPP) gene.
+      neuropeptide_receptor:
+        description: >-
+          Neuropeptide GPCR receptor gene (the metabotropic receptor for a neuropeptide ligand;
+          the receptor side of an NPP-GPCR pair).
 
   ExpressionConfidence:
     description: >-
