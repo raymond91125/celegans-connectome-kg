@@ -66,6 +66,9 @@ def test_sex_enum_and_slots(view: SchemaView) -> None:
     nrp_slots = view.class_slots("NeuropeptideReceptorPair")
     assert {"ligand", "gpcr", "ec50_nm", "gpcr_class"} <= set(nrp_slots)
     assert view.get_slot("ec50_nm").range == "float"
+    # NPP/GPCR expression uses the neuropeptide + neuropeptide_receptor gene categories
+    gene_cats = set(view.get_enum("GeneCategory").permissible_values)
+    assert {"neuropeptide", "neuropeptide_receptor"} <= gene_cats
 
 
 def test_sample_instance_validates() -> None:

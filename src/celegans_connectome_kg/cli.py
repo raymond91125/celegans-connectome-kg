@@ -30,6 +30,8 @@ DEFAULT_INNEXIN_EXPR = Path("data/bhattacharya-2019-innexin/innexin_expression.c
 DEFAULT_INNEXIN_GENES = Path("data/bhattacharya-2019-innexin/innexin_genes.csv")
 DEFAULT_NEUROPEPTIDE_DIR = Path("data/ripoll-2023-neuropeptide")
 DEFAULT_NEUROPEPTIDE_PAIRS = Path("data/ripoll-2023-neuropeptide/mechanistic/npp_gpcr_pairs.csv")
+DEFAULT_NEUROPEPTIDE_GENES = Path("data/ripoll-2023-neuropeptide/mechanistic/np_genes.csv")
+DEFAULT_NEUROPEPTIDE_EXPR = Path("data/ripoll-2023-neuropeptide/mechanistic/np_gene_expression.csv")
 DEFAULT_GENE_EXPR_XLSX = Path("data/cook-2020-pharynx/SI6_gene_expression.xlsx")
 DEFAULT_GENE_MAP = Path("data/cook-2020-pharynx/si6_genes.csv")
 DEFAULT_COOK_WORMATLAS = Path("data/curation/cook_wormatlas_class.csv")
@@ -219,6 +221,12 @@ def build(
         neuropeptide_dir=DEFAULT_NEUROPEPTIDE_DIR if DEFAULT_NEUROPEPTIDE_DIR.exists() else None,
         neuropeptide_pairs_path=(
             DEFAULT_NEUROPEPTIDE_PAIRS if DEFAULT_NEUROPEPTIDE_PAIRS.exists() else None
+        ),
+        neuropeptide_genes_path=(
+            DEFAULT_NEUROPEPTIDE_GENES if DEFAULT_NEUROPEPTIDE_GENES.exists() else None
+        ),
+        neuropeptide_expression_path=(
+            DEFAULT_NEUROPEPTIDE_EXPR if DEFAULT_NEUROPEPTIDE_EXPR.exists() else None
         ),
         gene_expr_xlsx_path=(
             DEFAULT_GENE_EXPR_XLSX
