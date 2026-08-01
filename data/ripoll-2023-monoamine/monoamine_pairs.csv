@@ -1,0 +1,15 @@
+pair_index,monoamine,monoamine_name,receptor
+1,Ser,serotonin,ser-1
+2,Ser,serotonin,ser-4
+3,Ser,serotonin,ser-5
+4,Ser,serotonin,ser-7
+5,DA,dopamine,dop-1
+6,DA,dopamine,dop-2
+7,DA,dopamine,dop-3
+8,DA,dopamine,dop-4
+9,Oct,octopamine,octr-1
+10,Oct,octopamine,ser-3
+11,Oct,octopamine,ser-6
+12,Tyr,tyramine,ser-2
+13,Tyr,tyramine,tyra-2
+14,Tyr,tyramine,tyra-3

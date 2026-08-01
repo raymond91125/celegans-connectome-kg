@@ -31,7 +31,13 @@ def test_schema_compiles_with_core_classes(view: SchemaView) -> None:
 
 def test_connection_type_enum(view: SchemaView) -> None:
     values = set(view.get_enum("ConnectionType").permissible_values)
-    assert values == {"chemical", "gap_junction", "functional", "neuropeptidergic"}
+    assert values == {
+        "chemical",
+        "gap_junction",
+        "functional",
+        "neuropeptidergic",
+        "monoaminergic",
+    }
 
 
 def test_connectome_is_tree_root(view: SchemaView) -> None:
@@ -69,6 +75,9 @@ def test_sex_enum_and_slots(view: SchemaView) -> None:
     # NPP/GPCR expression uses the neuropeptide + neuropeptide_receptor gene categories
     gene_cats = set(view.get_enum("GeneCategory").permissible_values)
     assert {"neuropeptide", "neuropeptide_receptor"} <= gene_cats
+    # Monoamine (aminergic) layer: connection type + the 14 monoamine-receptor pairs
+    ma_slots = view.class_slots("MonoamineReceptorPair")
+    assert {"monoamine", "receptor"} <= set(ma_slots)
 
 
 def test_sample_instance_validates() -> None:

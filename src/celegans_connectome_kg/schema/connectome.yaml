@@ -61,6 +61,10 @@ classes:
         range: NeuropeptideReceptorPair
         multivalued: true
         inlined_as_list: true
+      monoamine_receptor_pairs:
+        range: MonoamineReceptorPair
+        multivalued: true
+        inlined_as_list: true
 
   Cell:
     description: >-
@@ -213,6 +217,25 @@ classes:
       gpcr:
         required: true
 
+  MonoamineReceptorPair:
+    description: >-
+      A monoamine → GPCR-receptor pair (from Bentley et al. 2016), one of the 14 pairs underlying
+      the predicted monoaminergic connectome: a ``monoaminergic`` Connection source->target exists
+      because the source produces the monoamine and the target expresses the cognate receptor, and
+      the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a
+      small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``)
+      and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol.
+    slots:
+      - id
+      - monoamine
+      - monoamine_name
+      - receptor
+    slot_usage:
+      monoamine:
+        required: true
+      receptor:
+        required: true
+
 # ---------------------------------------------------------------------------
 # Slots
 # ---------------------------------------------------------------------------
@@ -350,6 +373,12 @@ slots:
     description: The neuropeptide family of the ligand (e.g. "NLP", "FLP", "INS").
   gpcr_class:
     description: The GPCR class of the receptor (e.g. "A (rhodopsin like)").
+  monoamine:
+    description: The monoamine ligand abbreviation ("Ser", "DA", "Oct", "Tyr").
+  monoamine_name:
+    description: The full monoamine name (serotonin / dopamine / octopamine / tyramine).
+  receptor:
+    description: The monoamine GPCR receptor gene symbol (lowercase, e.g. "ser-1", "dop-2").
 
 # ---------------------------------------------------------------------------
 # Enums
@@ -377,6 +406,12 @@ enums:
           Predicted extrasynaptic neuropeptide signaling connection (a neuropeptide-precursor
           source acting on a receptor-expressing target), from the Ripoll-Sanchez et al. 2023
           neuropeptidergic connectome. Not an observed synapse.
+      monoaminergic:
+        description: >-
+          Predicted extrasynaptic monoamine signaling connection (a monoamine-producing source
+          acting on a receptor-expressing target), the aminergic companion to the neuropeptidergic
+          network (Ripoll-Sanchez et al. 2023, receptor pairs from Bentley et al. 2016). Not an
+          observed synapse.
 
   EvidenceType:
     permissible_values:

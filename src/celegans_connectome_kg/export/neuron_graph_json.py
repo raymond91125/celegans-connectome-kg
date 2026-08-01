@@ -32,6 +32,7 @@ _API_TYPE = {
     "gap_junction": "electrical",
     "functional": "functional",
     "neuropeptidergic": "neuropeptidergic",
+    "monoaminergic": "monoaminergic",
 }
 
 
@@ -267,6 +268,7 @@ _KG_REL = {
     "functional": ("fo", "fi"),
     "gap_junction": ("e", "e"),
     "neuropeptidergic": ("npo", "npi"),
+    "monoaminergic": ("mao", "mai"),
 }
 
 
@@ -817,4 +819,92 @@ def neuropeptide_datasets() -> list[dict]:
             "datatypes": "np",
         }
         for _kg_id, viz_id, collection, name, description in _NEUROPEPTIDE_DATASETS
+    ]
+
+
+# --- Monoamine projection: the Ripoll-Sánchez 2023 predicted aminergic network ------------------
+#
+# The companion predicted network to the neuropeptide one. Its own viz database (collection
+# "monoamine") with a single dataset, surfaced as an opt-in "ma" edge datatype; off by default so
+# it never crowds the observed connectome. Modelled on the adult hermaphrodite (visual_time 50).
+#: KG dataset id (RDF curie; no length limit) and the short viz dataset id (varchar(20) in the DB).
+_MONOAMINE_DATASET_ID = "ripoll_2023_monoamine"
+_MONOAMINE_VIZ_ID = "ripoll_2023_ma"
+
+
+def monoamine_cells_projection(connectome: object) -> list[dict]:
+    """Project the neurons of the monoamine network into the /api/cells shape."""
+    endpoints: set[str] = set()
+    for conn in connectome.connections:
+        if str(conn.connection_type) != "monoaminergic":
+            continue
+        endpoints.add(_strip(conn.pre, CELL_PREFIX))
+        endpoints.add(_strip(conn.post, CELL_PREFIX))
+    return [
+        {
+            "name": c.name,
+            "class": c.cell_class or c.name,
+            "type": _viz_type(c),
+            "neurotransmitter": c.neurotransmitter or "u",
+            "embryonic": bool(c.embryonic),
+            "inhead": bool(c.in_head),
+            "intail": bool(c.in_tail),
+        }
+        for c in connectome.cells
+        if c.name in endpoints
+    ]
+
+
+def monoamine_connections_projection(connectome: object) -> list[dict]:
+    """Project the monoamine network into the /api/connections shape (directed, predicted)."""
+    grouped: dict[tuple[str, str], int] = defaultdict(int)
+    for conn in connectome.connections:
+        if str(conn.connection_type) != "monoaminergic":
+            continue
+        pre = _strip(conn.pre, CELL_PREFIX)
+        post = _strip(conn.post, CELL_PREFIX)
+        grouped[(pre, post)] += int(conn.weight)
+    return [
+        {
+            "pre": pre,
+            "post": post,
+            "type": "monoaminergic",
+            "annotations": [],
+            "synapses": {_MONOAMINE_VIZ_ID: w},
+        }
+        for (pre, post), w in grouped.items()
+    ]
+
+
+def monoamine_database_cells(connectome: object) -> list[str]:
+    """Upper-cased node set (cell names + classes) of the monoamine network, for validNodes."""
+    class_of = {c.name: c.cell_class for c in connectome.cells}
+    names: set[str] = set()
+    for conn in connectome.connections:
+        if str(conn.connection_type) != "monoaminergic":
+            continue
+        for end in (_strip(conn.pre, CELL_PREFIX), _strip(conn.post, CELL_PREFIX)):
+            names.add(end.upper())
+            cls = class_of.get(end)
+            if cls:
+                names.add(cls.upper())
+    return sorted(names)
+
+
+def monoamine_datasets() -> list[dict]:
+    """The neuron-graph dataset entry for the monoamine connectome (an "ma" datatype database)."""
+    return [
+        {
+            "id": _MONOAMINE_VIZ_ID,
+            "name": "Ripoll-Sánchez 2023 (monoamine, predicted)",
+            "type": "monoamine",
+            "time": _NEUROPEPTIDE_VISUAL_TIME,
+            "visualTime": _NEUROPEPTIDE_VISUAL_TIME,
+            "description": (
+                "Predicted monoamine (aminergic) connectome, Ripoll-Sánchez et al. 2023 "
+                "(Neuron 111:3570-3589); receptor pairs from Bentley et al. 2016. "
+                "Extrasynaptic — not observed synapses."
+            ),
+            "datatypes": "ma",
+        }
     ]

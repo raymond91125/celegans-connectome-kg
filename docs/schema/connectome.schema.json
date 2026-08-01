@@ -162,7 +162,8 @@
                 "chemical",
                 "gap_junction",
                 "functional",
-                "neuropeptidergic"
+                "neuropeptidergic",
+                "monoaminergic"
             ],
             "title": "ConnectionType",
             "type": "string"
@@ -210,6 +211,15 @@
                 "genes": {
                     "items": {
                         "$ref": "#/$defs/Gene"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "monoamine_receptor_pairs": {
+                    "items": {
+                        "$ref": "#/$defs/MonoamineReceptorPair"
                     },
                     "type": [
                         "array",
@@ -446,6 +456,38 @@
             "title": "LifeStage",
             "type": "string"
         },
+        "MonoamineReceptorPair": {
+            "additionalProperties": false,
+            "description": "A monoamine \u2192 GPCR-receptor pair (from Bentley et al. 2016), one of the 14 pairs underlying the predicted monoaminergic connectome: a ``monoaminergic`` Connection source->target exists because the source produces the monoamine and the target expresses the cognate receptor, and the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``) and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol.",
+            "properties": {
+                "id": {
+                    "description": "Stable identifier for the record.",
+                    "type": "string"
+                },
+                "monoamine": {
+                    "description": "The monoamine ligand abbreviation (\"Ser\", \"DA\", \"Oct\", \"Tyr\").",
+                    "type": "string"
+                },
+                "monoamine_name": {
+                    "description": "The full monoamine name (serotonin / dopamine / octopamine / tyramine).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "receptor": {
+                    "description": "The monoamine GPCR receptor gene symbol (lowercase, e.g. \"ser-1\", \"dop-2\").",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "monoamine",
+                "receptor"
+            ],
+            "title": "MonoamineReceptorPair",
+            "type": "object"
+        },
         "NeuropeptideReceptorPair": {
             "additionalProperties": false,
             "description": "A biochemically deorphanized neuropeptide(NPP)-ligand \u2192 GPCR-receptor pair (Beets et al. 2023, filtered to EC50 <= 500 nM), one of the 92 pairs underlying the Ripoll-Sanchez et al. 2023 predicted neuropeptidergic connectome: a ``neuropeptidergic`` Connection source->target exists because the source expresses one or more of these ligands and the target expresses the cognate GPCR, and the edge weight is the count of such pairs. Ligand and GPCR are carried both as their source (Ripoll) gene symbols (``ligand`` / ``gpcr``, lowercase, e.g. ``nlp-40`` / ``aex-2``) and, when the expression layer is built, as WBGene-resolved links to the ``Gene`` class (``ligand_gene`` / ``gpcr_gene``). The gene links are the stable join key \u2014 some source symbols are WormBase synonyms of a different canonical symbol (e.g. ``nlp-54`` = ``trh-1``), so joining expression by symbol is unsafe; join by ``ligand_gene`` / ``gpcr_gene`` instead.",
@@ -609,6 +651,15 @@
         "genes": {
             "items": {
                 "$ref": "#/$defs/Gene"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "monoamine_receptor_pairs": {
+            "items": {
+                "$ref": "#/$defs/MonoamineReceptorPair"
             },
             "type": [
                 "array",

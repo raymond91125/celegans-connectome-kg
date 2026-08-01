@@ -28,6 +28,7 @@ from celegans_connectome_kg.ingest.neuron_graph import (
     ConnectionRecord,
     load_neuron_graph,
 )
+from celegans_connectome_kg.ingest.monoamine import read_monoamine_network
 from celegans_connectome_kg.ingest.neuropeptide import read_neuropeptide_network
 from celegans_connectome_kg.ingest.yim_2024_dauer import read_dauer
 from celegans_connectome_kg.match.curation import (
@@ -46,7 +47,13 @@ DATASET_PREFIX = "cckg:dataset/"
 CONN_PREFIX = "cckg:conn/"
 
 #: neuron-graph connection typ name → typ code, for stable connection ids.
-_TYPE_CODE = {"chemical": "0", "gap_junction": "2", "functional": "4", "neuropeptidergic": "5"}
+_TYPE_CODE = {
+    "chemical": "0",
+    "gap_junction": "2",
+    "functional": "4",
+    "neuropeptidergic": "5",
+    "monoaminergic": "6",
+}
 
 #: Redundant neuron-graph datasets dropped at build. `randi_funconn_wildcp` is byte-identical to
 #: `randi_funconn_wildty` — the same Randi wild-type functional recording that neuron-graph loads
@@ -195,6 +202,7 @@ _NEUROPEPTIDE_MODELS = [
 _INNEXIN_ND_DATASET = "bhattacharya_2019_innexin"
 _INNEXIN_DA_DATASET = "bhattacharya_2019_innexin_dauer"
 _NP_EXPRESSION_DATASET = "ripoll_2023_expression"
+_MONOAMINE_DATASET = "ripoll_2023_monoamine"
 
 #: Bhattacharya class labels that don't map to a single CIRCE cell_class (IL1/IL2/RMD subclasses).
 _INNEXIN_SPECIAL = {
@@ -371,6 +379,8 @@ def assemble(
     neuropeptide_pairs_path: Path | None = None,
     neuropeptide_genes_path: Path | None = None,
     neuropeptide_expression_path: Path | None = None,
+    monoamine_network_path: Path | None = None,
+    monoamine_pairs_path: Path | None = None,
 ) -> tuple[object, BuildStats]:
     """Assemble a Connectome data-model object plus build stats.
 
@@ -430,6 +440,11 @@ def assemble(
                     ),
                 )
             )
+    monoamine_conns = (
+        read_monoamine_network(monoamine_network_path, _MONOAMINE_DATASET)
+        if monoamine_network_path
+        else []
+    )
     cook_alias = load_cook_aliases(cook_aliases_path) if cook_aliases_path else {}
     cook_anatomy = load_curation(cook_anatomy_path) if cook_anatomy_path else {}
     dataset_life_stage = load_dataset_life_stage(life_stage_path) if life_stage_path else {}
@@ -441,6 +456,8 @@ def assemble(
         dataset_sex[dauer.dataset_id] = dauer.sex
     for net in neuropeptide_nets:
         dataset_sex[net.dataset_id] = net.sex
+    if monoamine_conns:
+        dataset_sex[_MONOAMINE_DATASET] = _HERMAPHRODITE
     for bundle in cook_bundles:
         for d in bundle.datasets:
             dataset_sex[d.id] = d.sex
@@ -522,6 +539,20 @@ def assemble(
         dataset_defs.append((dauer.dataset_id, dauer.dataset_name, dauer.dataset_description))
     for net in neuropeptide_nets:
         dataset_defs.append((net.dataset_id, net.dataset_name, net.dataset_description))
+    if monoamine_conns:
+        dataset_defs.append(
+            (
+                _MONOAMINE_DATASET,
+                "Ripoll-Sanchez et al. 2023 monoamine connectome",
+                (
+                    "Predicted extrasynaptic monoamine signaling network from Ripoll-Sanchez et al. "
+                    "2023 (Neuron 111:3570), receptor pairs from Bentley et al. 2016. A source "
+                    "produces a monoamine (serotonin/dopamine/octopamine/tyramine) and the target "
+                    "expresses a cognate GPCR; directed, weight = number of monoamine-receptor "
+                    "pathways. Predicted, not observed synapses."
+                ),
+            )
+        )
     datasets = [
         dm.Dataset(
             id=_dataset_id(did),
@@ -546,6 +577,9 @@ def assemble(
             summed[key] = summed.get(key, 0.0) + w
     for net in neuropeptide_nets:
         for key, w in _aggregate(net.connections, {}).items():
+            summed[key] = summed.get(key, 0.0) + w
+    if monoamine_conns:
+        for key, w in _aggregate(monoamine_conns, {}).items():
             summed[key] = summed.get(key, 0.0) + w
 
     connections = []
@@ -714,6 +748,21 @@ def assemble(
         genes += [g for g in np_genes if g.id not in seen_gene_ids]  # share the 12 existing genes
         gene_expressions += np_exprs
 
+    # --- Monoamine-receptor pairs (optional): the 14 pairs underlying the monoamine connectome ---
+    monoamine_receptor_pairs = []
+    if monoamine_pairs_path:
+        from celegans_connectome_kg.ingest.monoamine import read_monoamine_pairs
+
+        for p in read_monoamine_pairs(monoamine_pairs_path):
+            monoamine_receptor_pairs.append(
+                dm.MonoamineReceptorPair(
+                    id=f"cckg:mapair/{p.index}",
+                    monoamine=p.monoamine,
+                    monoamine_name=p.monoamine_name or None,
+                    receptor=p.receptor,
+                )
+            )
+
     connectome = dm.Connectome(
         cells=cells,
         datasets=datasets,
@@ -722,6 +771,7 @@ def assemble(
         gene_expressions=gene_expressions,
         neurotransmitter_assignments=neurotransmitter_assignments,
         neuropeptide_receptor_pairs=neuropeptide_receptor_pairs,
+        monoamine_receptor_pairs=monoamine_receptor_pairs,
     )
     stats = BuildStats(
         cells=len(cells),
