@@ -73,6 +73,14 @@ Notes:
   distinction survives while expression stays keyed to the persistent gene.
 - **Confidence:** SI 6 uses uppercase `X` (→ `reported`) and lowercase `x` (→ `putative`); the
   lowercase meaning is not stated in the source.
+- **Receptor category correction:** SI 6's header groups `dop-4`, `tyra-2`, `ser-2`, `ser-4`, `ser-7`
+  under "Ionotropic neurotransmitter receptors", but these are all metabotropic **GPCRs** — the
+  receptor side of the Bentley et al. 2016 monoamine→receptor pairs (see
+  [../ripoll-2023-monoamine/](../ripoll-2023-monoamine/)). Their `category` is corrected to
+  `monoamine_receptor` (the ligand-specific GPCR category, as `neuropeptide_receptor` is for NPP
+  GPCRs), so the shared `Gene` nodes are consistent with the monoamine mechanistic layer. The
+  genuinely ionotropic entries in that SI 6 section (`acc-4`, `glr-2`, `glr-7`, `glr-8`) keep
+  `ionotropic_receptor`.
 - The Alliance API has no transcript lookup (transcripts appear only as variant consequences), so
   isoforms are carried as a qualifier rather than as first-class transcript entities.
 
