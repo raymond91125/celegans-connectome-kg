@@ -65,6 +65,16 @@ def built():
         / "np_gene_expression.csv",
         monoamine_network_path=REPO / "data" / "ripoll-2023-monoamine" / "monoamine_network.csv",
         monoamine_pairs_path=REPO / "data" / "ripoll-2023-monoamine" / "monoamine_pairs.csv",
+        monoamine_genes_path=REPO
+        / "data"
+        / "ripoll-2023-monoamine"
+        / "mechanistic"
+        / "monoamine_receptor_genes.csv",
+        monoamine_expression_path=REPO
+        / "data"
+        / "ripoll-2023-monoamine"
+        / "mechanistic"
+        / "monoamine_receptor_expression.csv",
     )
     return connectome, stats
 
@@ -310,6 +320,7 @@ def test_gene_expression_ingest(built) -> None:
         "innexin",
         "neuropeptide",
         "neuropeptide_receptor",
+        "monoamine_receptor",
     }
     # Cook 2020 SI6 contribution is unchanged (309 records) by the added innexin datasets
     cook = [
@@ -546,6 +557,67 @@ def test_monoamine_viz_projection(built) -> None:
     assert len(ds[0]["id"]) <= 20 and len(ds[0]["name"]) <= 50
     db = monoamine_database_cells(connectome)
     assert "AVAL" in db or "ADEL" in db
+
+
+def test_monoamine_receptor_expression_ingested(built) -> None:
+    """The mechanistic layer resolves the 14 receptors to WBGene and ingests their per-neuron CeNGEN
+    expression under its own dataset; every pair carries a resolved receptor_gene link."""
+    connectome, _ = built
+    strip = lambda s: str(s).split("/")[-1]  # noqa: E731
+
+    ma_expr = [
+        e
+        for e in connectome.gene_expressions
+        if strip(e.dataset) == "ripoll_2023_monoamine_expression"
+    ]
+    assert len(ma_expr) == 787
+    assert all(str(e.confidence) == "reported" for e in ma_expr)
+
+    # All 14 pairs link to a resolved receptor Gene node (WBGene), the stable expression join key.
+    pairs = connectome.monoamine_receptor_pairs
+    assert len(pairs) == 14
+    gene_ids = {g.id for g in connectome.genes}
+    assert all(p.receptor_gene and p.receptor_gene in gene_ids for p in pairs)
+
+    ds = {strip(d.id): d for d in connectome.datasets}["ripoll_2023_monoamine_expression"]
+    assert str(ds.sex) == "hermaphrodite" and str(ds.life_stage) == "adult"
+
+
+def test_monoamine_pairs_map_matches_weight(built) -> None:
+    """The reconstructed per-edge attribution reproduces the published monoamine weights exactly
+    (0 mismatches), and the class-level viz map surfaces the mediating receptors by symbol."""
+    import csv
+    from collections import defaultdict
+
+    from celegans_connectome_kg.export.neuron_graph_json import monoamine_pairs_map
+
+    connectome, _ = built
+    edge_pairs = REPO / "data" / "ripoll-2023-monoamine" / "mechanistic" / "edge_pairs.csv"
+
+    # Cell-level check: for every edge, #mediating pairs == monoaminergic weight (0 mismatches).
+    per_edge = defaultdict(int)
+    with open(edge_pairs, newline="") as f:
+        for r in csv.DictReader(f):
+            per_edge[(r["source"], r["target"])] += 1
+    assert sum(per_edge.values()) == 4127  # = sum of all 2,881 edge weights
+
+    published = {}
+    for c in connectome.connections:
+        if str(c.connection_type) != "monoaminergic":
+            continue
+        pre = str(c.pre).rsplit("/", 1)[-1]
+        post = str(c.post).rsplit("/", 1)[-1]
+        published[(pre, post)] = int(c.weight)
+    assert dict(per_edge) == published  # exact decomposition of the published weights
+    assert len(published) == 2881
+
+    # Class-level viz map: 14 pairs, and NSM->AIZ is mediated by all three serotonin receptors.
+    m = monoamine_pairs_map(connectome, edge_pairs)
+    assert len(m["pairs"]) == 14
+    nsm_aiz = m["conn"]["NSM"]["AIZ"]
+    recs = {m["pairs"][i][1] for i in nsm_aiz}
+    assert recs == {"ser-1", "ser-4", "ser-5"}
+    assert all(m["pairs"][i][0] == "Ser" for i in nsm_aiz)
 
 
 def test_neuropeptide_receptor_pairs_ingested(built) -> None:

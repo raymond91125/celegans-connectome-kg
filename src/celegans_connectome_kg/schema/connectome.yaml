@@ -224,12 +224,15 @@ classes:
       because the source produces the monoamine and the target expresses the cognate receptor, and
       the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a
       small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``)
-      and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol.
+      and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol, and — when the
+      expression layer is built — ``receptor_gene`` is its WBGene-resolved link to the ``Gene``
+      class (the stable join key for receptor expression, mirroring the neuropeptide ``gpcr_gene``).
     slots:
       - id
       - monoamine
       - monoamine_name
       - receptor
+      - receptor_gene
     slot_usage:
       monoamine:
         required: true
@@ -366,6 +369,11 @@ slots:
   gpcr_gene:
     description: The GPCR resolved to its WBGene-keyed Gene (the stable expression join key).
     range: Gene
+  receptor_gene:
+    description: >-
+      The monoamine receptor resolved to its WBGene-keyed Gene (the stable expression join key,
+      analogous to ``gpcr_gene``).
+    range: Gene
   ec50_nm:
     description: Half-maximal effective concentration (EC50) of the NPP-GPCR interaction, in nM.
     range: float
@@ -463,6 +471,10 @@ enums:
         description: >-
           Neuropeptide GPCR receptor gene (the metabotropic receptor for a neuropeptide ligand;
           the receptor side of an NPP-GPCR pair).
+      monoamine_receptor:
+        description: >-
+          Monoamine GPCR receptor gene (the metabotropic receptor for a monoamine — serotonin,
+          dopamine, octopamine, or tyramine; the receptor side of a monoamine-receptor pair).
 
   ExpressionConfidence:
     description: >-

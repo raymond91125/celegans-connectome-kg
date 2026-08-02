@@ -43,6 +43,43 @@ def read_monoamine_pairs(csv_path: Path) -> list[MonoaminePair]:
     return out
 
 
+@dataclass(frozen=True)
+class MonoamineGene:
+    """A monoamine-receptor gene of the network, resolved to WormBase (mechanistic layer)."""
+
+    symbol: str
+    wbgene: str
+    category: str
+
+
+def read_monoamine_genes(csv_path: Path) -> dict[str, MonoamineGene]:
+    """Read mechanistic/monoamine_receptor_genes.csv into {symbol: MonoamineGene}."""
+    out: dict[str, MonoamineGene] = {}
+    with open(csv_path, newline="") as f:
+        for r in csv.DictReader(f):
+            out[r["symbol"].strip()] = MonoamineGene(
+                symbol=r["symbol"].strip(),
+                wbgene=r["wbgene"].strip(),
+                category=r["category"].strip(),
+            )
+    return out
+
+
+def read_monoamine_expression(csv_path: Path) -> list[tuple[str, str]]:
+    """Read mechanistic/monoamine_receptor_expression.csv into (cell, gene_symbol) records."""
+    with open(csv_path, newline="") as f:
+        return [(r["cell"].strip(), r["gene_symbol"].strip()) for r in csv.DictReader(f)]
+
+
+def read_monoamine_edge_pairs(csv_path: Path) -> dict[tuple[str, str], list[int]]:
+    """Read mechanistic/edge_pairs.csv into {(source, target): [pair_index, ...]} (CIRCE-normed)."""
+    out: dict[tuple[str, str], list[int]] = {}
+    with open(csv_path, newline="") as f:
+        for r in csv.DictReader(f):
+            out.setdefault((r["source"], r["target"]), []).append(int(r["pair_index"]))
+    return out
+
+
 def read_monoamine_network(csv_path: Path, dataset_id: str) -> list[ConnectionRecord]:
     """Read monoamine_network.csv (source, target, weight) into ConnectionRecords.
 

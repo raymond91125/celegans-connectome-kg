@@ -1,0 +1,15 @@
+symbol,wbgene,category,wbgene_source
+ser-1,WB:WBGene00004776,monoamine_receptor,mygene-wormbase
+ser-4,WB:WBGene00004779,monoamine_receptor,circe-existing
+ser-5,WB:WBGene00008890,monoamine_receptor,mygene-wormbase
+ser-7,WB:WBGene00004780,monoamine_receptor,circe-existing
+dop-1,WB:WBGene00001052,monoamine_receptor,mygene-wormbase
+dop-2,WB:WBGene00001053,monoamine_receptor,mygene-wormbase
+dop-3,WB:WBGene00020506,monoamine_receptor,mygene-wormbase
+dop-4,WB:WBGene00016872,monoamine_receptor,circe-existing
+octr-1,WB:WBGene00006411,monoamine_receptor,mygene-wormbase
+ser-3,WB:WBGene00004778,monoamine_receptor,mygene-wormbase
+ser-6,WB:WBGene00021897,monoamine_receptor,mygene-wormbase
+ser-2,WB:WBGene00004777,monoamine_receptor,circe-existing
+tyra-2,WB:WBGene00017157,monoamine_receptor,circe-existing
+tyra-3,WB:WBGene00006475,monoamine_receptor,mygene-wormbase

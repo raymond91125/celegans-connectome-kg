@@ -383,7 +383,8 @@
                 "ionotropic_receptor",
                 "innexin",
                 "neuropeptide",
-                "neuropeptide_receptor"
+                "neuropeptide_receptor",
+                "monoamine_receptor"
             ],
             "title": "GeneCategory",
             "type": "string"
@@ -458,7 +459,7 @@
         },
         "MonoamineReceptorPair": {
             "additionalProperties": false,
-            "description": "A monoamine \u2192 GPCR-receptor pair (from Bentley et al. 2016), one of the 14 pairs underlying the predicted monoaminergic connectome: a ``monoaminergic`` Connection source->target exists because the source produces the monoamine and the target expresses the cognate receptor, and the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``) and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol.",
+            "description": "A monoamine \u2192 GPCR-receptor pair (from Bentley et al. 2016), one of the 14 pairs underlying the predicted monoaminergic connectome: a ``monoaminergic`` Connection source->target exists because the source produces the monoamine and the target expresses the cognate receptor, and the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``) and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol, and \u2014 when the expression layer is built \u2014 ``receptor_gene`` is its WBGene-resolved link to the ``Gene`` class (the stable join key for receptor expression, mirroring the neuropeptide ``gpcr_gene``).",
             "properties": {
                 "id": {
                     "description": "Stable identifier for the record.",
@@ -478,6 +479,13 @@
                 "receptor": {
                     "description": "The monoamine GPCR receptor gene symbol (lowercase, e.g. \"ser-1\", \"dop-2\").",
                     "type": "string"
+                },
+                "receptor_gene": {
+                    "description": "The monoamine receptor resolved to its WBGene-keyed Gene (the stable expression join key, analogous to ``gpcr_gene``).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [

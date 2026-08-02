@@ -220,11 +220,20 @@ cckg:MonoamineReceptorPair a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty cckg:receptor ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:receptor_gene ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cckg:Gene ;
+            owl:onProperty cckg:receptor_gene ],
+        [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:monoamine ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:receptor ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:receptor_gene ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty cckg:id ],
@@ -234,7 +243,7 @@ cckg:MonoamineReceptorPair a owl:Class ;
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:id ] ;
-    skos:definition "A monoamine → GPCR-receptor pair (from Bentley et al. 2016), one of the 14 pairs underlying the predicted monoaminergic connectome: a ``monoaminergic`` Connection source->target exists because the source produces the monoamine and the target expresses the cognate receptor, and the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``) and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol." ;
+    skos:definition "A monoamine → GPCR-receptor pair (from Bentley et al. 2016), one of the 14 pairs underlying the predicted monoaminergic connectome: a ``monoaminergic`` Connection source->target exists because the source produces the monoamine and the target expresses the cognate receptor, and the edge weight is the count of such pairs. Unlike a neuropeptide ligand, the monoamine is a small molecule (not a gene): ``monoamine`` is its abbreviation (``Ser``/``DA``/``Oct``/``Tyr``) and ``monoamine_name`` the full name; ``receptor`` is the GPCR gene symbol, and — when the expression layer is built — ``receptor_gene`` is its WBGene-resolved link to the ``Gene`` class (the stable join key for receptor expression, mirroring the neuropeptide ``gpcr_gene``)." ;
     skos:inScheme cckg:schema .
 
 cckg:NeuropeptideReceptorPair a owl:Class ;
@@ -456,6 +465,11 @@ cckg:NeurotransmitterAssignment a owl:Class ;
     rdfs:label "metabotropic_receptor" ;
     rdfs:subClassOf cckg:GeneCategory ;
     skos:definition "Metabotropic (G-protein-coupled) neurotransmitter receptor." .
+
+<https://wormbase.org/resources/connectome/GeneCategory#monoamine_receptor> a owl:Class ;
+    rdfs:label "monoamine_receptor" ;
+    rdfs:subClassOf cckg:GeneCategory ;
+    skos:definition "Monoamine GPCR receptor gene (the metabotropic receptor for a monoamine — serotonin, dopamine, octopamine, or tyramine; the receptor side of a monoamine-receptor pair)." .
 
 <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide> a owl:Class ;
     rdfs:label "neuropeptide" ;
@@ -736,6 +750,12 @@ cckg:receptor a owl:DatatypeProperty ;
     skos:definition "The monoamine GPCR receptor gene symbol (lowercase, e.g. \"ser-1\", \"dop-2\")." ;
     skos:inScheme cckg:schema .
 
+cckg:receptor_gene a owl:ObjectProperty ;
+    rdfs:label "receptor_gene" ;
+    rdfs:range cckg:Gene ;
+    skos:definition "The monoamine receptor resolved to its WBGene-keyed Gene (the stable expression join key, analogous to ``gpcr_gene``)." ;
+    skos:inScheme cckg:schema .
+
 cckg:strain a owl:DatatypeProperty ;
     rdfs:label "strain" ;
     skos:definition "The C. elegans strain/genotype of the specimen, if known." ;
@@ -905,58 +925,6 @@ cckg:ConnectionType a owl:Class ;
         <https://wormbase.org/resources/connectome/ConnectionType#monoaminergic>,
         <https://wormbase.org/resources/connectome/ConnectionType#neuropeptidergic> .
 
-cckg:Gene a owl:Class ;
-    rdfs:label "Gene" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty cckg:systematic_name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty cckg:category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty cckg:systematic_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:systematic_name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:category ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom cckg:GeneCategory ;
-            owl:onProperty cckg:category ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty cckg:symbol ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty cckg:symbol ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:symbol ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty cckg:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty cckg:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty cckg:id ] ;
-    skos:definition "A C. elegans gene, keyed by its persistent WormBase gene id (WB:WBGene…) as resolved via the Alliance of Genome Resources. Carries the gene symbol, WormBase systematic name, and a functional category. Genes are shared across gene-expression datasets." ;
-    skos:inScheme cckg:schema .
-
-cckg:GeneCategory a owl:Class ;
-    rdfs:label "GeneCategory" ;
-    owl:unionOf ( <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#innexin> <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide> <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide_receptor> ) ;
-    skos:definition "Functional category a gene is grouped under in an expression dataset." ;
-    skos:inScheme cckg:schema ;
-    linkml:permissible_values <https://wormbase.org/resources/connectome/GeneCategory#innexin>,
-        <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor>,
-        <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor>,
-        <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide>,
-        <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide_receptor> .
-
 cckg:Sex a owl:Class ;
     rdfs:label "Sex" ;
     owl:unionOf ( <https://wormbase.org/resources/connectome/Sex#hermaphrodite> <https://wormbase.org/resources/connectome/Sex#male> ) ;
@@ -1073,6 +1041,59 @@ cckg:Cell a owl:Class ;
             owl:minCardinality 1 ;
             owl:onProperty cckg:id ] ;
     skos:definition "A C. elegans cell (neuron or muscle, or other non-neuronal cell carried by neuron-graph), keyed by its neuron-graph name and grounded in a WBBT anatomy term. Carries the neuron-graph-native attributes so the viz JSON projection is lossless." ;
+    skos:inScheme cckg:schema .
+
+cckg:GeneCategory a owl:Class ;
+    rdfs:label "GeneCategory" ;
+    owl:unionOf ( <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor> <https://wormbase.org/resources/connectome/GeneCategory#innexin> <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide> <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide_receptor> <https://wormbase.org/resources/connectome/GeneCategory#monoamine_receptor> ) ;
+    skos:definition "Functional category a gene is grouped under in an expression dataset." ;
+    skos:inScheme cckg:schema ;
+    linkml:permissible_values <https://wormbase.org/resources/connectome/GeneCategory#innexin>,
+        <https://wormbase.org/resources/connectome/GeneCategory#ionotropic_receptor>,
+        <https://wormbase.org/resources/connectome/GeneCategory#metabotropic_receptor>,
+        <https://wormbase.org/resources/connectome/GeneCategory#monoamine_receptor>,
+        <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide>,
+        <https://wormbase.org/resources/connectome/GeneCategory#neuropeptide_receptor> .
+
+cckg:Gene a owl:Class ;
+    rdfs:label "Gene" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:systematic_name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:category ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:systematic_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:systematic_name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:category ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom cckg:GeneCategory ;
+            owl:onProperty cckg:category ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty cckg:symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:symbol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty cckg:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty cckg:id ] ;
+    skos:definition "A C. elegans gene, keyed by its persistent WormBase gene id (WB:WBGene…) as resolved via the Alliance of Genome Resources. Carries the gene symbol, WormBase systematic name, and a functional category. Genes are shared across gene-expression datasets." ;
     skos:inScheme cckg:schema .
 
 cckg:dataset a owl:ObjectProperty ;
