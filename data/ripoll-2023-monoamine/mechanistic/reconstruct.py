@@ -36,18 +36,20 @@ point RIPOLL_REPO at it. Deterministic; no network access, no randomness.
 Writes edge_pairs.csv, monoamine_receptor_genes.csv, monoamine_receptor_expression.csv next to it,
 with cell names normalized to CIRCE (DA01->DA1). Exits non-zero if validation is not exact.
 """
+
 from __future__ import annotations
 
 import csv
 import os
 import re
 import sys
-from collections import defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 REPO = Path(os.environ.get("RIPOLL_REPO", "/home/raymond/local/src/git/Neuropeptide-Connectome"))
-CENGEN = REPO / "Scripts & data" / "30072020_CENGEN_threshold4_expression_NPP_NPR_MR_LGC_allneurons.csv"
+CENGEN = (
+    REPO / "Scripts & data" / "30072020_CENGEN_threshold4_expression_NPP_NPR_MR_LGC_allneurons.csv"
+)
 AGG = REPO / "Adjacency matrices for networks" / "08062023_monoamine_connectome.csv"
 
 # The 14 Bentley et al. 2016 monoamine->receptor pairs (order matches ../monoamine_pairs.csv),
@@ -159,12 +161,16 @@ def main() -> int:
         if klass(s) in CANON and CANON[klass(s)] != m
     ]
 
-    print(f"sources={len(observed)} edges={n_edges} recovered={len(recovered)} "
-          f"ambiguous={len(ambiguous)} unmatched={len(unmatched)} "
-          f"weight_mismatches={mismatch} canonical_conflicts={len(conflicts)}")
+    print(
+        f"sources={len(observed)} edges={n_edges} recovered={len(recovered)} "
+        f"ambiguous={len(ambiguous)} unmatched={len(unmatched)} "
+        f"weight_mismatches={mismatch} canonical_conflicts={len(conflicts)}"
+    )
     if mismatch or ambiguous or unmatched or conflicts:
-        print("VALIDATION FAILED:", {"ambiguous": ambiguous, "unmatched": unmatched,
-                                      "conflicts": conflicts})
+        print(
+            "VALIDATION FAILED:",
+            {"ambiguous": ambiguous, "unmatched": unmatched, "conflicts": conflicts},
+        )
         return 1
 
     # emit vendored files (CIRCE-normalized), deterministically ordered
@@ -191,8 +197,12 @@ def main() -> int:
             w.writerow([rsym, f"WB:{g}", "monoamine_receptor", gsrc])
 
     expr_rows = sorted(
-        {(norm(cell), rsym) for rsym, cells in recept_expr.items() for cell in cells
-         if norm(cell) in {norm(t) for t in targets}},
+        {
+            (norm(cell), rsym)
+            for rsym, cells in recept_expr.items()
+            for cell in cells
+            if norm(cell) in {norm(t) for t in targets}
+        },
         key=lambda x: (x[0], x[1]),
     )
     with open(HERE / "monoamine_receptor_expression.csv", "w", newline="") as f:
@@ -200,9 +210,11 @@ def main() -> int:
         w.writerow(["cell", "gene_symbol"])
         w.writerows(expr_rows)
 
-    print(f"wrote edge_pairs.csv ({len(edge_rows)} rows), "
-          f"monoamine_receptor_genes.csv (14), "
-          f"monoamine_receptor_expression.csv ({len(expr_rows)} rows)")
+    print(
+        f"wrote edge_pairs.csv ({len(edge_rows)} rows), "
+        f"monoamine_receptor_genes.csv (14), "
+        f"monoamine_receptor_expression.csv ({len(expr_rows)} rows)"
+    )
     return 0
 
 
