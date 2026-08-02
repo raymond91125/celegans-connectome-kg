@@ -72,12 +72,14 @@ def test_sex_enum_and_slots(view: SchemaView) -> None:
     nrp_slots = view.class_slots("NeuropeptideReceptorPair")
     assert {"ligand", "gpcr", "ec50_nm", "gpcr_class"} <= set(nrp_slots)
     assert view.get_slot("ec50_nm").range == "float"
-    # NPP/GPCR expression uses the neuropeptide + neuropeptide_receptor gene categories
+    # NPP/GPCR + monoamine-receptor expression use their respective receptor gene categories
     gene_cats = set(view.get_enum("GeneCategory").permissible_values)
-    assert {"neuropeptide", "neuropeptide_receptor"} <= gene_cats
-    # Monoamine (aminergic) layer: connection type + the 14 monoamine-receptor pairs
+    assert {"neuropeptide", "neuropeptide_receptor", "monoamine_receptor"} <= gene_cats
+    # Monoamine (aminergic) layer: connection type + the 14 monoamine-receptor pairs, with the
+    # mechanistic receptor_gene link (WBGene join key) mirroring the neuropeptide gpcr_gene.
     ma_slots = view.class_slots("MonoamineReceptorPair")
-    assert {"monoamine", "receptor"} <= set(ma_slots)
+    assert {"monoamine", "receptor", "receptor_gene"} <= set(ma_slots)
+    assert view.get_slot("receptor_gene").range == "Gene"
 
 
 def test_sample_instance_validates() -> None:

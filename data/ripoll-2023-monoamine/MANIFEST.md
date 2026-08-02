@@ -34,11 +34,13 @@ unlike the neuropeptide layer there are **no** short/mid/long range models.
 The 19 source neurons are the canonical aminergic set: dopaminergic (ADE, CEP, PDE), serotonergic
 (ADF, NSM, HSN, I5), tyraminergic (RIM) and octopaminergic (RIC); each produces a single monoamine.
 
-## Notes / not included
-- **Per-edge receptor attribution** (which specific monoamine→receptor pairs mediate each edge, the
-  analogue of the neuropeptide edge-pairs) is not vendored: the paper provides no per-pair matrices
-  for the monoamine network, and its monoamine-source table (Pereira et al. 2015, referenced by the
-  build script) and the monoamine-receptor expression rows are not in the repository. The aggregate
-  network weight already gives the pathway count per edge; the per-receptor breakdown is a later
-  pass (it would need the monoamine-receptor CeNGEN expression, resolvable separately).
-- Genes (receptors) are carried as symbols; WBGene linkage is deferred.
+## Mechanistic layer
+
+**Per-edge receptor attribution** — which specific monoamine→receptor pairs mediate each edge, the
+analogue of the neuropeptide edge-pairs — lives in [mechanistic/](mechanistic/). The paper ships no
+per-pair matrices for the monoamine network (only the aggregate), and its monoamine-**production**
+table (Pereira et al. 2015) is not in the source repo, so the attribution is **reconstructed from
+CeNGEN receptor expression + the published network and validated by reproducing all 2,881 weights
+exactly** (0 mismatches; the source→monoamine map is recovered, not assumed, and matches canonical
+identity). See [mechanistic/MANIFEST.md](mechanistic/MANIFEST.md). The 14 receptors are there
+resolved to WBGene (`receptor_gene` on each pair) and their expression ingested.

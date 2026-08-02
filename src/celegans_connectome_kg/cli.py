@@ -32,8 +32,15 @@ DEFAULT_NEUROPEPTIDE_DIR = Path("data/ripoll-2023-neuropeptide")
 DEFAULT_NEUROPEPTIDE_PAIRS = Path("data/ripoll-2023-neuropeptide/mechanistic/npp_gpcr_pairs.csv")
 DEFAULT_NEUROPEPTIDE_GENES = Path("data/ripoll-2023-neuropeptide/mechanistic/np_genes.csv")
 DEFAULT_NEUROPEPTIDE_EXPR = Path("data/ripoll-2023-neuropeptide/mechanistic/np_gene_expression.csv")
+DEFAULT_MONOAMINE_DIR = Path("data/ripoll-2023-monoamine")
 DEFAULT_MONOAMINE_NETWORK = Path("data/ripoll-2023-monoamine/monoamine_network.csv")
 DEFAULT_MONOAMINE_PAIRS = Path("data/ripoll-2023-monoamine/monoamine_pairs.csv")
+DEFAULT_MONOAMINE_GENES = Path(
+    "data/ripoll-2023-monoamine/mechanistic/monoamine_receptor_genes.csv"
+)
+DEFAULT_MONOAMINE_EXPR = Path(
+    "data/ripoll-2023-monoamine/mechanistic/monoamine_receptor_expression.csv"
+)
 DEFAULT_GENE_EXPR_XLSX = Path("data/cook-2020-pharynx/SI6_gene_expression.xlsx")
 DEFAULT_GENE_MAP = Path("data/cook-2020-pharynx/si6_genes.csv")
 DEFAULT_COOK_WORMATLAS = Path("data/curation/cook_wormatlas_class.csv")
@@ -236,6 +243,12 @@ def build(
         monoamine_pairs_path=(
             DEFAULT_MONOAMINE_PAIRS if DEFAULT_MONOAMINE_PAIRS.exists() else None
         ),
+        monoamine_genes_path=(
+            DEFAULT_MONOAMINE_GENES if DEFAULT_MONOAMINE_GENES.exists() else None
+        ),
+        monoamine_expression_path=(
+            DEFAULT_MONOAMINE_EXPR if DEFAULT_MONOAMINE_EXPR.exists() else None
+        ),
         gene_expr_xlsx_path=(
             DEFAULT_GENE_EXPR_XLSX
             if (DEFAULT_GENE_EXPR_XLSX.exists() and DEFAULT_GENE_MAP.exists())
@@ -312,6 +325,7 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         monoamine_connections_projection,
         monoamine_database_cells,
         monoamine_datasets,
+        monoamine_pairs_map,
         neuropeptide_cells_projection,
         neuropeptide_connections_projection,
         neuropeptide_database_cells,
@@ -382,6 +396,17 @@ def export(in_path: Path, out_dir: Path, wbbt: Path, class_curation: Path) -> No
         click.echo(
             f"wrote: {ng_dir}/np_pairs.json ({len(np_pairs['pairs'])} pairs,"
             f" {sum(len(t) for t in np_pairs['conn'].values())} class edges)"
+        )
+
+    # Monoamine->receptor pair attribution for the cell-info monoamine sections (which pairs
+    # mediate an edge). Mirrors np_pairs.json.
+    ma_edge_pairs = DEFAULT_MONOAMINE_DIR / "mechanistic" / "edge_pairs.csv"
+    if getattr(connectome, "monoamine_receptor_pairs", None) and ma_edge_pairs.exists():
+        ma_pairs = monoamine_pairs_map(connectome, ma_edge_pairs)
+        (ng_dir / "ma_pairs.json").write_text(json.dumps(ma_pairs))
+        click.echo(
+            f"wrote: {ng_dir}/ma_pairs.json ({len(ma_pairs['pairs'])} pairs,"
+            f" {sum(len(t) for t in ma_pairs['conn'].values())} class edges)"
         )
 
     # Full class-level connectivity for the cell-info "Connections (knowledge graph)" panel —

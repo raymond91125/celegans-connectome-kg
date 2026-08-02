@@ -801,6 +801,47 @@ def neuropeptide_pairs_map(connectome: object, edge_pairs_path: object) -> dict:
     return {"pairs": pairs_out, "conn": out}
 
 
+def monoamine_pairs_map(connectome: object, edge_pairs_path: object) -> dict:
+    """Class-level monoamine->receptor pair attribution for the viz cell-info monoamine sections.
+
+    The monoamine analogue of ``neuropeptide_pairs_map``: answers "which monoamine->receptor pairs
+    mediate this predicted edge". The 14 pairs come from the KG
+    (``connectome.monoamine_receptor_pairs``); the per-edge attribution is read from the vendored
+    ``mechanistic/edge_pairs.csv``, aggregated to the class level with a union of pair indices.
+
+    Shape (compact, lazy-loaded by the client):
+
+        {"pairs": [[monoamine, receptor], ...],   # list index i <-> pair
+         "conn":  {source_class: {target_class: [pair_i, ...]}}}
+    """
+    import csv
+
+    pairs = sorted(
+        getattr(connectome, "monoamine_receptor_pairs", None) or [],
+        key=lambda p: int(str(p.id).rsplit("/", 1)[-1]),
+    )
+    index_of = {int(str(p.id).rsplit("/", 1)[-1]): i for i, p in enumerate(pairs)}
+    pairs_out = [[p.monoamine, p.receptor] for p in pairs]
+
+    cls = {c.name: (c.cell_class or c.name) for c in connectome.cells}
+
+    def klass(name: str) -> str:
+        return cls.get(name, name).upper()
+
+    conn: dict[str, dict[str, set]] = defaultdict(lambda: defaultdict(set))
+    with open(edge_pairs_path, newline="") as f:
+        for r in csv.DictReader(f):
+            i = index_of.get(int(r["pair_index"]))
+            if i is None:
+                continue
+            conn[klass(r["source"])][klass(r["target"])].add(i)
+
+    out = {
+        s: {t: sorted(idxs) for t, idxs in sorted(tgts.items())} for s, tgts in sorted(conn.items())
+    }
+    return {"pairs": pairs_out, "conn": out}
+
+
 def neuropeptide_datasets() -> list[dict]:
     """The neuron-graph dataset entries for the neuropeptide range models.
 

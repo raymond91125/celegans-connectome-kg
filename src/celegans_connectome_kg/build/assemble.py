@@ -203,6 +203,7 @@ _INNEXIN_ND_DATASET = "bhattacharya_2019_innexin"
 _INNEXIN_DA_DATASET = "bhattacharya_2019_innexin_dauer"
 _NP_EXPRESSION_DATASET = "ripoll_2023_expression"
 _MONOAMINE_DATASET = "ripoll_2023_monoamine"
+_MONOAMINE_EXPRESSION_DATASET = "ripoll_2023_monoamine_expression"
 
 #: Bhattacharya class labels that don't map to a single CIRCE cell_class (IL1/IL2/RMD subclasses).
 _INNEXIN_SPECIAL = {
@@ -277,19 +278,22 @@ def _build_innexin_expression(dm, data, cells):
     return genes, exprs, sorted(unmapped)
 
 
-def _build_np_expression(dm, genes_map, records, cells):
-    """Genes + per-neuron GeneExpression for the Ripoll-Sanchez NPP/GPCR expression (CeNGEN thr-4).
+def _build_np_expression(dm, genes_map, records, cells, dataset=_NP_EXPRESSION_DATASET):
+    """Genes + per-neuron GeneExpression for a Ripoll-Sanchez CeNGEN thr-4 expression substrate.
 
-    ``genes_map`` is {symbol: NeuropeptideGene}; ``records`` is a list of (cell, gene_symbol).
-    Returns (genes, expressions, unmapped_cells). Genes are keyed by WBGene so the 12 that already
-    exist in the graph (Cook/innexin) are shared, not duplicated — the caller dedupes by id.
+    Shared by the neuropeptide (NPP/GPCR) and monoamine (receptor) mechanistic layers. ``genes_map``
+    is {symbol: gene} (each with ``.wbgene`` / ``.symbol`` / ``.category`` and optional
+    ``.systematic_name``); ``records`` is a list of (cell, gene_symbol); ``dataset`` is the owning
+    gene-expression dataset id. Returns (genes, expressions, unmapped_cells). Genes are keyed by
+    WBGene so any that already exist in the graph (Cook/innexin) are shared, not duplicated — the
+    caller dedupes by id.
     """
     genes = [
         dm.Gene(
             id=g.wbgene,
             symbol=g.symbol,
             category=g.category,
-            systematic_name=g.systematic_name or None,
+            systematic_name=getattr(g, "systematic_name", None) or None,
         )
         for g in sorted(genes_map.values(), key=lambda g: g.symbol)
     ]
@@ -303,10 +307,10 @@ def _build_np_expression(dm, genes_map, records, cells):
         wbid = g.wbgene.split(":")[-1]
         exprs.append(
             dm.GeneExpression(
-                id=f"cckg:expr/{_NP_EXPRESSION_DATASET}.{cell}.{wbid}",
+                id=f"cckg:expr/{dataset}.{cell}.{wbid}",
                 cell=_cell_id(cell),
                 gene=g.wbgene,
-                dataset=_dataset_id(_NP_EXPRESSION_DATASET),
+                dataset=_dataset_id(dataset),
                 confidence="reported",
             )
         )
@@ -381,6 +385,8 @@ def assemble(
     neuropeptide_expression_path: Path | None = None,
     monoamine_network_path: Path | None = None,
     monoamine_pairs_path: Path | None = None,
+    monoamine_genes_path: Path | None = None,
+    monoamine_expression_path: Path | None = None,
 ) -> tuple[object, BuildStats]:
     """Assemble a Connectome data-model object plus build stats.
 
@@ -749,19 +755,61 @@ def assemble(
         gene_expressions += np_exprs
 
     # --- Monoamine-receptor pairs (optional): the 14 pairs underlying the monoamine connectome ---
+    # Mechanistic layer, mirroring the neuropeptide one. Per-edge attribution (which pairs mediate
+    # each edge) is materialized to the viz projection, not RDF. The receptor gene map (symbol ->
+    # WBGene) links pairs to Gene entities and keys the receptor expression below.
+    ma_genes_map = {}
+    if monoamine_genes_path:
+        from celegans_connectome_kg.ingest.monoamine import read_monoamine_genes
+
+        ma_genes_map = read_monoamine_genes(monoamine_genes_path)
+
     monoamine_receptor_pairs = []
     if monoamine_pairs_path:
         from celegans_connectome_kg.ingest.monoamine import read_monoamine_pairs
 
         for p in read_monoamine_pairs(monoamine_pairs_path):
+            rg = ma_genes_map.get(p.receptor)
             monoamine_receptor_pairs.append(
                 dm.MonoamineReceptorPair(
                     id=f"cckg:mapair/{p.index}",
                     monoamine=p.monoamine,
                     monoamine_name=p.monoamine_name or None,
                     receptor=p.receptor,
+                    receptor_gene=rg.wbgene if rg else None,
                 )
             )
+
+    # --- Per-neuron monoamine-receptor expression (optional): CeNGEN threshold-4 substrate ---
+    # With the pairs above and the recovered producer identities, this is the receptor substrate
+    # that derives the monoamine network (target expresses the source monoamine's cognate receptor).
+    if ma_genes_map and monoamine_expression_path:
+        from celegans_connectome_kg.ingest.monoamine import read_monoamine_expression
+
+        records = read_monoamine_expression(monoamine_expression_path)
+        datasets.append(
+            dm.Dataset(
+                id=_dataset_id(_MONOAMINE_EXPRESSION_DATASET),
+                name="Ripoll-Sanchez et al. 2023 monoamine-receptor expression (CeNGEN threshold 4)",
+                description=(
+                    "Per-neuron expression of the 14 monoamine GPCR-receptor genes of the predicted "
+                    "monoaminergic connectome, CeNGEN single-cell RNA-seq at threshold 4 (Ripoll-"
+                    "Sanchez et al. 2023, Neuron 111:3570-3589; receptor pairs from Bentley et al. "
+                    "2016). The receptor substrate that, with each source's monoamine, derives the "
+                    "network: target expresses the source monoamine's cognate receptor."
+                ),
+                sex=_HERMAPHRODITE,
+                life_stage="adult",
+            )
+        )
+        ma_genes, ma_exprs, ma_unmapped = _build_np_expression(
+            dm, ma_genes_map, records, cells, dataset=_MONOAMINE_EXPRESSION_DATASET
+        )
+        if ma_unmapped:
+            raise ValueError(f"monoamine-expression cells not in the connectome: {ma_unmapped}")
+        seen_gene_ids = {g.id for g in genes}
+        genes += [g for g in ma_genes if g.id not in seen_gene_ids]
+        gene_expressions += ma_exprs
 
     connectome = dm.Connectome(
         cells=cells,
