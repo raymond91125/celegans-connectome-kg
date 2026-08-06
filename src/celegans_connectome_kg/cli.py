@@ -41,6 +41,12 @@ DEFAULT_MONOAMINE_GENES = Path(
 DEFAULT_MONOAMINE_EXPR = Path(
     "data/ripoll-2023-monoamine/mechanistic/monoamine_receptor_expression.csv"
 )
+DEFAULT_MONOAMINE_IONOTROPIC_GENES = Path(
+    "data/cengen-monoamine-ionotropic/monoamine_ionotropic_genes.csv"
+)
+DEFAULT_MONOAMINE_IONOTROPIC_EXPR = Path(
+    "data/cengen-monoamine-ionotropic/monoamine_ionotropic_expression.csv"
+)
 DEFAULT_GENE_EXPR_XLSX = Path("data/cook-2020-pharynx/SI6_gene_expression.xlsx")
 DEFAULT_GENE_MAP = Path("data/cook-2020-pharynx/si6_genes.csv")
 DEFAULT_COOK_WORMATLAS = Path("data/curation/cook_wormatlas_class.csv")
@@ -248,6 +254,16 @@ def build(
         ),
         monoamine_expression_path=(
             DEFAULT_MONOAMINE_EXPR if DEFAULT_MONOAMINE_EXPR.exists() else None
+        ),
+        monoamine_ionotropic_genes_path=(
+            DEFAULT_MONOAMINE_IONOTROPIC_GENES
+            if DEFAULT_MONOAMINE_IONOTROPIC_GENES.exists()
+            else None
+        ),
+        monoamine_ionotropic_expression_path=(
+            DEFAULT_MONOAMINE_IONOTROPIC_EXPR
+            if DEFAULT_MONOAMINE_IONOTROPIC_EXPR.exists()
+            else None
         ),
         gene_expr_xlsx_path=(
             DEFAULT_GENE_EXPR_XLSX
