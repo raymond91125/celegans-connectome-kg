@@ -1,0 +1,554 @@
+{
+  "01_baseline_pharyngeal_projection": [
+    {
+      "srcClass": "AVK",
+      "pharyngealTargets": "12"
+    },
+    {
+      "srcClass": "PQR",
+      "pharyngealTargets": "11"
+    },
+    {
+      "srcClass": "URX",
+      "pharyngealTargets": "11"
+    },
+    {
+      "srcClass": "AUA",
+      "pharyngealTargets": "10"
+    },
+    {
+      "srcClass": "HSN",
+      "pharyngealTargets": "10"
+    },
+    {
+      "srcClass": "URB",
+      "pharyngealTargets": "10"
+    },
+    {
+      "srcClass": "VCn",
+      "pharyngealTargets": "10"
+    },
+    {
+      "srcClass": "AIY",
+      "pharyngealTargets": "9"
+    },
+    {
+      "srcClass": "AQR",
+      "pharyngealTargets": "9"
+    },
+    {
+      "srcClass": "IL1",
+      "pharyngealTargets": "9"
+    },
+    {
+      "srcClass": "PVM",
+      "pharyngealTargets": "9"
+    },
+    {
+      "srcClass": "RMH",
+      "pharyngealTargets": "9"
+    },
+    {
+      "srcClass": "ADA",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "AIA",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "ASK",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "AVH",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "CAN",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "DVA",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "DVB",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "OLQ",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "PVC",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "PVD",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "PVN",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "PVT",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "RID",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "RIF",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "RIM",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "RMG",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "SAA",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "SDQ",
+      "pharyngealTargets": "8"
+    },
+    {
+      "srcClass": "ADE",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "ADL",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AIM",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "ALA",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "ASE",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "ASH",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "ASI",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AVA",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AVB",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AVD",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AVM",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AWA",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AWB",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "AWC",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "BAG",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "BDU",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "FLP",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "IL2",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "LUA",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "PVQ",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "PVR",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "PVW",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "RIB",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "RIH",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "RIP",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "RIR",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "RIV",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "RMD",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "RMF",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "SIA",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "SMB",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "SMD",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "VAn",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "VBn",
+      "pharyngealTargets": "7"
+    },
+    {
+      "srcClass": "ADF",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "AIZ",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "ALM",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "ASG",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "AVJ",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "AVL",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "CEP",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "DAn",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "DBn",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "DDn",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "PDA",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "PDB",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "PDE",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "PHA",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "PHB",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "PLM",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "PVP",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "RIC",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "RIG",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "RIS",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "RME",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "SAB",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "SIB",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "VDn",
+      "pharyngealTargets": "6"
+    },
+    {
+      "srcClass": "AIN",
+      "pharyngealTargets": "5"
+    },
+    {
+      "srcClass": "ASJ",
+      "pharyngealTargets": "4"
+    },
+    {
+      "srcClass": "URY",
+      "pharyngealTargets": "4"
+    },
+    {
+      "srcClass": "AIB",
+      "pharyngealTargets": "3"
+    },
+    {
+      "srcClass": "AVG",
+      "pharyngealTargets": "3"
+    },
+    {
+      "srcClass": "DVC",
+      "pharyngealTargets": "3"
+    },
+    {
+      "srcClass": "OLL",
+      "pharyngealTargets": "3"
+    },
+    {
+      "srcClass": "PHC",
+      "pharyngealTargets": "3"
+    },
+    {
+      "srcClass": "URA",
+      "pharyngealTargets": "3"
+    },
+    {
+      "srcClass": "AVE",
+      "pharyngealTargets": "1"
+    }
+  ],
+  "02_avk_proximity": [
+    {
+      "type": "neuropeptidergic",
+      "edges": "36"
+    }
+  ],
+  "03_feeding_np_channels": [
+    {
+      "srcClass": "AIN",
+      "tgtClass": "MC",
+      "ligand": "nlp-42",
+      "receptor": "sprr-1",
+      "ec50_nm": "8.084"
+    },
+    {
+      "srcClass": "AIN",
+      "tgtClass": "NSM",
+      "ligand": "nlp-47",
+      "receptor": "gnrr-1",
+      "ec50_nm": "62.2"
+    },
+    {
+      "srcClass": "ASI",
+      "tgtClass": "NSM",
+      "ligand": "nlp-47",
+      "receptor": "gnrr-1",
+      "ec50_nm": "62.2"
+    },
+    {
+      "srcClass": "AVK",
+      "tgtClass": "MC",
+      "ligand": "flp-1",
+      "receptor": "dmsr-6",
+      "ec50_nm": "14.25"
+    },
+    {
+      "srcClass": "AVK",
+      "tgtClass": "NSM",
+      "ligand": "flp-1",
+      "receptor": "frpr-7",
+      "ec50_nm": "7.253"
+    }
+  ],
+  "04_channel_specificity": [
+    {
+      "ligand": "flp-1",
+      "senderClasses": "1"
+    },
+    {
+      "ligand": "nlp-42",
+      "senderClasses": "3"
+    },
+    {
+      "ligand": "nlp-47",
+      "senderClasses": "28"
+    }
+  ],
+  "05_motor_cluster_edges": [
+    {
+      "preClass": "M3",
+      "postClass": "M4",
+      "type": "chemical",
+      "n": "3"
+    },
+    {
+      "preClass": "M3",
+      "postClass": "MC",
+      "type": "chemical",
+      "n": "2"
+    },
+    {
+      "preClass": "M4",
+      "postClass": "M3",
+      "type": "chemical",
+      "n": "3"
+    },
+    {
+      "preClass": "M4",
+      "postClass": "MC",
+      "type": "chemical",
+      "n": "3"
+    },
+    {
+      "preClass": "M3",
+      "postClass": "MC",
+      "type": "functional",
+      "n": "4"
+    },
+    {
+      "preClass": "MC",
+      "postClass": "M3",
+      "type": "functional",
+      "n": "1"
+    },
+    {
+      "preClass": "M3",
+      "postClass": "MC",
+      "type": "gap_junction",
+      "n": "4"
+    },
+    {
+      "preClass": "MC",
+      "postClass": "M3",
+      "type": "gap_junction",
+      "n": "4"
+    },
+    {
+      "preClass": "AIN",
+      "postClass": "MC",
+      "type": "neuropeptidergic",
+      "n": "8"
+    },
+    {
+      "preClass": "M4",
+      "postClass": "AIN",
+      "type": "neuropeptidergic",
+      "n": "4"
+    },
+    {
+      "preClass": "M4",
+      "postClass": "M3",
+      "type": "neuropeptidergic",
+      "n": "6"
+    },
+    {
+      "preClass": "M4",
+      "postClass": "MC",
+      "type": "neuropeptidergic",
+      "n": "6"
+    },
+    {
+      "preClass": "MC",
+      "postClass": "AIN",
+      "type": "neuropeptidergic",
+      "n": "8"
+    },
+    {
+      "preClass": "MC",
+      "postClass": "M3",
+      "type": "neuropeptidergic",
+      "n": "12"
+    }
+  ],
+  "_derived_baseline_focal_ranks": {
+    "AVK": {
+      "rank": 1,
+      "pharyngealTargets": 12
+    },
+    "ASI": {
+      "rank": 37,
+      "pharyngealTargets": 7
+    },
+    "AIN": {
+      "rank": 89,
+      "pharyngealTargets": 5
+    }
+  },
+  "_derived_baseline_total_classes": 98
+}
