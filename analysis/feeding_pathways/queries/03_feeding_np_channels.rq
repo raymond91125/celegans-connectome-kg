@@ -1,0 +1,26 @@
+# The specific peptide channels from AIN/ASI/AVK onto the two pharyngeal hubs NSM and MC.
+#
+# For each source class in {AIN, ASI, AVK} and target in {NSM, MC}, finds the deorphanized
+# ligand->GPCR pair(s) that connect them -- source expresses the ligand gene, target expresses the
+# cognate GPCR gene (Ripoll-Sanchez CeNGEN expression) -- and returns the pair's binding affinity
+# (EC50, nM). This is the mechanistic route each feeding neuron has into the pharynx.
+#
+# Interpretation: AVK->NSM (flp-1->frpr-7, 7 nM) and AVK->MC (flp-1->dmsr-6, 14 nM) and AIN->MC
+# (nlp-42->sprr-1, 8 nM) are all high-affinity; AIN/ASI->NSM (nlp-47->gnrr-1) is weaker (62 nM).
+# Pair with query 04 (specificity) to see which are private lines vs shared buses.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+
+SELECT DISTINCT ?srcClass ?tgtClass ?ligand ?receptor ?ec50_nm WHERE {
+  ?pair a cckg:NeuropeptideReceptorPair ;
+        cckg:ligand ?ligand ; cckg:gpcr ?receptor ; cckg:ec50_nm ?ec50_nm ;
+        cckg:ligand_gene ?lg ; cckg:gpcr_gene ?gg .
+  ?es a cckg:GeneExpression ; cckg:cell ?sc ; cckg:gene ?lg ;
+      cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_expression> .
+  ?et a cckg:GeneExpression ; cckg:cell ?tc ; cckg:gene ?gg ;
+      cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_expression> .
+  ?sc cckg:cell_class ?srcClass .
+  ?tc cckg:cell_class ?tgtClass .
+  VALUES ?srcClass { "AIN" "ASI" "AVK" }
+  VALUES ?tgtClass { "NSM" "MC" }
+}
+ORDER BY ?srcClass ?tgtClass

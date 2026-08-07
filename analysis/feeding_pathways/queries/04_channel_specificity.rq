@@ -1,0 +1,21 @@
+# Specificity ("privacy") of each feeding peptide channel: how many neuron classes broadcast the
+# ligand at all? A peptide expressed by one class is a private line; one expressed by many is a
+# shared broadcast bus. Counts distinct source classes expressing each ligand gene in the
+# Ripoll-Sanchez CeNGEN expression dataset.
+#
+# Interpretation: flp-1 (AVK's peptide) is expressed by a SINGLE class -- AVK itself -- so its two
+# high-affinity channels onto NSM and MC are fully private. nlp-42 (AIN->MC) is near-private (3
+# classes). nlp-47 (AIN/ASI->NSM) is broadcast by 28 classes -- a public bus, not a feeding-specific
+# line. So specificity, not mere presence, is what separates the candidate feeding routes.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?ligand (COUNT(DISTINCT ?srcClass) AS ?senderClasses) WHERE {
+  VALUES ?ligand { "flp-1" "nlp-42" "nlp-47" }
+  ?g dcterms:title ?ligand .
+  ?e a cckg:GeneExpression ; cckg:gene ?g ; cckg:cell ?sc ;
+     cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_expression> .
+  ?sc cckg:cell_class ?srcClass .
+}
+GROUP BY ?ligand
+ORDER BY ?senderClasses

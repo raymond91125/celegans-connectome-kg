@@ -1,0 +1,23 @@
+# Is AIN part of the MC/M3/M4 pump-motor module, or an outsider to it?
+#
+# Every edge among the paper's correlated set {MC, M3, M4, AIN}, by connection type and direction
+# (cell->class aggregated). Observed wiring = chemical / gap_junction; fast physiology = functional;
+# predicted = neuropeptidergic.
+#
+# Interpretation: MC/M3/M4 are interlinked by chemical synapses, the MC-M3 gap junction, AND a
+# reciprocal MC<->M3 functional edge -- a genuine coupled pump-motor cluster. AIN appears ONLY on
+# neuropeptidergic rows: it has no chemical, gap, or functional edge to MC/M3/M4 (nor, separately, to
+# any pharyngeal neuron). So AIN is a connectome outsider to the motor module; its only link is the
+# predicted peptide channel of query 03.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+
+SELECT ?preClass ?postClass ?type (COUNT(*) AS ?n) WHERE {
+  ?c cckg:connection_type ?type ; cckg:pre ?pre ; cckg:post ?post .
+  ?pre cckg:cell_class ?preClass .
+  ?post cckg:cell_class ?postClass .
+  VALUES ?preClass { "MC" "M3" "M4" "AIN" }
+  VALUES ?postClass { "MC" "M3" "M4" "AIN" }
+  FILTER(?preClass != ?postClass)
+}
+GROUP BY ?preClass ?postClass ?type
+ORDER BY ?type ?preClass ?postClass

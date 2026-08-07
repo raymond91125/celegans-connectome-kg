@@ -1,0 +1,26 @@
+# BASELINE: is projecting to the pharynx via neuropeptides special to the "feeding" neurons?
+#
+# Ranks every EXTRA-pharyngeal neuron class by how many of the 14 pharyngeal neuron classes it
+# reaches through the predicted neuropeptide network -- reconstructed FROM FIRST PRINCIPLES (source
+# expresses a deorphanized ligand gene, target expresses the cognate GPCR gene, in the Ripoll-Sanchez
+# CeNGEN expression dataset), not read from precomputed edges. Aggregated cell->class via cell_class.
+#
+# Interpretation: if AIN/ASI/AVK shared a "feeding" connectome signature they would cluster near the
+# top. They do not -- only AVK ranks high; ASI and AIN sit mid/low -- so "projects to the pharynx"
+# is common (see the row count) and does not by itself distinguish the three.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+
+SELECT ?srcClass (COUNT(DISTINCT ?tgtClass) AS ?pharyngealTargets) WHERE {
+  ?pair a cckg:NeuropeptideReceptorPair ; cckg:ligand_gene ?lg ; cckg:gpcr_gene ?gg .
+  ?es a cckg:GeneExpression ; cckg:cell ?sc ; cckg:gene ?lg ;
+      cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_expression> .
+  ?et a cckg:GeneExpression ; cckg:cell ?tc ; cckg:gene ?gg ;
+      cckg:dataset <https://wormbase.org/resources/connectome/dataset/ripoll_2023_expression> .
+  ?sc cckg:cell_class ?srcClass .
+  ?tc cckg:cell_class ?tgtClass .
+  VALUES ?tgtClass { "I1" "I2" "I3" "I4" "I5" "I6" "M1" "M2" "M3" "M4" "M5" "MC" "MI" "NSM" }
+  FILTER(?srcClass NOT IN (
+    "I1", "I2", "I3", "I4", "I5", "I6", "M1", "M2", "M3", "M4", "M5", "MC", "MI", "NSM"))
+}
+GROUP BY ?srcClass
+ORDER BY DESC(?pharyngealTargets) ?srcClass

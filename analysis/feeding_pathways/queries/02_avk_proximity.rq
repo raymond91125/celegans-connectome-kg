@@ -1,0 +1,21 @@
+# Are AIN and ASI actually "close" to AVK, if we treat AVK as the feeding hub?
+#
+# Counts every connection between AVK and AIN/ASI, broken out by connection type (across all
+# datasets and both directions). Observed wiring = chemical / gap_junction; fast physiology =
+# functional (Randi); predicted = neuropeptidergic / monoaminergic.
+#
+# Interpretation: the ONLY edges returned are neuropeptidergic -- there is no chemical, gap, or
+# functional connection between AVK and AIN or ASI. So AIN/ASI are not wired neighbours of AVK; any
+# relationship is purely through the predicted peptide layer.
+PREFIX cckg: <https://wormbase.org/resources/connectome/>
+
+SELECT ?type (COUNT(*) AS ?edges) WHERE {
+  ?c cckg:connection_type ?type ; cckg:pre ?pre ; cckg:post ?post .
+  ?pre cckg:cell_class ?preClass .
+  ?post cckg:cell_class ?postClass .
+  FILTER(
+    (?preClass = "AVK" && ?postClass IN ("AIN", "ASI")) ||
+    (?postClass = "AVK" && ?preClass IN ("AIN", "ASI")))
+}
+GROUP BY ?type
+ORDER BY ?type
