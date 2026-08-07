@@ -1,0 +1,9 @@
+symbol,wbgene,category,amine_ligand,ion,source,wbgene_source
+mod-1,WB:WBGene00003386,ionotropic_receptor,serotonin,anion,Ranganathan 2000,mygene-wormbase
+lgc-40,WB:WBGene00020767,ionotropic_receptor,serotonin/choline,anion,Ringstad 2009,mygene-wormbase
+lgc-53,WB:WBGene00020657,ionotropic_receptor,dopamine,anion,Ringstad 2009,mygene-wormbase
+lgc-55,WB:WBGene00013746,ionotropic_receptor,tyramine,anion,Ringstad 2009,mygene-wormbase
+lgc-50,WB:WBGene00020605,ionotropic_receptor,serotonin,cation,Morud 2021,mygene-wormbase
+lgc-52,WB:WBGene00013517,ionotropic_receptor,dopamine/tyramine,anion,Morud 2021,mygene-wormbase
+lgc-54,WB:WBGene00020528,ionotropic_receptor,dopamine/tyramine/serotonin,anion,Morud 2021,mygene-wormbase
+lgc-56,WB:WBGene00001588,ionotropic_receptor,tyramine/dopamine/octopamine,anion,Morud 2021,mygene-wormbase

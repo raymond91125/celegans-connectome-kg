@@ -75,6 +75,14 @@ def built():
         / "ripoll-2023-monoamine"
         / "mechanistic"
         / "monoamine_receptor_expression.csv",
+        monoamine_ionotropic_genes_path=REPO
+        / "data"
+        / "cengen-monoamine-ionotropic"
+        / "monoamine_ionotropic_genes.csv",
+        monoamine_ionotropic_expression_path=REPO
+        / "data"
+        / "cengen-monoamine-ionotropic"
+        / "monoamine_ionotropic_expression.csv",
     )
     return connectome, stats
 
@@ -581,6 +589,53 @@ def test_monoamine_receptor_expression_ingested(built) -> None:
 
     ds = {strip(d.id): d for d in connectome.datasets}["ripoll_2023_monoamine_expression"]
     assert str(ds.sex) == "hermaphrodite" and str(ds.life_stage) == "adult"
+
+
+def test_monoamine_ionotropic_receptors_ingested(built) -> None:
+    """The eight ionotropic (ligand-gated) monoamine receptors -- the amine-gated Cys-loop channels
+    mod-1/lgc-40/50/52/53/54/55/56 -- enter the KG as expression-only genes: category
+    ionotropic_receptor, per-neuron CeNGEN threshold-4 expression under their own dataset, and --
+    unlike the GPCR receptors -- no monoaminergic edges/pairs. lgc-51 (accessory subunit, not itself
+    amine-gated) is excluded."""
+    from collections import Counter
+
+    connectome, _ = built
+    strip = lambda s: str(s).split("/")[-1]  # noqa: E731
+
+    # symbol -> expected (WBGene id, expressing-neuron count)
+    expected = {
+        "mod-1": ("WB:WBGene00003386", 28),
+        "lgc-40": ("WB:WBGene00020767", 29),
+        "lgc-53": ("WB:WBGene00020657", 68),
+        "lgc-55": ("WB:WBGene00013746", 41),
+        "lgc-50": ("WB:WBGene00020605", 60),
+        "lgc-52": ("WB:WBGene00013517", 14),
+        "lgc-54": ("WB:WBGene00020528", 17),
+        "lgc-56": ("WB:WBGene00001588", 41),
+    }
+    genes = {g.symbol: g for g in connectome.genes}
+    assert set(expected) <= set(genes)
+    assert all(genes[s].id == wb for s, (wb, _) in expected.items())
+    assert all(str(genes[s].category) == "ionotropic_receptor" for s in expected)
+    assert "lgc-51" not in genes  # accessory subunit, deliberately excluded
+
+    mi_expr = [
+        e
+        for e in connectome.gene_expressions
+        if strip(e.dataset) == "cengen_2021_monoamine_ionotropic_expression"
+    ]
+    assert len(mi_expr) == sum(n for _, n in expected.values()) == 298
+    by_gene = Counter(strip(e.gene) for e in mi_expr)
+    assert all(by_gene[wb] == n for _, (wb, n) in expected.items())
+    assert all(str(e.confidence) == "reported" for e in mi_expr)
+
+    ds = {strip(d.id): d for d in connectome.datasets}[
+        "cengen_2021_monoamine_ionotropic_expression"
+    ]
+    assert str(ds.sex) == "hermaphrodite" and str(ds.life_stage) == "adult"
+
+    # Ionotropic receptors are not GPCRs: they must not appear in the monoamine (GPCR) pairs.
+    assert not any(p.receptor in expected for p in connectome.monoamine_receptor_pairs)
 
 
 def test_monoamine_pairs_map_matches_weight(built) -> None:

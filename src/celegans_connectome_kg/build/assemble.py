@@ -204,6 +204,7 @@ _INNEXIN_DA_DATASET = "bhattacharya_2019_innexin_dauer"
 _NP_EXPRESSION_DATASET = "ripoll_2023_expression"
 _MONOAMINE_DATASET = "ripoll_2023_monoamine"
 _MONOAMINE_EXPRESSION_DATASET = "ripoll_2023_monoamine_expression"
+_MONOAMINE_IONOTROPIC_DATASET = "cengen_2021_monoamine_ionotropic_expression"
 
 #: Bhattacharya class labels that don't map to a single CIRCE cell_class (IL1/IL2/RMD subclasses).
 _INNEXIN_SPECIAL = {
@@ -387,6 +388,8 @@ def assemble(
     monoamine_pairs_path: Path | None = None,
     monoamine_genes_path: Path | None = None,
     monoamine_expression_path: Path | None = None,
+    monoamine_ionotropic_genes_path: Path | None = None,
+    monoamine_ionotropic_expression_path: Path | None = None,
 ) -> tuple[object, BuildStats]:
     """Assemble a Connectome data-model object plus build stats.
 
@@ -810,6 +813,41 @@ def assemble(
         seen_gene_ids = {g.id for g in genes}
         genes += [g for g in ma_genes if g.id not in seen_gene_ids]
         gene_expressions += ma_exprs
+
+    # --- Ionotropic (ligand-gated) monoamine receptors (optional) ---
+    # The amine-gated Cys-loop channels (mod-1, lgc-40/50/52/53/54/55/56) directly opened by
+    # serotonin/dopamine/tyramine/octopamine, from the SAME CeNGEN threshold-4 matrix as the
+    # monoamine layer but NOT part of the Bentley GPCR network -- expression-only, so the KG carries
+    # the full aminergic receptor repertoire (GPCR + ionotropic), not just its metabotropic half.
+    if monoamine_ionotropic_genes_path and monoamine_ionotropic_expression_path:
+        from celegans_connectome_kg.ingest.cengen import read_expression, read_gene_table
+
+        mi_genes_map = read_gene_table(monoamine_ionotropic_genes_path)
+        records = read_expression(monoamine_ionotropic_expression_path)
+        datasets.append(
+            dm.Dataset(
+                id=_dataset_id(_MONOAMINE_IONOTROPIC_DATASET),
+                name="CeNGEN ionotropic monoamine-receptor expression (threshold 4)",
+                description=(
+                    "Per-neuron expression of the ionotropic (ligand-gated) monoamine receptors -- "
+                    "the amine-gated Cys-loop channels for serotonin/dopamine/tyramine/octopamine "
+                    "(mod-1, lgc-40/50/52/53/54/55/56; Ranganathan 2000, Ringstad 2009, Morud 2021) "
+                    "-- from CeNGEN single-cell RNA-seq at threshold 4 (Taylor et al. 2021, Cell "
+                    "184:4329-4347). Not part of the monoamine GPCR network (Bentley et al. 2016); "
+                    "expression-only, so the graph carries the full aminergic receptor repertoire."
+                ),
+                sex=_HERMAPHRODITE,
+                life_stage="adult",
+            )
+        )
+        mi_genes, mi_exprs, mi_unmapped = _build_np_expression(
+            dm, mi_genes_map, records, cells, dataset=_MONOAMINE_IONOTROPIC_DATASET
+        )
+        if mi_unmapped:
+            raise ValueError(f"monoamine-ionotropic cells not in the connectome: {mi_unmapped}")
+        seen_gene_ids = {g.id for g in genes}
+        genes += [g for g in mi_genes if g.id not in seen_gene_ids]
+        gene_expressions += mi_exprs
 
     connectome = dm.Connectome(
         cells=cells,
