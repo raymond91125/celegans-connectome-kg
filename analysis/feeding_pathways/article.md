@@ -225,22 +225,24 @@ CIRCE repository. Each `.rq` file also runs unchanged against any CIRCE SPARQL e
 ## References
 
 1. Atanas AA, Kim J, Wang Z, et al. Brain-wide representations of behavior spanning multiple
-   timescales and states in *C. elegans*. *Cell* 186:4134–4151 (2023). PMID:37607537.
+   timescales and states in *C. elegans*. *Cell* 186(19):4134–4151 (2023).
+   doi:10.1016/j.cell.2023.07.035. PMID:37607537.
 2. Ripoll-Sánchez L, Watteyne J, Sun H, et al. The neuropeptidergic connectome of *C. elegans*.
-   *Neuron* 111:3570–3589 (2023).
+   *Neuron* 111(22):3570–3589 (2023). doi:10.1016/j.neuron.2023.09.043.
 3. Beets I, Zels S, Vandewyer E, et al. System-wide mapping of peptide–GPCR interactions in
-   *C. elegans*. *Cell Reports* 42:113058 (2023).
+   *C. elegans*. *Cell Reports* 42(9):113058 (2023). doi:10.1016/j.celrep.2023.113058.
 4. Bentley B, Branicky R, Barnes CL, et al. The multilayer connectome of *Caenorhabditis elegans*.
-   *PLoS Comput. Biol.* 12:e1005283 (2016).
+   *PLoS Comput. Biol.* 12(12):e1005283 (2016). doi:10.1371/journal.pcbi.1005283.
 5. Taylor SR, Santpere G, Weinreb A, et al. Molecular topography of an entire nervous system (CeNGEN).
-   *Cell* 184:4329–4347 (2021).
+   *Cell* 184(16):4329–4347 (2021). doi:10.1016/j.cell.2021.06.023.
 6. Randi F, Sharma AK, Dvali S, Leifer AM. Neural signal propagation atlas of *Caenorhabditis
-   elegans*. *Nature* 623:406–414 (2023).
+   elegans*. *Nature* 623(7986):406–414 (2023). doi:10.1038/s41586-023-06683-4.
 7. Cook SJ, Jarrell TA, Brittin CA, et al. Whole-animal connectomes of both *C. elegans* sexes.
-   *Nature* 571:63–71 (2019).
+   *Nature* 571:63–71 (2019). doi:10.1038/s41586-019-1352-7.
 8. Cook SJ, Crouse CM, Yakovlev MA, et al. The connectome of the *Caenorhabditis elegans* pharynx.
-   *J. Comp. Neurol.* 528:2767–2784 (2020).
+   *J. Comp. Neurol.* 528(15):2767–2784 (2020). doi:10.1002/cne.24932.
 9. Witvliet D, Mulcahy B, Mitchell JK, et al. Connectomes across development reveal principles of
-   brain maturation. *Nature* 596:257–261 (2021).
+   brain maturation. *Nature* 596(7871):257–261 (2021). doi:10.1038/s41586-021-03778-8.
 10. White JG, Southgate E, Thomson JN, Brenner S. The structure of the nervous system of the nematode
-    *Caenorhabditis elegans*. *Phil. Trans. R. Soc. Lond. B* 314:1–340 (1986).
+    *Caenorhabditis elegans*. *Phil. Trans. R. Soc. Lond. B* 314(1165):1–340 (1986).
+    doi:10.1098/rstb.1986.0056.
